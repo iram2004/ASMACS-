@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Comptabilité Globale - ASMACS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#0b1c30",
+                      "secondary-fixed": "#b7eaff",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-surface": "#213145",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#dfe3ff",
+                      "outline-variant": "#c3c5d9",
+                      "on-tertiary-fixed": "#3c0800",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#ffdbd2",
+                      "on-surface-variant": "#434656",
+                      "surface-bright": "#f8f9ff",
+                      "secondary": "#00677f",
+                      "tertiary": "#952200",
+                      "surface-tint": "#004ced",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "tertiary-fixed-dim": "#ffb4a1",
+                      "on-secondary-fixed-variant": "#004e60",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#b7c4ff",
+                      "surface-container": "#e5eeff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#891e00",
+                      "surface-container-low": "#eff4ff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#001f28",
+                      "secondary-fixed-dim": "#4cd6ff",
+                      "surface": "#f8f9ff",
+                      "on-tertiary-container": "#ffddd5",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary-container": "#bf3003",
+                      "on-primary-fixed-variant": "#0038b6",
+                      "outline": "#737688",
+                      "primary-fixed": "#dde1ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-primary-fixed": "#001452",
+                      "surface-container-highest": "#d3e4fe",
+                      "primary": "#003ec7",
+                      "on-surface": "#0b1c30",
+                      "secondary-container": "#00ccf9",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#005266",
+                      "primary-container": "#0052ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "rail-expanded": "240px",
+                      "density-comfortable": "12px",
+                      "density-compact": "4px",
+                      "rail-width": "64px",
+                      "margin-page": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "title-sm": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "data-mono": ["JetBrains Mono"],
+                      "body-md": ["Geist"],
+                      "label-caps": ["JetBrains Mono"],
+                      "display-lg": ["Geist"],
+                      "body-sm": ["Geist"]
+              },
+              "fontSize": {
+                      "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "data-mono": ["12px", {"lineHeight": "1", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Geist', sans-serif; background-color: #f8f9ff; color: #0b1c30; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(248, 249, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid #c3c5d9; }
+        .bubble { transition: transform 0.3s ease; }
+        .bubble:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-background text-on-background flex h-screen overflow-hidden">
+<!-- SideNavBar (from JSON) -->
+<nav class="bg-surface dark:bg-on-background w-rail-width hover:w-rail-expanded transition-all duration-300 fixed left-0 top-0 h-full z-50 border-r border-outline-variant dark:border-outline flex flex-col py-spacing-density-comfortable overflow-x-hidden group">
+<!-- Brand -->
+<div class="px-4 mb-8 flex items-center shrink-0">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-3xl">account_balance</span>
+<div class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+<div class="font-display-lg text-[24px] font-bold text-primary dark:text-primary-fixed-dim tracking-tight">ASMACS</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Admin Suite</div>
+</div>
+</div>
+<!-- CTA -->
+<div class="px-2 mb-6">
+<button class="w-full flex items-center justify-center p-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">add</span>
+<span class="ml-3 font-title-sm text-title-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity hidden group-hover:block">New Entry</span>
+</button>
+</div>
+<!-- Nav Links -->
+<div class="flex-1 flex flex-col gap-2 px-2">
+<!-- Dashboard -->
+<a class="flex items-center p-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" href="/interfaces/dashboard_global_admin_suite">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Dashboard</span>
+</a>
+<!-- Analytics (Active for Finance) -->
+<a class="flex items-center p-3 rounded-lg text-primary dark:text-primary-fixed-dim border-l-4 border-primary dark:border-primary-fixed-dim bg-surface-container-high transition-all duration-200 ease-in-out" href="/interfaces/comptabilit_globale_admin_suite">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Analytics</span>
+</a>
+<!-- Inventory -->
+<a class="flex items-center p-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" href="/interfaces/biblioth_que_num_rique_admin_suite">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Inventory</span>
+</a>
+<!-- Personnel -->
+<a class="flex items-center p-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" href="/interfaces/rh_paie_admin_suite">
+<span class="material-symbols-outlined">badge</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Personnel</span>
+</a>
+<!-- Reports -->
+<a class="flex items-center p-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" href="/interfaces/tats_du_syst_me_erreurs_admin_suite">
+<span class="material-symbols-outlined">description</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Reports</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center p-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" href="/interfaces/configuration_syst_me_admin_suite">
+<span class="material-symbols-outlined">settings</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Settings</span>
+</a>
+</div>
+<!-- Footer Links -->
+<div class="mt-auto px-2 flex flex-col gap-2">
+<a class="flex items-center p-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" href="/interfaces/contact_d_mo_asmacs_suite">
+<span class="material-symbols-outlined">help</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Help</span>
+</a>
+<a class="flex items-center p-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" href="/interfaces/notifications_param_tres_admin_suite">
+<span class="material-symbols-outlined">language</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Bilingual Toggle</span>
+</a>
+<!-- Avatar -->
+<div class="flex items-center p-3 mt-4 border-t border-outline-variant">
+<img alt="ASMACS Admin Profile" class="w-8 h-8 rounded-full shrink-0" data-alt="A small, professional corporate avatar graphic displaying the initials 'A' on a deep blue background. The style is clean, modern, and minimalist, typical of high-end enterprise software dashboards. The image is a simple digital rendering with no photographic elements, relying on flat colors and crisp typography. The mood is functional and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDia5mWQs9YZpYUSAjRLIDHUXDs0fM2AhCdCtKWSikjVsio4V_79TQqEEVxbQZv8hAgH_xYaC0I_sJ1a29fb7ipgMPm_QAa7JSeOtHGK8IzKw1vmGrRhoIBhiUaonwEZ7R0yyONpcwWooK9ci4mEnmr-h_t6tj82la68d-tdvgFk38X-Tz_6o8_gZzE2nUOwF_DGBqXlLNlw9KuvJIOZei42SU-WTAKywsRSxFED1t7Gz3gxqt5X4uEVgMurWUybBn6MU99sAPJcaI"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-[64px] transition-all duration-300">
+<!-- TopNavBar (from JSON) -->
+<header class="bg-surface/80 dark:bg-on-background/80 backdrop-blur-xl fixed top-0 right-0 w-[calc(100%-64px)] z-40 border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-spacing-margin-page">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md font-bold text-on-background dark:text-surface-bright tracking-tight">Comptabilité Globale</h1>
+<span class="font-label-caps text-label-caps bg-surface-container-high text-primary px-2 py-1 rounded-sm border border-primary-fixed-dim">MOD 7</span>
+</div>
+<!-- Search (Left aligned relative to actions) -->
+<div class="flex-1 max-w-md mx-8">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 font-body-sm text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Rechercher transactions, budgets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Sync">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Account">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors px-2">FR/EN</button>
+<button class="ml-2 px-4 py-2 bg-primary text-on-primary font-title-sm text-title-sm rounded hover:bg-primary-container transition-colors min-w-[100px]">Save</button>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-y-auto mt-16 p-spacing-margin-page bg-background">
+<div class="grid grid-cols-12 gap-spacing-gutter">
+<!-- Liquidité & Prévisions (Top Left - Span 8) -->
+<section class="col-span-12 lg:col-span-8 glass-panel rounded-xl p-6 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="font-title-sm text-title-sm font-semibold text-on-background">Liquidité Institutionnelle</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Vue consolidée (30 Jours)</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 font-data-mono text-data-mono">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>Entrées</span>
+</div>
+<div class="flex items-center gap-1 font-data-mono text-data-mono">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Sorties</span>
+</div>
+</div>
+</div>
+<!-- Chart Placeholder (Abstract visualization using tailwind) -->
+<div class="relative w-full h-48 bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex items-end justify-between px-4 pt-8">
+<!-- Bars -->
+<div class="w-8 h-[60%] bg-secondary/20 hover:bg-secondary/40 transition-colors border-t border-secondary rounded-t"></div>
+<div class="w-8 h-[40%] bg-primary/20 hover:bg-primary/40 transition-colors border-t border-primary rounded-t"></div>
+<div class="w-8 h-[75%] bg-secondary/20 hover:bg-secondary/40 transition-colors border-t border-secondary rounded-t"></div>
+<div class="w-8 h-[85%] bg-primary/20 hover:bg-primary/40 transition-colors border-t border-primary rounded-t"></div>
+<div class="w-8 h-[50%] bg-secondary/20 hover:bg-secondary/40 transition-colors border-t border-secondary rounded-t"></div>
+<div class="w-8 h-[90%] bg-primary/20 hover:bg-primary/40 transition-colors border-t border-primary rounded-t"></div>
+<div class="w-8 h-[30%] bg-secondary/20 hover:bg-secondary/40 transition-colors border-t border-secondary rounded-t"></div>
+<!-- Horizontal grid lines -->
+<div class="absolute w-full h-px bg-outline-variant/30 bottom-1/4 left-0 pointer-events-none"></div>
+<div class="absolute w-full h-px bg-outline-variant/30 bottom-2/4 left-0 pointer-events-none"></div>
+<div class="absolute w-full h-px bg-outline-variant/30 bottom-3/4 left-0 pointer-events-none"></div>
+</div>
+<div class="grid grid-cols-3 gap-4 mt-6">
+<div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">SOLDE ACTUEL</span>
+<span class="font-headline-md text-headline-md font-bold text-on-background block">1.24M </span>
+</div>
+<div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">PRÉVISION (T3)</span>
+<span class="font-headline-md text-headline-md font-bold text-primary block">+4.2%</span>
+</div>
+<div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">FONDS DE ROULEMENT</span>
+<span class="font-headline-md text-headline-md font-bold text-secondary block">45 Jours</span>
+</div>
+</div>
+</section>
+<!-- SMS Automation (Top Right - Span 4) -->
+<section class="col-span-12 lg:col-span-4 glass-panel rounded-xl p-6 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<h2 class="font-title-sm text-title-sm font-semibold text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">sms</span>
+                            Automatisation SMS
+                        </h2>
+<div class="w-8 h-4 bg-primary/20 rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-0.5 w-3 h-3 bg-primary rounded-full"></div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Rappels de frais scolaires et alertes de liquidité.</p>
+<div class="space-y-4">
+<div class="p-3 border border-outline-variant rounded bg-surface-container-lowest flex items-center justify-between">
+<div>
+<span class="font-body-sm text-body-sm font-medium block">Rappel J-5</span>
+<span class="font-label-caps text-label-caps text-outline">Actif - 245 Destinataires</span>
+</div>
+<button class="text-outline hover:text-primary"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+</div>
+<div class="p-3 border border-outline-variant rounded bg-surface-container-lowest flex items-center justify-between opacity-60">
+<div>
+<span class="font-body-sm text-body-sm font-medium block">Alerte Retard (J+1)</span>
+<span class="font-label-caps text-label-caps text-outline">Inactif</span>
+</div>
+<button class="text-outline hover:text-primary"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+</div>
+</div>
+<div class="mt-auto pt-6">
+<button class="w-full py-2 border border-outline-variant text-on-surface font-title-sm text-title-sm rounded hover:bg-surface-variant transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                            Nouvelle Règle
+                        </button>
+</div>
+</section>
+<!-- Budget Bubbles (Bottom Left - Span 5) -->
+<section class="col-span-12 lg:col-span-5 glass-panel rounded-xl p-6">
+<h2 class="font-title-sm text-title-sm font-semibold text-on-background mb-1">Allocation Départementale</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Visualisation des dépenses par centre de coût.</p>
+<div class="relative w-full h-64 bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex items-center justify-center p-4">
+<!-- Simulated D3/Bubble Chart with CSS -->
+<div class="relative w-full h-full flex flex-wrap content-center justify-center gap-2">
+<div class="bubble w-24 h-24 rounded-full bg-primary/20 border border-primary flex items-center justify-center text-center cursor-pointer relative group">
+<div>
+<span class="font-label-caps text-label-caps block text-on-background">ACA</span>
+<span class="font-data-mono text-[10px] text-primary">45%</span>
+</div>
+<div class="absolute bottom-full mb-2 hidden group-hover:block bg-inverse-surface text-surface-bright text-xs px-2 py-1 rounded whitespace-nowrap z-10">Académique - 450k</div>
+</div>
+<div class="bubble w-16 h-16 rounded-full bg-secondary/20 border border-secondary flex items-center justify-center text-center cursor-pointer relative group mt-4">
+<div>
+<span class="font-label-caps text-label-caps block text-on-background">IT</span>
+<span class="font-data-mono text-[10px] text-secondary">20%</span>
+</div>
+<div class="absolute bottom-full mb-2 hidden group-hover:block bg-inverse-surface text-surface-bright text-xs px-2 py-1 rounded whitespace-nowrap z-10">Infrastructure - 200k</div>
+</div>
+<div class="bubble w-12 h-12 rounded-full bg-tertiary-container/20 border border-tertiary flex items-center justify-center text-center cursor-pointer relative group">
+<div>
+<span class="font-label-caps text-[9px] block text-on-background">MNT</span>
+</div>
+<div class="absolute bottom-full mb-2 hidden group-hover:block bg-inverse-surface text-surface-bright text-xs px-2 py-1 rounded whitespace-nowrap z-10">Maintenance - 120k</div>
+</div>
+<div class="bubble w-20 h-20 rounded-full bg-surface-dim border border-outline flex items-center justify-center text-center cursor-pointer relative group ml-2 mt-2">
+<div>
+<span class="font-label-caps text-label-caps block text-on-background">ADM</span>
+<span class="font-data-mono text-[10px] text-on-surface-variant">25%</span>
+</div>
+<div class="absolute bottom-full mb-2 hidden group-hover:block bg-inverse-surface text-surface-bright text-xs px-2 py-1 rounded whitespace-nowrap z-10">Administration - 250k</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Unfalsifiable Receipts (Bottom Right - Span 7) -->
+<section class="col-span-12 lg:col-span-7 glass-panel rounded-xl flex flex-col overflow-hidden">
+<div class="p-6 pb-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div>
+<h2 class="font-title-sm text-title-sm font-semibold text-on-background">Reçus Infalsifiables (Verif. QR)</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Registre des transactions scellées cryptographiquement.</p>
+</div>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px] text-outline">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant">
+<tr>
+<th class="p-3 font-medium">ID Transaction</th>
+<th class="p-3 font-medium">Date</th>
+<th class="p-3 font-medium">Origine</th>
+<th class="p-3 font-medium text-right">Montant</th>
+<th class="p-3 font-medium text-center">Statut QR</th>
+<th class="p-3 font-medium"></th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm divide-y divide-outline-variant/50 bg-surface-container-lowest/50">
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-3 font-data-mono text-data-mono">TRX-8829-A</td>
+<td class="p-3 font-data-mono text-data-mono text-outline">2023-10-24 09:12</td>
+<td class="p-3">Scolarité (Frais)</td>
+<td class="p-3 text-right font-data-mono text-data-mono">4,500.00 </td>
+<td class="p-3 text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary" title="Vérifié">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+</span>
+</td>
+<td class="p-3 text-right">
+<button class="text-outline hover:text-primary"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-3 font-data-mono text-data-mono">TRX-8830-B</td>
+<td class="p-3 font-data-mono text-data-mono text-outline">2023-10-24 10:45</td>
+<td class="p-3">Subvention Gouv.</td>
+<td class="p-3 text-right font-data-mono text-data-mono">120,000.00 </td>
+<td class="p-3 text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary" title="Vérifié">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+</span>
+</td>
+<td class="p-3 text-right">
+<button class="text-outline hover:text-primary"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-3 font-data-mono text-data-mono">TRX-8831-C</td>
+<td class="p-3 font-data-mono text-data-mono text-outline">2023-10-24 14:20</td>
+<td class="p-3">Maintenance (Sortie)</td>
+<td class="p-3 text-right font-data-mono text-data-mono text-tertiary">-850.00 </td>
+<td class="p-3 text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-outline-variant/30 text-outline" title="En attente de sceau">
+<span class="material-symbols-outlined text-[14px]">pending</span>
+</span>
+</td>
+<td class="p-3 text-right">
+<button class="text-outline hover:text-primary"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-3 font-data-mono text-data-mono">TRX-8832-D</td>
+<td class="p-3 font-data-mono text-data-mono text-outline">2023-10-24 16:05</td>
+<td class="p-3">Donation Anonyme</td>
+<td class="p-3 text-right font-data-mono text-data-mono">5,000.00 </td>
+<td class="p-3 text-center">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-error/10 text-error" title="Échec de validation">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+</span>
+</td>
+<td class="p-3 text-right">
+<button class="text-outline hover:text-primary"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 border-t border-outline-variant bg-surface-container-lowest flex justify-end">
+<button class="font-label-caps text-label-caps text-primary hover:underline">VOIR TOUT LE REGISTRE</button>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catalogue de la Bibliothèque Numérique - ASMACS Back-Office</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#0b1c30",
+                      "secondary-fixed": "#b7eaff",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-surface": "#213145",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#dfe3ff",
+                      "outline-variant": "#c3c5d9",
+                      "on-tertiary-fixed": "#3c0800",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#ffdbd2",
+                      "on-surface-variant": "#434656",
+                      "surface-bright": "#f8f9ff",
+                      "secondary": "#00677f",
+                      "tertiary": "#952200",
+                      "surface-tint": "#004ced",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "tertiary-fixed-dim": "#ffb4a1",
+                      "on-secondary-fixed-variant": "#004e60",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#b7c4ff",
+                      "surface-container": "#e5eeff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#891e00",
+                      "surface-container-low": "#eff4ff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#001f28",
+                      "secondary-fixed-dim": "#4cd6ff",
+                      "surface": "#f8f9ff",
+                      "on-tertiary-container": "#ffddd5",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary-container": "#bf3003",
+                      "on-primary-fixed-variant": "#0038b6",
+                      "outline": "#737688",
+                      "primary-fixed": "#dde1ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-primary-fixed": "#001452",
+                      "surface-container-highest": "#d3e4fe",
+                      "primary": "#003ec7",
+                      "on-surface": "#0b1c30",
+                      "secondary-container": "#00ccf9",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#005266",
+                      "primary-container": "#0052ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "rail-expanded": "240px",
+                      "density-comfortable": "12px",
+                      "density-compact": "4px",
+                      "rail-width": "64px",
+                      "margin-page": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "title-sm": [
+                              "Geist"
+                      ],
+                      "headline-md": [
+                              "Geist"
+                      ],
+                      "data-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "body-sm": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "title-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for OCR Panel */
+        .ocr-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .ocr-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .ocr-scroll::-webkit-scrollbar-thumb {
+            background-color: #c3c5d9;
+            border-radius: 4px;
+        }
+        .dark .ocr-scroll::-webkit-scrollbar-thumb {
+            background-color: #737688;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(248, 249, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-panel {
+            background: rgba(11, 28, 48, 0.7);
+            border: 1px solid rgba(115, 118, 136, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background dark:bg-on-background text-on-background dark:text-surface-bright font-body-md antialiased overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-on-background/80 backdrop-blur-xl fixed top-0 right-0 left-rail-width w-[calc(100%-64px)] z-40 border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-spacing-margin-page transition-all duration-200 ease-in-out">
+<div class="flex items-center gap-4 w-1/2">
+<h1 class="font-headline-md text-headline-md font-bold text-on-background dark:text-surface-bright shrink-0">ASMACS Back-Office</h1>
+<!-- Full-text OCR Search Bar -->
+<div class="relative w-full max-w-xl group ml-8">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary dark:group-focus-within:text-primary-fixed-dim transition-colors">search</span>
+<input class="w-full bg-surface-container dark:bg-inverse-surface border-b border-outline-variant dark:border-outline focus:border-primary dark:focus:border-primary-fixed-dim focus:ring-0 focus:outline-none pl-10 pr-4 py-2 font-body-md text-body-md text-on-surface dark:text-surface-bright placeholder-on-surface-variant dark:placeholder-outline-variant transition-all rounded-t-DEFAULT" placeholder="Recherche intégrale OCR..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1">
+<span class="font-label-caps text-label-caps bg-surface-variant dark:bg-on-surface-variant px-1.5 py-0.5 rounded text-on-surface-variant dark:text-outline-variant border border-outline-variant dark:border-outline">⌘</span>
+<span class="font-label-caps text-label-caps bg-surface-variant dark:bg-on-surface-variant px-1.5 py-0.5 rounded text-on-surface-variant dark:text-outline-variant border border-outline-variant dark:border-outline">K</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface transition-colors relative group" title="Synchroniser">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface transition-colors relative group" title="Notifications">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-6 w-px bg-outline-variant dark:bg-outline mx-2"></div>
+<button class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline-variant border border-outline-variant dark:border-outline px-3 py-1.5 rounded hover:bg-surface-variant dark:hover:bg-inverse-surface transition-colors min-w-[60px]">
+                FR/EN
+            </button>
+<button class="font-label-caps text-label-caps bg-primary-container text-white px-4 py-2 rounded shadow-sm hover:bg-primary transition-colors min-w-[100px] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">save</span> Enregistrer
+            </button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface transition-colors ml-2" title="User Account">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Rail) -->
+<nav class="bg-surface dark:bg-on-background border-r border-outline-variant dark:border-outline w-rail-width hover:w-rail-expanded transition-all duration-300 fixed left-0 top-0 h-full z-50 flex flex-col py-spacing-density-comfortable group overflow-hidden shadow-none">
+<!-- Brand/Avatar Header -->
+<div class="flex flex-col items-center justify-center mb-8 w-full shrink-0">
+<div class="w-10 h-10 rounded bg-primary-container text-white flex items-center justify-center font-display-lg text-display-lg font-bold mb-2 group-hover:hidden">A</div>
+<div class="hidden group-hover:flex flex-col items-center w-full px-4 text-center fade-in">
+<div class="w-16 h-16 rounded-full bg-surface-variant dark:bg-inverse-surface border-2 border-primary-container mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container" style="font-size: 32px; font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+</div>
+<h2 class="font-title-sm text-title-sm text-primary dark:text-primary-fixed-dim font-bold truncate w-full">ASMACS</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant truncate w-full">Admin Suite</p>
+</div>
+</div>
+<!-- Primary Actions -->
+<div class="w-full px-2 mb-6 shrink-0 flex justify-center group-hover:justify-start group-hover:px-4">
+<button class="w-10 h-10 group-hover:w-full group-hover:h-10 rounded bg-primary-container text-white flex items-center justify-center group-hover:justify-start group-hover:px-3 transition-all shadow-sm hover:bg-primary">
+<span class="material-symbols-outlined">add</span>
+<span class="ml-3 font-label-caps text-label-caps whitespace-nowrap hidden group-hover:block fade-in">New Entry</span>
+</button>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex flex-col gap-1 w-full flex-grow overflow-y-auto px-2">
+<!-- Inactive -->
+<a class="w-full h-12 flex items-center justify-center group-hover:justify-start px-0 group-hover:px-3 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out relative" href="/interfaces/dashboard_global_admin_suite" title="Dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap hidden group-hover:block fade-in">Dashboard</span>
+</a>
+<a class="w-full h-12 flex items-center justify-center group-hover:justify-start px-0 group-hover:px-3 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out relative" href="/interfaces/pr_sence_anti_fraude_admin_suite" title="Analytics">
+<span class="material-symbols-outlined">analytics</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap hidden group-hover:block fade-in">Analytics</span>
+</a>
+<!-- Active State: Inventory (mapped to Digital Library/Catalogue) -->
+<a class="w-full h-12 flex items-center justify-center group-hover:justify-start px-0 group-hover:px-3 rounded text-primary dark:text-primary-fixed-dim border-l-4 border-primary dark:border-primary-fixed-dim bg-surface-container-high transition-all duration-200 ease-in-out relative" href="/interfaces/biblioth_que_num_rique_admin_suite" title="Inventory">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="ml-4 font-body-md text-body-md font-medium whitespace-nowrap hidden group-hover:block fade-in">Inventory</span>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary-container hidden group-hover:block"></div>
+</a>
+<a class="w-full h-12 flex items-center justify-center group-hover:justify-start px-0 group-hover:px-3 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out relative" href="/interfaces/rh_paie_admin_suite" title="Personnel">
+<span class="material-symbols-outlined">badge</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap hidden group-hover:block fade-in">Personnel</span>
+</a>
+<a class="w-full h-12 flex items-center justify-center group-hover:justify-start px-0 group-hover:px-3 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out relative" href="/interfaces/comptabilit_globale_admin_suite" title="Reports">
+<span class="material-symbols-outlined">description</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap hidden group-hover:block fade-in">Reports</span>
+</a>
+<a class="w-full h-12 flex items-center justify-center group-hover:justify-start px-0 group-hover:px-3 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out relative" href="/interfaces/configuration_syst_me_admin_suite" title="Settings">
+<span class="material-symbols-outlined">settings</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap hidden group-hover:block fade-in">Settings</span>
+</a>
+</div>
+<!-- Footer Tabs -->
+<div class="flex flex-col gap-1 w-full shrink-0 px-2 mt-4 pt-4 border-t border-outline-variant dark:border-outline">
+<a class="w-full h-10 flex items-center justify-center group-hover:justify-start px-0 group-hover:px-3 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" href="/interfaces/contact_d_mo_asmacs_suite" title="Help">
+<span class="material-symbols-outlined">help</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap hidden group-hover:block fade-in">Help</span>
+</a>
+<button class="w-full h-10 flex items-center justify-center group-hover:justify-start px-0 group-hover:px-3 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out" title="Bilingual Toggle">
+<span class="material-symbols-outlined">language</span>
+<span class="ml-4 font-body-md text-body-md whitespace-nowrap hidden group-hover:block fade-in">Bilingual Toggle</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-rail-width pt-16 h-screen flex flex-col bg-background dark:bg-on-background relative">
+<!-- Background decorative element -->
+<div class="absolute top-0 right-0 w-1/3 h-64 bg-gradient-to-bl from-surface-variant/30 to-transparent dark:from-inverse-surface/30 pointer-events-none rounded-bl-[100px]"></div>
+<div class="flex-grow flex p-spacing-margin-page gap-spacing-gutter h-full overflow-hidden">
+<!-- Left Column: Split-screen OCR Verification Panel -->
+<div class="w-[60%] flex flex-col gap-spacing-density-comfortable h-full">
+<!-- Section Header -->
+<div class="flex justify-between items-end mb-2 shrink-0">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface dark:text-surface-bright flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">document_scanner</span>
+                            Vérification OCR
+                        </h2>
+<p class="font-body-sm text-body-sm text-outline mt-1">Comparaison source vs texte extrait (Confiance: <span class="text-secondary dark:text-secondary-fixed">87%</span>)</p>
+</div>
+<div class="flex gap-2">
+<button class="font-label-caps text-label-caps border border-outline-variant dark:border-outline text-on-surface dark:text-surface-bright px-3 py-1.5 rounded hover:bg-surface-variant dark:hover:bg-inverse-surface transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px;">arrow_back_ios</span> Préc.
+                        </button>
+<span class="font-data-mono text-data-mono text-outline self-center px-2">Page 42/304</span>
+<button class="font-label-caps text-label-caps border border-outline-variant dark:border-outline text-on-surface dark:text-surface-bright px-3 py-1.5 rounded hover:bg-surface-variant dark:hover:bg-inverse-surface transition-colors flex items-center gap-1">
+                            Suiv. <span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<!-- Split View Container (Glass Panel) -->
+<div class="glass-panel flex-grow rounded-xl flex overflow-hidden shadow-sm">
+<!-- Original PDF Scan -->
+<div class="w-1/2 border-r border-outline-variant/50 dark:border-outline/30 flex flex-col bg-surface-container-lowest dark:bg-[#0a1422] relative group">
+<div class="absolute top-2 left-2 font-label-caps text-label-caps bg-black/50 text-white px-2 py-1 rounded backdrop-blur-sm z-10">Scan Original</div>
+<!-- Actions overlay -->
+<div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+<button class="w-8 h-8 rounded bg-black/50 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/70"><span class="material-symbols-outlined" style="font-size: 18px;">zoom_in</span></button>
+<button class="w-8 h-8 rounded bg-black/50 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/70"><span class="material-symbols-outlined" style="font-size: 18px;">crop</span></button>
+</div>
+<div class="flex-grow p-4 overflow-auto ocr-scroll flex justify-center">
+<!-- Placeholder for PDF Page Image -->
+<img alt="Scanned page of a math textbook showing algebraic equations" class="max-w-full h-auto object-contain shadow-sm opacity-90 sepia-[.2]" data-alt="A tightly cropped, high-resolution scan of a vintage French mathematics textbook page. The paper is slightly yellowed with subtle grain and texture, showing complex algebraic equations printed in a classic serif typeface. The lighting is flat and even, simulating a document scanner environment. The aesthetic is academic, historical, and technically precise, fitting a professional digital archiving interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE2TA-ALqKoeEiOshunn1bLw7cDBWAS2AwXFQEcE4G3-vqWZG1abVdY1ZBio5-xji4_5dr_XdUFwLmBraSvAQX3FMxRDscUFFfK-7QXLh6w6QQ0vHOUI0SRkAzsQJGz1l5QfNbiFywdbBKM9bYXdDzaRu-o5jORb6RXh9ZWPQas3NuX4RtpRsowlSJ1heI49os9mt0L80pTYcA5_-KQ7pBSHDY3pV-4VK9Ex0gsI8oElOH4CffTQR1A3pthjpXVWD8EJkPGXawpDQ"/>
+</div>
+</div>
+<!-- Extracted Text (Editable) -->
+<div class="w-1/2 flex flex-col bg-surface dark:bg-on-background relative">
+<div class="flex justify-between items-center p-2 border-b border-outline-variant/50 dark:border-outline/30 bg-surface-container-low dark:bg-inverse-surface/50">
+<div class="font-label-caps text-label-caps text-on-surface dark:text-surface-bright flex items-center gap-2">
+                                Texte Extrait
+                                <span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+</div>
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary transition-colors" title="Formatage"><span class="material-symbols-outlined" style="font-size: 18px;">format_align_left</span></button>
+<button class="text-outline hover:text-error transition-colors" title="Signaler une erreur"><span class="material-symbols-outlined" style="font-size: 18px;">report</span></button>
+</div>
+</div>
+<div class="flex-grow p-4 overflow-auto ocr-scroll font-body-md text-body-md leading-relaxed text-on-surface dark:text-surface-bright focus-within:bg-surface-container-low dark:focus-within:bg-inverse-surface/20 transition-colors" contenteditable="true" spellcheck="false">
+<p class="mb-4">Chapitre 3 : Les Équations du Second Degré</p>
+<p class="mb-4">Soit l'équation <span class="bg-warning/20 border-b border-warning inline-block px-1" title="Confiance faible (65%)">ax² + bx + c = 0</span>, où a, b et c sont des nombres réels avec a ≠ 0.</p>
+<p class="mb-4">Le discriminant de cette équation, noté Δ (delta), est défini par la formule :</p>
+<p class="mb-4 font-data-mono text-center my-6">Δ = b² - 4ac</p>
+<p class="mb-4">Trois cas se présentent selon le signe de Δ :</p>
+<ul class="list-disc pl-6 mb-4">
+<li class="mb-2">Si Δ &gt; 0, l'équation admet deux solutions réelles distinctes.</li>
+<li class="mb-2">Si Δ = 0, l'équation admet une <span class="bg-error/20 border-b border-error inline-block px-1 text-error" title="Erreur probable (30%)">solntion</span> double.</li>
+<li class="mb-2">Si Δ &lt; 0, l'équation n'admet aucune solution dans ℝ.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Grid of Recently Updated Textbooks -->
+<div class="w-[40%] flex flex-col h-full pl-4 border-l border-outline-variant/50 dark:border-outline/30">
+<div class="flex justify-between items-end mb-4 shrink-0">
+<h2 class="font-title-sm text-title-sm font-semibold text-on-surface dark:text-surface-bright">Dernières Mises à Jour</h2>
+<button class="font-label-caps text-label-caps text-primary dark:text-primary-fixed-dim hover:underline flex items-center gap-1">Voir tout <span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span></button>
+</div>
+<!-- Bento Grid for Textbooks -->
+<div class="flex-grow overflow-y-auto ocr-scroll pr-2 grid grid-cols-1 gap-4 pb-8">
+<!-- Card 1 -->
+<div class="glass-panel rounded-lg p-3 flex gap-4 hover:-translate-y-1 transition-transform cursor-pointer group">
+<div class="w-16 h-20 bg-surface-container-high rounded shrink-0 shadow-sm relative overflow-hidden">
+<!-- Book Cover Texture/Pattern -->
+<div class="absolute inset-0 bg-secondary/10 dark:bg-secondary/30" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);"></div>
+<div class="absolute left-0 top-0 bottom-0 w-2 bg-secondary/80"></div>
+<span class="absolute bottom-1 right-1 font-data-mono text-[8px] text-on-surface/50">ID:948</span>
+</div>
+<div class="flex flex-col flex-grow justify-between py-1">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface dark:text-surface-bright leading-tight group-hover:text-primary transition-colors">Mathématiques Terminale C</h3>
+<p class="font-data-mono text-data-mono text-outline mt-1">Éditions CLE (2018)</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="font-label-caps text-[9px] bg-surface-variant dark:bg-inverse-surface px-1.5 py-0.5 rounded text-on-surface-variant dark:text-surface-bright border border-outline-variant/50">LYCÉE</span>
+<span class="font-label-caps text-[9px] bg-secondary-container/30 text-secondary-container-on px-1.5 py-0.5 rounded border border-secondary/20">MATHS</span>
+<span class="font-label-caps text-[9px] bg-success/10 text-success border border-success/30 px-1.5 py-0.5 rounded flex items-center gap-0.5"><span class="w-1.5 h-1.5 rounded-full bg-success"></span> Approuvé MINESEC</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel rounded-lg p-3 flex gap-4 hover:-translate-y-1 transition-transform cursor-pointer group border-primary/30">
+<div class="w-16 h-20 bg-surface-container-high rounded shrink-0 shadow-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-tertiary/10 dark:bg-tertiary/30"></div>
+<div class="absolute left-0 top-0 bottom-0 w-2 bg-tertiary/80"></div>
+</div>
+<div class="flex flex-col flex-grow justify-between py-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface dark:text-surface-bright leading-tight group-hover:text-primary transition-colors">Histoire-Géo 3ème</h3>
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse" title="En cours de numérisation"></span>
+</div>
+<p class="font-data-mono text-data-mono text-outline mt-1">Hatier International (2021)</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="font-label-caps text-[9px] bg-surface-variant dark:bg-inverse-surface px-1.5 py-0.5 rounded text-on-surface-variant dark:text-surface-bright border border-outline-variant/50">COLLÈGE</span>
+<span class="font-label-caps text-[9px] bg-tertiary-container/30 text-tertiary-container-on px-1.5 py-0.5 rounded border border-tertiary/20">HIST-GÉO</span>
+<span class="font-label-caps text-[9px] bg-warning/10 text-warning border border-warning/30 px-1.5 py-0.5 rounded flex items-center gap-0.5"><span class="material-symbols-outlined text-[10px]">sync</span> OCR 64%</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel rounded-lg p-3 flex gap-4 hover:-translate-y-1 transition-transform cursor-pointer group opacity-75">
+<div class="w-16 h-20 bg-surface-container-high rounded shrink-0 shadow-sm relative overflow-hidden grayscale">
+<div class="absolute inset-0 bg-primary/10 dark:bg-primary/30"></div>
+<div class="absolute left-0 top-0 bottom-0 w-2 bg-primary/80"></div>
+</div>
+<div class="flex flex-col flex-grow justify-between py-1">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface dark:text-surface-bright leading-tight group-hover:text-primary transition-colors line-through decoration-error">Physique Chimie 1ère</h3>
+<p class="font-data-mono text-data-mono text-outline mt-1">Bordas (2012) - Obsolète</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="font-label-caps text-[9px] bg-surface-variant dark:bg-inverse-surface px-1.5 py-0.5 rounded text-on-surface-variant dark:text-surface-bright border border-outline-variant/50">LYCÉE</span>
+<span class="font-label-caps text-[9px] bg-error/10 text-error border border-error/30 px-1.5 py-0.5 rounded flex items-center gap-0.5"><span class="material-symbols-outlined text-[10px]">block</span> Retiré Minedub</span>
+</div>
+</div>
+</div>
+<!-- Status Summary Mini-Dashboard -->
+<div class="mt-4 p-4 rounded-xl border border-outline-variant/30 bg-surface-container-lowest/50 dark:bg-inverse-surface/30">
+<h4 class="font-label-caps text-label-caps text-outline mb-3">État du Corpus (Module 6)</h4>
+<div class="flex items-end gap-2 mb-1">
+<span class="font-display-lg text-display-lg font-semibold text-primary dark:text-primary-fixed-dim leading-none">1,248</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant pb-1">Ouvrages numérisés</span>
+</div>
+<!-- Progress bar -->
+<div class="w-full h-1.5 bg-surface-variant dark:bg-on-background rounded-full overflow-hidden mt-3 flex">
+<div class="h-full bg-success" style="width: 70%" title="Vérifié (70%)"></div>
+<div class="h-full bg-secondary" style="width: 20%" title="En traitement OCR (20%)"></div>
+<div class="h-full bg-warning" style="width: 10%" title="Nécessite révision (10%)"></div>
+</div>
+<div class="flex justify-between mt-2 font-data-mono text-[10px] text-outline">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-success"></span>Vérifié</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span>Traitement</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-warning"></span>Révision requise</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple interactivity for demonstration
+        document.querySelector('[contenteditable]').addEventListener('input', function(e) {
+            // Simulate editing triggering a 'unsaved changes' state
+            const saveBtn = document.querySelector('header button.bg-primary-container');
+            saveBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">save</span> Enregistrer*';
+            saveBtn.classList.add('animate-pulse');
+        });
+    </script>
+</body></html>

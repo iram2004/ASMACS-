@@ -1,518 +1,60 @@
 <!DOCTYPE html>
-<html lang="fr"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title th:text="'Candidature ' + ${candidature.numeroCandidature} + ' — ASMACS'">Candidature</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-    <style>
-        :root{
-            --red:#E8300B;--red-d:#B52208;--red-bg:rgba(232,48,11,.1);
-            --dark:#0B0B0D;--dark2:#111116;--dark3:#17171E;--dark4:#1F1F28;--dark5:#27272F;
-            --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
-            --text:#EDEDF2;--text2:#9898AA;--text3:#555566;
-            --green:#22C55E;--gbg:rgba(34,197,94,.12);--gborder:rgba(34,197,94,.28);
-            --yellow:#F59E0B;--ybg:rgba(245,158,11,.12);--yborder:rgba(245,158,11,.28);
-            --errbg:rgba(239,68,68,.12);--errborder:rgba(239,68,68,.28);--errtxt:#EF4444;
-            --purple:#7F77DD;--pbg:rgba(127,119,221,.12);--pborder:rgba(127,119,221,.28);
-            --sw:250px;--nh:58px;--r:10px;--r2:14px;
-            --fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif
-        }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        body{font-family:var(--fb);background:var(--dark);color:var(--text);
-            min-height:100vh;-webkit-font-smoothing:antialiased}
-        .nav{position:fixed;top:0;left:0;right:0;height:var(--nh);z-index:200;
-            background:rgba(11,11,13,.97);backdrop-filter:blur(16px);
-            border-bottom:1px solid var(--border);
-            display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
-        .nav-brand{font-family:var(--fh);font-weight:800;font-size:1.3rem;
-            letter-spacing:.12em;display:flex;align-items:center;gap:.6rem}
-        .brand-box{background:var(--red);border-radius:6px;width:34px;height:34px;
-            display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-        .nav-r{display:flex;align-items:center;gap:.8rem}
-        .nav-user{font-size:.82rem;color:var(--text2);display:flex;align-items:center;gap:.5rem}
-        .role-tag{background:var(--red-bg);border:1px solid rgba(232,48,11,.3);
-            color:var(--red);padding:.2rem .6rem;border-radius:20px;font-size:.7rem;font-weight:600}
-        .nav-out{font-size:.8rem;color:var(--text2);text-decoration:none;
-            border:1px solid var(--border);border-radius:var(--r);padding:.3rem .8rem;transition:all .2s}
-        .nav-out:hover{border-color:var(--red);color:var(--red)}
-        .sb{position:fixed;top:var(--nh);left:0;bottom:0;width:var(--sw);
-            background:var(--dark2);border-right:1px solid var(--border);
-            overflow-y:auto;padding:1.2rem 0;z-index:100}
-        .sb-sec{font-size:.65rem;font-weight:700;letter-spacing:.12em;
-            text-transform:uppercase;color:var(--text3);padding:.9rem 1.3rem .3rem}
-        .si{display:flex;align-items:center;gap:.65rem;padding:.58rem 1.3rem;
-            font-size:.84rem;color:var(--text2);text-decoration:none;
-            border-left:2px solid transparent;transition:all .15s}
-        .si:hover{background:var(--dark3);color:var(--text);border-left-color:var(--border2)}
-        .si.on{background:var(--red-bg);color:var(--red);border-left-color:var(--red);font-weight:500}
-        .si .ico{font-size:.95rem;width:20px;text-align:center}
-        .main{margin-left:var(--sw);margin-top:var(--nh);padding:2rem 1.8rem 5rem}
-        .alert{display:flex;align-items:center;gap:.7rem;
-            padding:.88rem 1.1rem;border-radius:var(--r);
-            font-size:.88rem;margin-bottom:1.2rem}
-        .alert-ok{background:var(--gbg);border:1px solid var(--gborder);color:var(--green)}
-        .alert-err{background:var(--errbg);border:1px solid var(--errborder);color:var(--errtxt)}
-
-        /* HERO DETAIL */
-        .hero{margin-bottom:1.8rem;padding:1.5rem 2rem;
-            background:var(--dark3);border:1px solid var(--border);
-            border-radius:var(--r2);border-left:4px solid var(--red);
-            display:flex;align-items:flex-start;
-            justify-content:space-between;flex-wrap:wrap;gap:1rem}
-        .hero h1{font-family:var(--fh);font-weight:800;
-            font-size:clamp(1.3rem,2.5vw,1.8rem);margin-bottom:.25rem}
-        .hero .num{font-family:monospace;font-size:.85rem;
-            color:var(--red);margin-bottom:.3rem}
-        .hero .sub{color:var(--text2);font-size:.86rem}
-
-        .badge{display:inline-flex;align-items:center;gap:.25rem;
-            padding:.32rem .85rem;border-radius:20px;font-size:.78rem;font-weight:700}
-        .b-att{background:var(--ybg);color:var(--yellow);border:1px solid var(--yborder)}
-        .b-val{background:var(--gbg);color:var(--green);border:1px solid var(--gborder)}
-        .b-rej{background:var(--errbg);color:var(--errtxt);border:1px solid var(--errborder)}
-        .b-pay{background:var(--pbg);color:var(--purple);border:1px solid var(--pborder)}
-        .b-doc{background:var(--dark4);color:var(--text3);border:1px solid var(--border2)}
-
-        .btn{display:inline-flex;align-items:center;gap:.4rem;
-            border:none;border-radius:var(--r);font-family:var(--fh);
-            font-weight:700;font-size:.86rem;cursor:pointer;
-            text-decoration:none;padding:.68rem 1.2rem;transition:all .2s}
-        .btn-p{background:var(--red);color:#fff}
-        .btn-p:hover{background:var(--red-d)}
-        .btn-ok{background:var(--gbg);color:var(--green);border:1px solid var(--gborder)}
-        .btn-ok:hover{background:rgba(34,197,94,.22)}
-        .btn-rej{background:var(--errbg);color:var(--errtxt);border:1px solid var(--errborder)}
-        .btn-rej:hover{background:rgba(239,68,68,.22)}
-        .btn-warn{background:var(--ybg);color:var(--yellow);border:1px solid var(--yborder)}
-        .btn-warn:hover{background:rgba(245,158,11,.22)}
-        .btn-s{background:var(--dark4);color:var(--text2);border:1px solid var(--border2)}
-        .btn-s:hover{border-color:var(--text2);color:var(--text)}
-
-        /* GRID */
-        .two-col{display:grid;grid-template-columns:2fr 1fr;gap:1.2rem}
-        @media(max-width:900px){.two-col{grid-template-columns:1fr}}
-
-        /* CARD */
-        .card{background:var(--dark2);border:1px solid var(--border);
-            border-radius:var(--r2);overflow:hidden;margin-bottom:1.1rem}
-        .ch{padding:.82rem 1.3rem;background:var(--dark3);
-            border-bottom:1px solid var(--border);
-            font-family:var(--fh);font-weight:700;font-size:.84rem;
-            text-transform:uppercase;letter-spacing:.05em;
-            display:flex;align-items:center;gap:.6rem}
-        .cb{padding:1.3rem}
-
-        .info-grid{display:grid;
-            grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-            gap:.7rem}
-        .ii{background:var(--dark3);border:1px solid var(--border);
-            border-radius:var(--r);padding:.8rem 1rem}
-        .ii-l{font-size:.68rem;text-transform:uppercase;
-            letter-spacing:.07em;color:var(--text3);margin-bottom:.2rem}
-        .ii-v{font-size:.88rem;font-weight:500}
-
-        /* DOCS */
-        .docs-grid{display:grid;
-            grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
-            gap:.6rem}
-        .doc-item{display:flex;align-items:center;gap:.6rem;
-            padding:.7rem .9rem;border-radius:var(--r);font-size:.82rem}
-        .doc-ok{background:var(--gbg);border:1px solid var(--gborder);color:var(--green)}
-        .doc-no{background:var(--errbg);border:1px solid var(--errborder);color:var(--errtxt)}
-
-        /* TEST SCORE */
-        .score-box{text-align:center;padding:1.5rem;
-            border-radius:var(--r2);margin-bottom:1rem}
-        .score-box.good{background:var(--gbg);border:1px solid var(--gborder)}
-        .score-box.bad {background:var(--errbg);border:1px solid var(--errborder)}
-        .score-val{font-family:var(--fh);font-weight:800;font-size:2.8rem}
-        .score-val.good{color:var(--green)}
-        .score-val.bad {color:var(--errtxt)}
-        .score-lbl{font-size:.78rem;text-transform:uppercase;
-            letter-spacing:.08em;color:var(--text2);margin-top:.2rem}
-
-        /* ACTIONS */
-        .action-block{margin-bottom:1rem;padding:1rem;
-            background:var(--dark3);border:1px solid var(--border);
-            border-radius:var(--r)}
-        .action-block h3{font-family:var(--fh);font-weight:700;
-            font-size:.82rem;text-transform:uppercase;
-            letter-spacing:.06em;color:var(--text2);margin-bottom:.7rem}
-        .action-block form{display:flex;flex-direction:column;gap:.6rem}
-        .action-block input,.action-block select{
-            background:var(--dark4);border:1.5px solid var(--border2);
-            border-radius:var(--r);color:var(--text);padding:.65rem .9rem;
-            font-family:var(--fb);font-size:.88rem;width:100%;outline:none;
-            transition:border-color .2s}
-        .action-block input:focus,.action-block select:focus{border-color:var(--red)}
-
-        /* PAIEMENT */
-        .pay-info{display:flex;flex-direction:column;gap:.5rem}
-        .pay-row{display:flex;justify-content:space-between;
-            padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.84rem}
-        .pay-row:last-child{border-bottom:none}
-        .pay-lbl{color:var(--text2)}
-
-        /* MATRICULE VALIDÉ */
-        .validated-box{background:var(--gbg);border:1px solid var(--gborder);
-            border-radius:var(--r2);padding:1.3rem;text-align:center;margin-bottom:1rem}
-        .vb-title{font-family:var(--fh);font-weight:800;font-size:1.1rem;
-            color:var(--green);margin-bottom:.4rem}
-        .vb-mat{font-family:'Courier New',monospace;font-size:1.1rem;
-            background:var(--dark4);display:inline-block;
-            padding:.3rem .9rem;border-radius:var(--r);
-            border:1px solid var(--gborder);color:var(--green);margin:.3rem 0}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail candidature - ASMACS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 </head>
-<body>
-
-<!-- NAVBAR -->
-<nav class="nav">
-    <div class="nav-brand">
-        <div class="brand-box">🎓</div> ASMACS
-    </div>
-    <div class="nav-r">
-        <div class="nav-user">
-            <span>👤</span>
-            <span sec:authentication="name">Admin</span>
-            <span class="role-tag">ADMIN</span>
-        </div>
-        <a th:href="@{/logout}" class="nav-out">Déconnexion</a>
-    </div>
-</nav>
-
-<!-- SIDEBAR -->
-<aside class="sb">
-    <div class="sb-sec">Navigation</div>
-    <a th:href="@{/dashboard}" class="si"><span class="ico">🏠</span> Tableau de bord</a>
-    <div class="sb-sec">Modules</div>
-    <a th:href="@{/m01}" class="si on"><span class="ico">📋</span> M01 · Admissions</a>
-    <a th:href="@{/m02}" class="si"><span class="ico">🗓️</span> M02 · Classes</a>
-    <a th:href="@{/m03}" class="si"><span class="ico">📊</span> M03 · Notes</a>
-    <a th:href="@{/m04}" class="si"><span class="ico">👥</span> M04 · Personnel</a>
-    <a th:href="@{/m05}" class="si"><span class="ico">✅</span> M05 · Présences</a>
-    <a th:href="@{/m06}" class="si"><span class="ico">🎓</span> M06 · Examens</a>
-    <a th:href="@{/m07}" class="si"><span class="ico">🔄</span> M07 · Cursus</a>
-    <a th:href="@{/m08}" class="si"><span class="ico">📚</span> M08 · Bibliothèque</a>
-    <a th:href="@{/m09}" class="si"><span class="ico">💰</span> M09 · Finance</a>
-    <a th:href="@{/m10}" class="si"><span class="ico">📈</span> M10 · Statistiques</a>
-    <a th:href="@{/m11}" class="si"><span class="ico">🔔</span> M11 · Communication</a>
-    <a th:href="@{/m12}" class="si"><span class="ico">⚙️</span> M12 · Sync</a>
-</aside>
-
-<!-- MAIN -->
-<main class="main">
-
-    <div th:if="${succes}" class="alert alert-ok">
-        <span>✅</span> <span th:text="${succes}"></span>
-    </div>
-    <div th:if="${erreur}" class="alert alert-err">
-        <span>⚠️</span> <span th:text="${erreur}"></span>
+<body class="bg-slate-50 text-slate-950">
+<main class="mx-auto max-w-6xl px-6 py-8">
+  <a class="text-sm font-semibold text-blue-700 hover:underline" href="/m01">Retour aux candidatures</a>
+  <div class="mt-4 rounded-lg border bg-white p-6 shadow-sm">
+    <div class="flex flex-col justify-between gap-4 md:flex-row">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wide text-blue-700" th:text="${candidature.numeroCandidature}">REF</p>
+        <h1 class="mt-1 text-3xl font-bold" th:text="${candidature.nomComplet}">Nom candidat</h1>
+        <p class="mt-2 text-slate-600" th:text="${candidature.email}">email</p>
+      </div>
+      <span class="h-fit rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold" th:text="${candidature.statut}">STATUT</span>
     </div>
 
-    <!-- HERO -->
-    <div class="hero">
-        <div>
-            <div class="num" th:text="${candidature.numeroCandidature}"></div>
-            <h1 th:text="${candidature.nomComplet}">Nom Prénom</h1>
-            <div class="sub">
-                <span th:text="${candidature.email}"></span>
-                · <span th:text="${candidature.telephone}"></span>
-            </div>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.5rem">
-      <span th:switch="${candidature.statut}">
-        <span th:case="'EN_ATTENTE'"      class="badge b-att">⏳ En attente</span>
-        <span th:case="'DOCUMENTS_REQUIS'" class="badge b-doc">📎 Docs requis</span>
-        <span th:case="'PAIEMENT_ATTENTE'" class="badge b-pay">💳 Paiement</span>
-        <span th:case="'TEST_ATTENTE'"     class="badge b-att">📝 Test</span>
-        <span th:case="'TEST_EFFECTUE'"    class="badge b-att">✍️ Testé</span>
-        <span th:case="'VALIDE'"           class="badge b-val">✅ Validé</span>
-        <span th:case="'REJETE'"           class="badge b-rej">❌ Rejeté</span>
-      </span>
-            <a th:href="@{/m01}" class="btn btn-s" style="font-size:.78rem">← Retour liste</a>
-        </div>
-    </div>
+    <div th:if="${succes}" class="mt-4 rounded border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-800" th:text="${succes}"></div>
+    <div th:if="${erreur}" class="mt-4 rounded border border-red-200 bg-red-50 px-4 py-3 text-red-800" th:text="${erreur}"></div>
 
-    <div class="two-col">
+    <dl class="mt-6 grid gap-4 md:grid-cols-3">
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Téléphone</dt><dd class="font-semibold" th:text="${candidature.telephone ?: '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Niveau demandé</dt><dd class="font-semibold" th:text="${candidature.niveauDemande ?: '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Score test</dt><dd class="font-semibold" th:text="${candidature.scoreTest != null ? candidature.scoreTest + '%' : '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Parent</dt><dd class="font-semibold" th:text="${candidature.nomParent ?: '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Paiement</dt><dd class="font-semibold" th:text="${candidature.paiementStatut ?: '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Classe affectée</dt><dd class="font-semibold" th:text="${candidature.classeAffecteeNom ?: '-'}">-</dd></div>
+    </dl>
+  </div>
 
-        <!-- COLONNE GAUCHE -->
-        <div>
-
-            <!-- VALIDÉ : matricule -->
-            <div th:if="${candidature.valide}" class="validated-box">
-                <div class="vb-title">🎉 Candidature Validée !</div>
-                <div class="vb-mat" th:text="${candidature.matriculeGenere}">ETU-2025-0001</div>
-                <div style="font-size:.82rem;color:var(--text2);margin-top:.4rem"
-                     th:text="'Classe : ' + ${candidature.classeAffecteeNom ?: 'Non affectée'}"></div>
-            </div>
-
-            <!-- INFOS PERSONNELLES -->
-            <div class="card">
-                <div class="ch"><span>👤</span> Informations personnelles</div>
-                <div class="cb">
-                    <div class="info-grid">
-                        <div class="ii">
-                            <div class="ii-l">Nom complet</div>
-                            <div class="ii-v" th:text="${candidature.nomComplet}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Sexe</div>
-                            <div class="ii-v" th:text="${candidature.sexe}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Date naissance</div>
-                            <div class="ii-v"
-                                 th:text="${#temporals.format(candidature.dateNaissance, 'dd/MM/yyyy')}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Lieu naissance</div>
-                            <div class="ii-v" th:text="${candidature.lieuNaissance ?: '—'}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Téléphone</div>
-                            <div class="ii-v" th:text="${candidature.telephone}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Email</div>
-                            <div class="ii-v" style="font-size:.82rem"
-                                 th:text="${candidature.email}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Parent</div>
-                            <div class="ii-v" th:text="${candidature.nomParent}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Tél. parent</div>
-                            <div class="ii-v" th:text="${candidature.telephoneParent}"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- INFOS ACADÉMIQUES -->
-            <div class="card">
-                <div class="ch"><span>🏫</span> Informations académiques</div>
-                <div class="cb">
-                    <div class="info-grid">
-                        <div class="ii">
-                            <div class="ii-l">Niveau demandé</div>
-                            <div class="ii-v" th:text="${candidature.niveauDemande}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Filière</div>
-                            <div class="ii-v" th:text="${candidature.filiereDemandee ?: '—'}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Étab. précédent</div>
-                            <div class="ii-v" th:text="${candidature.etablissementPrecedent ?: '—'}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Dernière classe</div>
-                            <div class="ii-v" th:text="${candidature.derniereClasse ?: '—'}"></div>
-                        </div>
-                        <div class="ii">
-                            <div class="ii-l">Moyenne préc.</div>
-                            <div class="ii-v"
-                                 th:text="${candidature.moyennePrecedente != null} ? ${candidature.moyennePrecedente} + '/20' : '—'"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DOCUMENTS -->
-            <div class="card">
-                <div class="ch"><span>📎</span> Documents fournis</div>
-                <div class="cb">
-                    <div class="docs-grid">
-                        <div th:class="${candidature.typesDocumentsPresents.contains('BULLETIN')}
-                        ? 'doc-item doc-ok' : 'doc-item doc-no'">
-                            <span th:text="${candidature.typesDocumentsPresents.contains('BULLETIN')} ? '✅' : '❌'"></span>
-                            Bulletin
-                        </div>
-                        <div th:class="${candidature.typesDocumentsPresents.contains('ACTE_NAISSANCE')}
-                        ? 'doc-item doc-ok' : 'doc-item doc-no'">
-                            <span th:text="${candidature.typesDocumentsPresents.contains('ACTE_NAISSANCE')} ? '✅' : '❌'"></span>
-                            Acte naissance
-                        </div>
-                        <div th:class="${candidature.typesDocumentsPresents.contains('PHOTO')}
-                        ? 'doc-item doc-ok' : 'doc-item doc-no'">
-                            <span th:text="${candidature.typesDocumentsPresents.contains('PHOTO')} ? '✅' : '❌'"></span>
-                            Photo
-                        </div>
-                        <div th:class="${candidature.typesDocumentsPresents.contains('DIPLOME')}
-                        ? 'doc-item doc-ok' : 'doc-item doc-no'">
-                            <span th:text="${candidature.typesDocumentsPresents.contains('DIPLOME')} ? '✅' : '❌'"></span>
-                            Diplôme
-                        </div>
-                        <div th:class="${candidature.typesDocumentsPresents.contains('CNI_PARENT')}
-                        ? 'doc-item doc-ok' : 'doc-item doc-no'">
-                            <span th:text="${candidature.typesDocumentsPresents.contains('CNI_PARENT')} ? '✅' : '❌'"></span>
-                            CNI parent
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- COLONNE DROITE -->
-        <div>
-
-            <!-- TEST D'ENTRÉE -->
-            <div class="card">
-                <div class="ch"><span>📝</span> Test d'entrée</div>
-                <div class="cb">
-                    <div th:if="${candidature.testEffectue}">
-                        <div th:class="${candidature.scoreTest >= 50} ? 'score-box good' : 'score-box bad'">
-                            <div th:class="${candidature.scoreTest >= 50} ? 'score-val good' : 'score-val bad'"
-                                 th:text="${candidature.scoreTest} + '%'"></div>
-                            <div class="score-lbl"
-                                 th:text="${candidature.scoreTest >= 50} ? '✅ Score suffisant' : '❌ Score insuffisant'"></div>
-                        </div>
-                        <div style="font-size:.8rem;color:var(--text2);text-align:center"
-                             th:text="'Passé le : ' + ${#temporals.format(candidature.dateTest, 'dd/MM/yyyy HH:mm')}"></div>
-                    </div>
-                    <div th:unless="${candidature.testEffectue}"
-                         style="text-align:center;color:var(--text3);
-                  font-size:.84rem;padding:1.2rem">
-                        Test non encore effectué
-                    </div>
-                </div>
-            </div>
-
-            <!-- PAIEMENT -->
-            <div class="card">
-                <div class="ch"><span>💰</span> Paiement</div>
-                <div class="cb">
-                    <div th:if="${candidature.paiementStatut != null}">
-                        <div class="pay-info">
-                            <div class="pay-row">
-                                <span class="pay-lbl">Statut</span>
-                                <span th:text="${candidature.paiementStatut}"
-                                      th:style="${'EFFECTUE'.equals(candidature.paiementStatut)}
-                      ? 'color:var(--green);font-weight:700'
-                      : 'color:var(--yellow);font-weight:700'"></span>
-                            </div>
-                            <div class="pay-row">
-                                <span class="pay-lbl">Opérateur</span>
-                                <span th:text="${candidature.paiementOperateur ?: '—'}"></span>
-                            </div>
-                            <div class="pay-row">
-                                <span class="pay-lbl">Référence</span>
-                                <span style="font-family:monospace;font-size:.8rem"
-                                      th:text="${candidature.paiementReference ?: '—'}"></span>
-                            </div>
-                            <div class="pay-row">
-                                <span class="pay-lbl">Montant</span>
-                                <span th:text="${candidature.paiementMontant != null}
-                ? ${#numbers.formatDecimal(candidature.paiementMontant,0,'COMMA',0,'POINT')} + ' FCFA'
-                : '—'"></span>
-                            </div>
-                        </div>
-                        <!-- Confirmer paiement -->
-                        <form th:if="${'EN_ATTENTE'.equals(candidature.paiementStatut)}"
-                              th:action="@{/m01/{id}/confirmer-paiement(id=${candidature.id})}"
-                              method="post" style="margin-top:.8rem">
-                            <button type="submit" class="btn btn-ok"
-                                    style="width:100%;justify-content:center">
-                                ✅ Confirmer le paiement
-                            </button>
-                        </form>
-                    </div>
-                    <div th:unless="${candidature.paiementStatut != null}"
-                         style="text-align:center;color:var(--text3);
-                  font-size:.84rem;padding:1.2rem">
-                        Aucun paiement enregistré
-                    </div>
-                </div>
-            </div>
-
-            <!-- ACTIONS ADMIN -->
-            <div class="card" th:unless="${candidature.valide}">
-                <div class="ch"><span>⚙️</span> Actions admin</div>
-                <div class="cb">
-
-                    <!-- VALIDER -->
-                    <div class="action-block"
-                         th:unless="${candidature.rejete}">
-                        <h3>✅ Valider la candidature</h3>
-                        <form th:action="@{/m01/{id}/valider(id=${candidature.id})}"
-                              method="post">
-                            <select name="classeId">
-                                <option value="">-- Classe (optionnel) --</option>
-                                <option th:each="c : ${classes}"
-                                        th:value="${c.id}"
-                                        th:text="${c.nom} + ' (' + ${c.code} + ')'"></option>
-                            </select>
-                            <button type="submit" class="btn btn-ok"
-                                    style="width:100%;justify-content:center"
-                                    onclick="return confirm('Valider cette candidature et créer le compte étudiant ?')">
-                                ✅ Valider &amp; Créer compte
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- DEMANDER CORRECTION -->
-                    <div class="action-block"
-                         th:unless="${candidature.rejete}">
-                        <h3>📎 Demander correction</h3>
-                        <form th:action="@{/m01/{id}/correction(id=${candidature.id})}"
-                              method="post">
-                            <input type="text" name="message" required
-                                   placeholder="Message au candidat..."/>
-                            <button type="submit" class="btn btn-warn"
-                                    style="width:100%;justify-content:center">
-                                📎 Demander correction
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- REJETER -->
-                    <div class="action-block">
-                        <h3>❌ Rejeter</h3>
-                        <form th:action="@{/m01/{id}/rejeter(id=${candidature.id})}"
-                              method="post">
-                            <input type="text" name="motif" required
-                                   placeholder="Motif du rejet..."/>
-                            <button type="submit" class="btn btn-rej"
-                                    style="width:100%;justify-content:center"
-                                    onclick="return confirm('Confirmer le rejet de cette candidature ?')">
-                                ❌ Rejeter la candidature
-                            </button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- DATES -->
-            <div class="card">
-                <div class="ch"><span>📅</span> Chronologie</div>
-                <div class="cb">
-                    <div class="pay-info">
-                        <div class="pay-row">
-                            <span class="pay-lbl">Soumission</span>
-                            <span th:text="${#temporals.format(candidature.dateSoumission, 'dd/MM/yyyy HH:mm')}"></span>
-                        </div>
-                        <div class="pay-row" th:if="${candidature.dateValidation}">
-                            <span class="pay-lbl">Validation</span>
-                            <span style="color:var(--green)"
-                                  th:text="${#temporals.format(candidature.dateValidation, 'dd/MM/yyyy HH:mm')}"></span>
-                        </div>
-                        <div class="pay-row">
-                            <span class="pay-lbl">Établissement</span>
-                            <span th:text="${candidature.etablissementNom}"></span>
-                        </div>
-                        <div class="pay-row">
-                            <span class="pay-lbl">Année scolaire</span>
-                            <span th:text="${candidature.anneeScolaireLibelle ?: '—'}"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+  <section class="mt-6 grid gap-4 lg:grid-cols-3">
+    <form class="rounded-lg border bg-white p-4 shadow-sm" th:action="@{/m01/{id}/valider(id=${candidature.id})}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <h2 class="font-bold">Valider</h2>
+      <select class="mt-3 w-full rounded border-slate-300" name="classeId">
+        <option value="">Sans affectation immédiate</option>
+        <option th:each="classe : ${classes}" th:value="${classe.id}" th:text="${classe.nom}">Classe</option>
+      </select>
+      <button class="mt-3 w-full rounded bg-emerald-700 px-4 py-2 font-semibold text-white">Valider la candidature</button>
+    </form>
+    <form class="rounded-lg border bg-white p-4 shadow-sm" th:action="@{/m01/{id}/rejeter(id=${candidature.id})}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <h2 class="font-bold">Rejeter</h2>
+      <textarea class="mt-3 w-full rounded border-slate-300" name="motif" rows="3" placeholder="Motif du rejet" required></textarea>
+      <button class="mt-3 w-full rounded bg-red-700 px-4 py-2 font-semibold text-white">Rejeter</button>
+    </form>
+    <form class="rounded-lg border bg-white p-4 shadow-sm" th:action="@{/m01/{id}/confirmer-paiement(id=${candidature.id})}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <h2 class="font-bold">Paiement</h2>
+      <p class="mt-3 text-sm text-slate-600">Confirmer manuellement le paiement du dossier.</p>
+      <button class="mt-8 w-full rounded bg-blue-700 px-4 py-2 font-semibold text-white">Confirmer paiement</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>

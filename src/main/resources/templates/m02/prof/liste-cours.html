@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes cours - ASMACS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+</head>
+<body class="bg-slate-50 text-slate-950">
+<main class="mx-auto max-w-6xl px-6 py-8">
+  <div class="flex justify-between gap-4">
+    <div>
+      <p class="text-xs font-semibold uppercase text-blue-700">Espace enseignant</p>
+      <h1 class="text-3xl font-bold">Mes séances</h1>
+      <p class="mt-2 text-slate-600" th:if="${enseignant != null}" th:text="${enseignant.nom + ' ' + enseignant.prenom}">Enseignant</p>
+    </div>
+    <a class="h-fit rounded border bg-white px-3 py-2 text-sm font-semibold hover:bg-slate-100" href="/dashboard">Dashboard</a>
+  </div>
+
+  <section class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <article th:if="${#lists.isEmpty(seances)}" class="rounded-lg border bg-white p-6 text-center text-slate-500 shadow-sm md:col-span-2 xl:col-span-3">Aucune séance affectée.</article>
+    <article th:each="s : ${seances}" class="rounded-lg border bg-white p-5 shadow-sm">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <p class="text-xs font-semibold uppercase text-blue-700" th:text="${s.dateSeance}">Date</p>
+          <h2 class="mt-1 text-xl font-bold" th:text="${s.matiereNom ?: 'Séance'}">Matière</h2>
+          <p class="mt-1 text-sm text-slate-600" th:text="${s.classeNom ?: '-'}">Classe</p>
+        </div>
+        <span class="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold" th:text="${s.statut}">STATUT</span>
+      </div>
+      <div class="mt-4 grid grid-cols-3 gap-2 text-center text-sm">
+        <div class="rounded bg-slate-50 p-2"><p class="font-bold text-emerald-700" th:text="${s.nbPresents}">0</p><p class="text-xs text-slate-500">Prés.</p></div>
+        <div class="rounded bg-slate-50 p-2"><p class="font-bold text-red-700" th:text="${s.nbAbsents}">0</p><p class="text-xs text-slate-500">Abs.</p></div>
+        <div class="rounded bg-slate-50 p-2"><p class="font-bold text-blue-700" th:text="${s.tauxPresence + '%'}">0%</p><p class="text-xs text-slate-500">Taux</p></div>
+      </div>
+      <a class="mt-4 block rounded bg-blue-700 px-4 py-2 text-center font-semibold text-white" th:href="@{/m02/prof/scanner/{id}(id=${s.id})}">Scanner / gérer</a>
+    </article>
+  </section>
+</main>
+</body>
+</html>

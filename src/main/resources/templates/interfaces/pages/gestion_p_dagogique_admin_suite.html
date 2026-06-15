@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestion Pédagogique &amp; Examens - EduAdmin Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary": "#525f73",
+                        "surface-container-low": "#f3f4f5",
+                        "on-background": "#191c1d",
+                        "outline": "#737685",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d6",
+                        "background": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#003d9b",
+                        "on-tertiary-fixed": "#0e1c31",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#586579",
+                        "on-secondary-fixed-variant": "#3b485a",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "tertiary": "#37445b",
+                        "on-primary-fixed": "#001848",
+                        "on-surface": "#191c1d",
+                        "primary-container": "#0052cc",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#3a475e",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed-dim": "#bac7de",
+                        "on-tertiary-container": "#c6d3f0",
+                        "surface-bright": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d6e3fb",
+                        "tertiary-fixed-dim": "#bac7e3",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "tertiary-fixed": "#d6e3ff",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-container": "#4e5b73",
+                        "secondary-fixed": "#d6e3fb",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed": "#0f1c2d",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-tint": "#0c56d0",
+                        "on-primary-container": "#c4d2ff",
+                        "primary-fixed": "#dae2ff",
+                        "surface": "#f8f9fa",
+                        "surface-container": "#edeeef",
+                        "on-surface-variant": "#434654"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "rail_width": "64px",
+                        "base_unit": "4px",
+                        "sidebar_width": "240px",
+                        "margin": "24px",
+                        "container_gap": "12px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "label-md": ["Geist"],
+                        "body-md": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "display": ["Geist"],
+                        "mono-data": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "body-sm": ["Geist"]
+                    },
+                    fontSize: {
+                        "label-md": ["12px", { lineHeight: "1", letterSpacing: "0.02em", fontWeight: "500" }],
+                        "body-md": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-md": ["20px", { lineHeight: "1.4", fontWeight: "500" }],
+                        "display": ["32px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "mono-data": ["13px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "400" }],
+                        "body-lg": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-lg": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "body-sm": ["13px", { lineHeight: "1.4", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Geist', sans-serif; background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 0.5px solid theme('colors.outline-variant'); }
+        .sharp-border { border: 0.5px solid #E2E8F0; }
+        
+        /* Drag and Drop Visual Cues */
+        .slot-droppable.drag-over { background-color: theme('colors.primary-fixed'); border-color: theme('colors.primary'); border-style: dashed; }
+        .course-card.dragging { opacity: 0.5; cursor: grabbing; }
+        
+        /* Custom Scrollbar for tight spaces */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: theme('colors.outline-variant'); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline'); }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- JSON Component: SideNavBar -->
+<nav aria-label="Main Navigation" class="hidden md:flex flex-col h-full py-margin bg-surface dark:bg-inverse-surface fixed left-0 top-0 h-screen w-rail_width hover:w-sidebar_width transition-all duration-300 z-50 border-r border-outline-variant dark:border-outline backdrop-blur-md bg-opacity-70 group overflow-hidden">
+<!-- Header / Brand -->
+<div class="flex items-center px-4 mb-8 min-w-[240px]">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary text-[20px]" data-icon="school">school</span>
+</div>
+<div class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary whitespace-nowrap">EduAdmin Suite</h1>
+<p class="text-label-md font-label-md text-secondary">Management Portal</p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex-1 flex flex-col gap-2 w-full">
+<a class="flex items-center px-5 py-3 text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out min-w-[240px]" href="/interfaces/dashboard_global_admin_suite">
+<span class="material-symbols-outlined shrink-0" data-icon="dashboard">dashboard</span>
+<span class="ml-6 text-body-md font-body-md opacity-0 group-hover:opacity-100 whitespace-nowrap">Dashboard</span>
+</a>
+<a class="flex items-center px-5 py-3 text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out min-w-[240px]" href="/interfaces/pr_sence_anti_fraude_admin_suite">
+<span class="material-symbols-outlined shrink-0" data-icon="security">security</span>
+<span class="ml-6 text-body-md font-body-md opacity-0 group-hover:opacity-100 whitespace-nowrap">Presence</span>
+</a>
+<!-- Active Tab: Pedagogy matches current intent -->
+<a aria-current="page" class="flex items-center px-5 py-3 border-l-2 border-primary text-primary font-bold dark:text-inverse-primary bg-surface-container-low transition-all duration-200 ease-in-out min-w-[240px]" href="/interfaces/gestion_p_dagogique_admin_suite">
+<span class="material-symbols-outlined shrink-0" data-icon="school">school</span>
+<span class="ml-6 text-body-md font-body-md opacity-0 group-hover:opacity-100 whitespace-nowrap">Pedagogy</span>
+</a>
+<a class="flex items-center px-5 py-3 text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out min-w-[240px]" href="/interfaces/rh_paie_admin_suite">
+<span class="material-symbols-outlined shrink-0" data-icon="payments">payments</span>
+<span class="ml-6 text-body-md font-body-md opacity-0 group-hover:opacity-100 whitespace-nowrap">HR &amp; Payroll</span>
+</a>
+<a class="flex items-center px-5 py-3 text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out min-w-[240px]" href="/interfaces/configuration_syst_me_admin_suite">
+<span class="material-symbols-outlined shrink-0" data-icon="settings">settings</span>
+<span class="ml-6 text-body-md font-body-md opacity-0 group-hover:opacity-100 whitespace-nowrap">System</span>
+</a>
+</div>
+<!-- CTA -->
+<div class="px-4 mt-auto mb-4 min-w-[240px] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-2 rounded flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+                New Report
+            </button>
+</div>
+<!-- Footer Tabs -->
+<div class="flex flex-col gap-1 w-full pb-4">
+<a class="flex items-center px-5 py-2 text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out min-w-[240px]" href="/interfaces/contact_d_mo_asmacs_suite">
+<span class="material-symbols-outlined shrink-0 text-[20px]" data-icon="help">help</span>
+<span class="ml-6 text-body-md font-body-md opacity-0 group-hover:opacity-100 whitespace-nowrap">Help</span>
+</a>
+<a class="flex items-center px-5 py-2 text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out min-w-[240px]" href="/interfaces/connexion_s_curis_e_asmacs">
+<span class="material-symbols-outlined shrink-0 text-[20px]" data-icon="logout">logout</span>
+<span class="ml-6 text-body-md font-body-md opacity-0 group-hover:opacity-100 whitespace-nowrap">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-w-0 md:ml-rail_width transition-all duration-300">
+<!-- JSON Component: TopNavBar -->
+<header class="flex justify-between items-center w-full px-margin h-16 bg-surface dark:bg-inverse-surface docked full-width top-0 sticky z-40 border-b border-outline-variant dark:border-outline backdrop-blur-md bg-opacity-70">
+<div class="flex items-center gap-8">
+<!-- Mobile Menu Button (Hidden on Desktop) -->
+<button class="md:hidden text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<!-- Top Nav Links -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-primary dark:hover:text-inverse-primary transition-colors hover:scale-95 duration-150" href="/interfaces/dashboard_global_admin_suite">KPIs</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-primary dark:hover:text-inverse-primary transition-colors hover:scale-95 duration-150" href="/interfaces/pr_sence_anti_fraude_admin_suite">Monitoring</a>
+<a aria-current="page" class="text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 font-bold text-label-md font-label-md hover:scale-95 duration-150" href="/interfaces/gestion_p_dagogique_admin_suite">Scheduling</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-primary dark:hover:text-inverse-primary transition-colors hover:scale-95 duration-150" href="/interfaces/comptabilit_globale_admin_suite">Payments</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-primary dark:hover:text-inverse-primary transition-colors hover:scale-95 duration-150" href="/interfaces/configuration_syst_me_admin_suite">Settings</a>
+</nav>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 bg-secondary-container text-on-secondary-container px-4 py-2 rounded text-label-md font-label-md hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+                    Generate PDF
+                </button>
+<div class="flex items-center gap-2 border-l border-outline-variant pl-4 ml-2">
+<button class="text-secondary hover:text-primary transition-colors p-1 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="Administrator Profile" class="text-secondary hover:text-primary transition-colors p-1 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 p-margin overflow-y-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h2 class="text-display font-display text-on-surface mb-1">Gestion Pédagogique</h2>
+<p class="text-body-lg font-body-lg text-secondary">Planification des emplois du temps et suivi des programmes académiques.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container text-on-surface text-label-md font-label-md px-4 py-2 rounded sharp-border hover:bg-surface-container-high transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span>
+                        Filtres
+                    </button>
+<button class="bg-primary text-on-primary text-label-md font-label-md px-5 py-2 rounded hover:bg-primary-container transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="assignment_turned_in">assignment_turned_in</span>
+                        Génération des bulletins scolaires
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-container_gap">
+<!-- Main Schedule Area (8 cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl sharp-border flex flex-col h-[700px] overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_month">calendar_month</span>
+                            Emploi du Temps Interactif
+                        </h3>
+<div class="flex items-center gap-2 text-label-md font-label-md">
+<span class="text-secondary">Classe:</span>
+<select class="form-select bg-surface border-outline-variant text-on-surface rounded py-1 pl-2 pr-8 text-sm focus:border-primary focus:ring-0">
+<option>Terminale S1</option>
+<option>Terminale S2</option>
+<option>Première L</option>
+</select>
+</div>
+</div>
+<!-- Calendar View -->
+<div class="flex-1 overflow-auto bg-surface-bright relative">
+<div class="min-w-[600px] grid grid-cols-6 border-b border-outline-variant sticky top-0 bg-surface z-10 shadow-sm">
+<div class="p-3 text-center border-r border-outline-variant text-label-md font-label-md text-secondary">Heure</div>
+<div class="p-3 text-center border-r border-outline-variant text-label-md font-label-md text-on-surface">Lundi</div>
+<div class="p-3 text-center border-r border-outline-variant text-label-md font-label-md text-on-surface">Mardi</div>
+<div class="p-3 text-center border-r border-outline-variant text-label-md font-label-md text-on-surface">Mercredi</div>
+<div class="p-3 text-center border-r border-outline-variant text-label-md font-label-md text-on-surface">Jeudi</div>
+<div class="p-3 text-center text-label-md font-label-md text-on-surface">Vendredi</div>
+</div>
+<!-- Grid Body (Simulated) -->
+<div class="relative min-w-[600px]">
+<!-- Time Column -->
+<div class="absolute left-0 top-0 bottom-0 w-[16.66%] border-r border-outline-variant bg-surface-container-lowest flex flex-col">
+<div class="h-20 border-b border-outline-variant flex items-center justify-center text-mono-data font-mono-data text-secondary">08:00 - 10:00</div>
+<div class="h-20 border-b border-outline-variant flex items-center justify-center text-mono-data font-mono-data text-secondary">10:00 - 12:00</div>
+<div class="h-12 border-b border-outline-variant flex items-center justify-center text-label-md font-label-md text-secondary bg-surface-container-low">PAUSE</div>
+<div class="h-20 border-b border-outline-variant flex items-center justify-center text-mono-data font-mono-data text-secondary">14:00 - 16:00</div>
+<div class="h-20 border-b border-outline-variant flex items-center justify-center text-mono-data font-mono-data text-secondary">16:00 - 18:00</div>
+</div>
+<!-- Drop Zones & Placed Cards -->
+<div class="ml-[16.66%] grid grid-cols-5 h-full">
+<!-- Lundi -->
+<div class="border-r border-outline-variant flex flex-col">
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable relative group">
+<div class="absolute inset-1 bg-primary-container text-on-primary-container rounded p-2 text-xs flex flex-col justify-between cursor-grab border border-primary-fixed course-card" draggable="true">
+<div class="font-semibold truncate">Mathématiques</div>
+<div class="text-[10px] opacity-80 flex justify-between">
+<span>Prof. Dupont</span>
+<span>Salle 101</span>
+</div>
+</div>
+</div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable relative group">
+<div class="absolute inset-1 bg-tertiary-container text-on-tertiary-container rounded p-2 text-xs flex flex-col justify-between cursor-grab border border-tertiary-fixed course-card" draggable="true">
+<div class="font-semibold truncate">Physique-Chimie</div>
+<div class="text-[10px] opacity-80 flex justify-between">
+<span>Prof. Martin</span>
+<span>Labo A</span>
+</div>
+</div>
+</div>
+<div class="h-12 border-b border-outline-variant bg-surface-container-low"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable group"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable group"></div>
+</div>
+<!-- Mardi ... (Simplified for output brevity, showing empty slots) -->
+<div class="border-r border-outline-variant flex flex-col">
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-12 border-b border-outline-variant bg-surface-container-low"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable relative group">
+<div class="absolute inset-1 bg-secondary-container text-on-secondary-container rounded p-2 text-xs flex flex-col justify-between cursor-grab border border-secondary-fixed course-card" draggable="true">
+<div class="font-semibold truncate">Histoire-Géo</div>
+<div class="text-[10px] opacity-80 flex justify-between">
+<span>Prof. Leroy</span>
+<span>Salle 205</span>
+</div>
+</div>
+</div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+</div>
+<!-- Mercredi -->
+<div class="border-r border-outline-variant flex flex-col">
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-12 border-b border-outline-variant bg-surface-container-low"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+</div>
+<!-- Jeudi -->
+<div class="border-r border-outline-variant flex flex-col">
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-12 border-b border-outline-variant bg-surface-container-low"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+</div>
+<!-- Vendredi -->
+<div class="flex flex-col">
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-12 border-b border-outline-variant bg-surface-container-low"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+<div class="h-20 border-b border-outline-variant p-1 slot-droppable"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar Modules (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-container_gap">
+<!-- Draggable Courses Bank -->
+<div class="bg-surface-container-lowest rounded-xl sharp-border flex flex-col h-[300px]">
+<div class="px-5 py-3 border-b border-outline-variant bg-surface-container-low">
+<h4 class="text-body-lg font-body-lg text-on-surface font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="drag_indicator">drag_indicator</span>
+                                Cours à planifier
+                            </h4>
+</div>
+<div class="p-4 overflow-y-auto flex-1 flex flex-col gap-2">
+<div class="bg-error-container text-on-error-container p-3 rounded text-sm cursor-grab border border-error hover:shadow-sm transition-shadow course-card" draggable="true">
+<div class="font-semibold flex justify-between">
+<span>Philosophie</span>
+<span class="text-xs bg-surface-container-lowest px-1 rounded">2h</span>
+</div>
+<div class="text-xs mt-1 opacity-80">Prof. Blanc | Salle 302</div>
+</div>
+<div class="bg-secondary-container text-on-secondary-container p-3 rounded text-sm cursor-grab border border-outline-variant hover:shadow-sm transition-shadow course-card" draggable="true">
+<div class="font-semibold flex justify-between">
+<span>Anglais LV1</span>
+<span class="text-xs bg-surface-container-lowest px-1 rounded">2h</span>
+</div>
+<div class="text-xs mt-1 opacity-80">Prof. Smith | Labo Langues</div>
+</div>
+<div class="bg-tertiary-container text-on-tertiary-container p-3 rounded text-sm cursor-grab border border-outline-variant hover:shadow-sm transition-shadow course-card" draggable="true">
+<div class="font-semibold flex justify-between">
+<span>SVT</span>
+<span class="text-xs bg-surface-container-lowest px-1 rounded">2h</span>
+</div>
+<div class="text-xs mt-1 opacity-80">Prof. Curie | Labo B</div>
+</div>
+</div>
+</div>
+<!-- Program Advancement -->
+<div class="bg-surface-container-lowest rounded-xl sharp-border flex-1 flex flex-col">
+<div class="px-5 py-3 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h4 class="text-body-lg font-body-lg text-on-surface font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="trending_up">trending_up</span>
+                                Avancement des Programmes
+                            </h4>
+<button class="text-primary text-label-md hover:underline">Voir tout</button>
+</div>
+<div class="p-5 flex flex-col gap-5">
+<!-- Progress Item -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="text-body-sm font-body-sm font-medium text-on-surface">Mathématiques (Terminale S1)</span>
+<span class="text-mono-data font-mono-data text-primary">68%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 68%"></div>
+</div>
+<div class="text-xs text-secondary mt-1">Chapitre actuel: Nombres Complexes</div>
+</div>
+<!-- Progress Item -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="text-body-sm font-body-sm font-medium text-on-surface">Physique-Chimie (Terminale S1)</span>
+<span class="text-mono-data font-mono-data text-primary">52%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 52%"></div>
+</div>
+<div class="text-xs text-error mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+                                    Retard estimé: 1 semaine
+                                </div>
+</div>
+<!-- Progress Item -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="text-body-sm font-body-sm font-medium text-on-surface">Histoire-Géo (Terminale S1)</span>
+<span class="text-mono-data font-mono-data text-primary">75%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<div class="text-xs text-secondary mt-1">En avance sur le planning</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Minimal Script for drag and drop visual interaction (no real logic needed for static html, just visual cues) -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const draggables = document.querySelectorAll('.course-card');
+            const dropZones = document.querySelectorAll('.slot-droppable');
+
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', () => {
+                    draggable.classList.add('dragging');
+                });
+
+                draggable.addEventListener('dragend', () => {
+                    draggable.classList.remove('dragging');
+                    dropZones.forEach(zone => zone.classList.remove('drag-over'));
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    zone.classList.add('drag-over');
+                });
+
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('drag-over');
+                });
+
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    const dragging = document.querySelector('.dragging');
+                    if(dragging && !zone.hasChildNodes()) {
+                        zone.appendChild(dragging);
+                        dragging.classList.remove('relative', 'inset-1');
+                        dragging.classList.add('absolute', 'inset-1'); // ensure it fills slot
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

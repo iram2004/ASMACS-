@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HR &amp; Payroll - EduAdmin Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#525f73",
+                        "surface-container-low": "#f3f4f5",
+                        "on-background": "#191c1d",
+                        "outline": "#737685",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d6",
+                        "background": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#003d9b",
+                        "on-tertiary-fixed": "#0e1c31",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#586579",
+                        "on-secondary-fixed-variant": "#3b485a",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "tertiary": "#37445b",
+                        "on-primary-fixed": "#001848",
+                        "on-surface": "#191c1d",
+                        "primary-container": "#0052cc",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#3a475e",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed-dim": "#bac7de",
+                        "on-tertiary-container": "#c6d3f0",
+                        "surface-bright": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d6e3fb",
+                        "tertiary-fixed-dim": "#bac7e3",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "tertiary-fixed": "#d6e3ff",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-container": "#4e5b73",
+                        "secondary-fixed": "#d6e3fb",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed": "#0f1c2d",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-tint": "#0c56d0",
+                        "on-primary-container": "#c4d2ff",
+                        "primary-fixed": "#dae2ff",
+                        "surface": "#f8f9fa",
+                        "surface-container": "#edeeef",
+                        "on-surface-variant": "#434654"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "rail_width": "64px",
+                        "base_unit": "4px",
+                        "sidebar_width": "240px",
+                        "margin": "24px",
+                        "container_gap": "12px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Geist"],
+                        "body-md": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "display": ["Geist"],
+                        "mono-data": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "body-sm": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "mono-data": ["13px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 0.5px solid #E2E8F0;
+        }
+        
+        /* Zebra striping for data tables */
+        .data-table tr:nth-child(even) {
+            background-color: #f8f9fa; /* surface color */
+        }
+        .data-table tr:hover {
+            background-color: #f0f1f2; /* inverse-on-surface for subtle hover */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex overflow-hidden">
+<!-- SideNavBar Component -->
+<nav class="bg-surface dark:bg-inverse-surface text-primary dark:text-inverse-primary text-headline-md font-headline-md text-body-md font-body-md text-label-md font-label-md fixed left-0 top-0 h-screen w-rail_width hover:w-sidebar_width transition-all duration-300 z-50 border-r border-outline-variant dark:border-outline backdrop-blur-md bg-opacity-70 flat no shadows flex flex-col py-margin group overflow-hidden">
+<!-- Header Logo (Compact initially, expands on hover) -->
+<div class="px-4 mb-8 flex items-center shrink-0">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container">account_balance</span>
+</div>
+<div class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden">
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary">EduAdmin Suite</h1>
+<p class="text-label-md font-label-md text-secondary">Management Portal</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 flex flex-col gap-2 px-2">
+<!-- Dashboard -->
+<a class="flex items-center p-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out shrink-0" href="/interfaces/dashboard_global_admin_suite">
+<span class="material-symbols-outlined mx-auto group-hover:mx-0">dashboard</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Presence -->
+<a class="flex items-center p-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out shrink-0" href="/interfaces/pr_sence_anti_fraude_admin_suite">
+<span class="material-symbols-outlined mx-auto group-hover:mx-0">security</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden text-label-md font-label-md">Presence</span>
+</a>
+<!-- Pedagogy -->
+<a class="flex items-center p-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out shrink-0" href="/interfaces/gestion_p_dagogique_admin_suite">
+<span class="material-symbols-outlined mx-auto group-hover:mx-0">school</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden text-label-md font-label-md">Pedagogy</span>
+</a>
+<!-- HR & Payroll (Active) -->
+<a class="flex items-center p-2 rounded-lg border-l-2 border-primary text-primary font-bold dark:text-inverse-primary bg-primary-fixed-dim/10 shrink-0" href="/interfaces/rh_paie_admin_suite">
+<span class="material-symbols-outlined mx-auto group-hover:mx-0 fill">payments</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden text-label-md font-label-md">HR &amp; Payroll</span>
+</a>
+<!-- System -->
+<a class="flex items-center p-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out shrink-0" href="/interfaces/configuration_syst_me_admin_suite">
+<span class="material-symbols-outlined mx-auto group-hover:mx-0">settings</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden text-label-md font-label-md">System</span>
+</a>
+</div>
+<!-- Footer Links -->
+<div class="mt-auto flex flex-col gap-2 px-2 shrink-0">
+<!-- New Report CTA -->
+<button class="flex items-center justify-center p-2 mb-4 mx-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-colors shrink-0">
+<span class="material-symbols-outlined group-hover:mr-2">add</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden text-label-md font-label-md">New Report</span>
+</button>
+<!-- Help -->
+<a class="flex items-center p-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out shrink-0" href="/interfaces/contact_d_mo_asmacs_suite">
+<span class="material-symbols-outlined mx-auto group-hover:mx-0">help</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden text-label-md font-label-md">Help</span>
+</a>
+<!-- Logout -->
+<a class="flex items-center p-2 rounded-lg text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all duration-200 ease-in-out shrink-0" href="/interfaces/connexion_s_curis_e_asmacs">
+<span class="material-symbols-outlined mx-auto group-hover:mx-0">logout</span>
+<span class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap overflow-hidden text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area (offset by rail_width) -->
+<div class="flex-1 ml-rail_width flex flex-col h-screen relative">
+<!-- TopNavBar Component -->
+<header class="bg-surface dark:bg-inverse-surface text-primary dark:text-inverse-primary text-headline-md font-headline-md text-label-md font-label-md docked full-width top-0 sticky z-40 border-b border-outline-variant dark:border-outline backdrop-blur-md bg-opacity-70 flat no shadows flex justify-between items-center w-full px-margin h-16">
+<!-- Contextual Branding / Active Module Title (Replaces main product name as it's in sidenav) -->
+<div class="flex items-center gap-4">
+<h2 class="text-headline-lg font-headline-lg font-bold text-primary dark:text-inverse-primary tracking-tight">HR &amp; Payroll</h2>
+<div class="h-4 w-px bg-outline-variant mx-2"></div>
+<span class="text-label-md font-label-md text-secondary uppercase tracking-widest">Oct 2023 Cycle</span>
+</div>
+<!-- Search (Left aligned relative to navigation cluster) -->
+<div class="flex-1 flex justify-start px-8">
+<div class="relative w-64 group">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors text-sm">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-DEFAULT text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search staff ID or name..." type="text"/>
+</div>
+</div>
+<!-- Navigation Links (Contextual to Payroll) -->
+<nav class="hidden md:flex gap-6 mr-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="/interfaces/dashboard_global_admin_suite">KPIs</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="/interfaces/pr_sence_anti_fraude_admin_suite">Monitoring</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="/interfaces/gestion_p_dagogique_admin_suite">Scheduling</a>
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 font-bold text-label-md font-label-md Active: scale-95 duration-150" href="/interfaces/comptabilit_globale_admin_suite">Payments</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors text-label-md font-label-md" href="/interfaces/configuration_syst_me_admin_suite">Settings</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="px-4 py-1.5 border border-outline-variant rounded-DEFAULT text-label-md font-label-md text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+                    Generate PDF
+                </button>
+<div class="flex gap-2 text-secondary">
+<button class="hover:text-primary transition-colors p-1 rounded-full hover:bg-surface-container-low"><span class="material-symbols-outlined">notifications</span></button>
+<button class="hover:text-primary transition-colors p-1 rounded-full hover:bg-surface-container-low"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</div>
+</header>
+<!-- Main Workspace Canvas -->
+<main class="flex-1 overflow-y-auto p-margin bg-background pb-32">
+<!-- Top Dashboard Metrics (Bento style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-container_gap mb-gutter">
+<!-- Metric Card 1 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-secondary uppercase">Total Pending Validation</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">pending_actions</span>
+</div>
+<div>
+<div class="text-display font-display text-on-surface">42</div>
+<div class="text-body-sm font-body-sm text-secondary mt-1">Contractors (Heures Vacataires)</div>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between border-l-4 border-l-error">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-secondary uppercase">Anomalies Detected</span>
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+</div>
+<div>
+<div class="text-display font-display text-error">3</div>
+<div class="text-body-sm font-body-sm text-secondary mt-1">Requires manual review</div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between md:col-span-2 bg-gradient-to-br from-surface to-surface-container-low">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-secondary uppercase">Estimated Payroll Run (Oct)</span>
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<div class="text-display font-display text-on-surface">FCFA 12,450,000</div>
+<div class="text-body-sm font-body-sm text-secondary mt-1 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span> IRPP: 1.2M
+                                <span class="w-2 h-2 rounded-full bg-tertiary inline-block ml-2"></span> CNPS: 850k
+                            </div>
+</div>
+<button class="text-label-md font-label-md text-primary hover:underline">View Breakdown</button>
+</div>
+</div>
+</div>
+<!-- Main Data Table Section -->
+<div class="glass-panel rounded-lg flex flex-col h-[600px]">
+<!-- Table Header Actions -->
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-lg">
+<div class="flex gap-4 items-center">
+<h3 class="text-headline-md font-headline-md text-on-surface">Contractor Hours Validation</h3>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-label-md uppercase tracking-wider">Dept: Sciences</span>
+<span class="px-2 py-1 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-label-md uppercase tracking-wider">Status: Pending</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 border border-outline-variant rounded hover:bg-surface-container-low text-secondary transition-colors"><span class="material-symbols-outlined text-sm">filter_list</span></button>
+<button class="p-1.5 border border-outline-variant rounded hover:bg-surface-container-low text-secondary transition-colors"><span class="material-symbols-outlined text-sm">download</span></button>
+</div>
+</div>
+<!-- Dense Data Table -->
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left border-collapse data-table">
+<thead class="sticky top-0 bg-surface-container-lowest shadow-[0_1px_0_0_#E2E8F0] z-10">
+<tr class="text-label-md font-label-md text-secondary uppercase tracking-wide">
+<th class="p-3 font-medium w-10 text-center"><input class="rounded-sm border-outline-variant text-primary focus:ring-primary" type="checkbox"/></th>
+<th class="p-3 font-medium">ID</th>
+<th class="p-3 font-medium">Name</th>
+<th class="p-3 font-medium">Course/Module</th>
+<th class="p-3 font-medium text-right">Hrs Logged</th>
+<th class="p-3 font-medium text-right">Rate/Hr</th>
+<th class="p-3 font-medium text-right">Gross (FCFA)</th>
+<th class="p-3 font-medium text-right">IRPP/CNPS</th>
+<th class="p-3 font-medium text-right">Net Payable</th>
+<th class="p-3 font-medium text-center">Status</th>
+</tr>
+</thead>
+<tbody class="text-mono-data font-mono-data text-on-surface divide-y divide-outline-variant/50">
+<!-- Row 1 -->
+<tr>
+<td class="p-3 text-center"><input class="rounded-sm border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-3 text-secondary">V-8921</td>
+<td class="p-3 font-medium font-body-sm text-on-surface">Dr. Alain Kouamé</td>
+<td class="p-3 text-secondary">Advanced Physics 301</td>
+<td class="p-3 text-right">45.5</td>
+<td class="p-3 text-right">15,000</td>
+<td class="p-3 text-right">682,500</td>
+<td class="p-3 text-right text-error">-75,075</td>
+<td class="p-3 text-right font-medium text-primary">607,425</td>
+<td class="p-3 text-center">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">Pending</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td class="p-3 text-center"><input class="rounded-sm border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-3 text-secondary">V-8944</td>
+<td class="p-3 font-medium font-body-sm text-on-surface">Prof. Marie Diallo</td>
+<td class="p-3 text-secondary">Applied Math 202</td>
+<td class="p-3 text-right">32.0</td>
+<td class="p-3 text-right">12,500</td>
+<td class="p-3 text-right">400,000</td>
+<td class="p-3 text-right text-error">-44,000</td>
+<td class="p-3 text-right font-medium text-primary">356,000</td>
+<td class="p-3 text-center">
+<span class="px-2 py-0.5 rounded bg-[#e6f4ea] text-[#137333] text-[11px] border border-[#137333]/20">Validated</span>
+</td>
+</tr>
+<!-- Row 3 (Anomaly) -->
+<tr class="bg-error-container/20">
+<td class="p-3 text-center"><input class="rounded-sm border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-3 text-secondary">V-9012</td>
+<td class="p-3 font-medium font-body-sm text-on-surface flex items-center gap-2">
+                                    Jean-Paul Sartre 
+                                    <span class="material-symbols-outlined text-error text-[14px]" title="Hours exceed weekly cap">warning</span>
+</td>
+<td class="p-3 text-secondary">Intro Philosophy</td>
+<td class="p-3 text-right text-error font-bold">65.0</td>
+<td class="p-3 text-right">10,000</td>
+<td class="p-3 text-right">650,000</td>
+<td class="p-3 text-right text-error">-71,500</td>
+<td class="p-3 text-right font-medium text-primary">578,500</td>
+<td class="p-3 text-center">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container text-[11px]">Flagged</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr>
+<td class="p-3 text-center"><input class="rounded-sm border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-3 text-secondary">V-8955</td>
+<td class="p-3 font-medium font-body-sm text-on-surface">Dr. Fatou Ndiaye</td>
+<td class="p-3 text-secondary">Organic Chemistry Lab</td>
+<td class="p-3 text-right">24.0</td>
+<td class="p-3 text-right">15,000</td>
+<td class="p-3 text-right">360,000</td>
+<td class="p-3 text-right text-error">-39,600</td>
+<td class="p-3 text-right font-medium text-primary">320,400</td>
+<td class="p-3 text-center">
+<span class="px-2 py-0.5 rounded bg-[#e6f4ea] text-[#137333] text-[11px] border border-[#137333]/20">Validated</span>
+</td>
+</tr>
+<!-- Add more rows as needed to fill space visually -->
+<tr>
+<td class="p-3 text-center"><input class="rounded-sm border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-3 text-secondary">V-8960</td>
+<td class="p-3 font-medium font-body-sm text-on-surface">Emmanuel Osei</td>
+<td class="p-3 text-secondary">Computer Sci 101</td>
+<td class="p-3 text-right">40.0</td>
+<td class="p-3 text-right">12,000</td>
+<td class="p-3 text-right">480,000</td>
+<td class="p-3 text-right text-error">-52,800</td>
+<td class="p-3 text-right font-medium text-primary">427,200</td>
+<td class="p-3 text-center">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[11px]">Pending</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-3 border-t border-outline-variant bg-surface-container-lowest rounded-b-lg flex justify-between items-center text-label-md font-label-md text-secondary">
+<div>Showing 1 to 5 of 42 entries</div>
+<div class="flex gap-1">
+<button class="p-1 rounded hover:bg-surface-container-low disabled:opacity-50"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="px-2 py-1 rounded bg-primary-container text-on-primary-container">1</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container-low">2</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container-low">3</button>
+<button class="p-1 rounded hover:bg-surface-container-low"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Bar for Mass Pay (Docked at bottom of screen, above canvas) -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[80%] max-w-4xl glass-panel rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-4 flex items-center justify-between z-30 border border-outline-variant/50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-[#f6a800]/20 flex items-center justify-center border border-[#f6a800]/30">
+<!-- MoMo Icon abstraction -->
+<span class="material-symbols-outlined text-[#f6a800]">send_to_mobile</span>
+</div>
+<div>
+<h4 class="text-headline-md font-headline-md text-on-surface m-0 leading-tight">Virement Groupé API Mass-Pay MoMo</h4>
+<p class="text-label-md font-label-md text-secondary mt-1">2 Validated Contractors selected for immediate transfer.</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<div class="text-label-md font-label-md text-secondary uppercase">Selected Total</div>
+<div class="text-headline-lg font-headline-lg font-bold text-primary">FCFA 676,400</div>
+</div>
+<button class="px-6 py-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+                    Execute Mass-Pay
+                </button>
+</div>
+</div>
+</div>
+</body></html>
