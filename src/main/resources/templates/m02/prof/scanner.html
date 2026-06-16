@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scanner présence - ASMACS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+</head>
+<body class="bg-slate-50 text-slate-950">
+<main class="mx-auto max-w-7xl px-6 py-8">
+  <a class="text-sm font-semibold text-blue-700 hover:underline" href="/m02/prof">Retour aux cours</a>
+  <section class="mt-4 rounded-lg border bg-white p-6 shadow-sm">
+    <p class="text-xs font-semibold uppercase text-blue-700" th:text="${seance.dateSeance}">Date</p>
+    <h1 class="text-3xl font-bold" th:text="${seance.matiereNom ?: 'Séance'}">Séance</h1>
+    <p class="mt-2 text-slate-600" th:text="${seance.classeNom ?: '-'}">Classe</p>
+  </section>
+
+  <section class="mt-6 overflow-hidden rounded-lg border bg-white shadow-sm">
+    <table class="w-full text-left text-sm">
+      <thead class="bg-slate-100 text-xs uppercase text-slate-600">
+      <tr><th class="px-4 py-3">Élève</th><th class="px-4 py-3">Statut</th><th class="px-4 py-3">Méthode</th><th class="px-4 py-3">Action</th></tr>
+      </thead>
+      <tbody class="divide-y">
+      <tr th:if="${#lists.isEmpty(presences)}"><td colspan="4" class="px-4 py-8 text-center text-slate-500">Aucune présence initialisée.</td></tr>
+      <tr th:each="p : ${presences}">
+        <td class="px-4 py-3"><p class="font-semibold" th:text="${p.nomComplet}">Élève</p><p class="text-xs text-slate-500" th:text="${p.eleveMatricule}">Matricule</p></td>
+        <td class="px-4 py-3" th:text="${p.statut}">STATUT</td>
+        <td class="px-4 py-3" th:text="${p.methodeValidation ?: '-'}">-</td>
+        <td class="px-4 py-3">
+          <form class="flex gap-2" action="/m02/prof/modifier-presence" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <input type="hidden" name="presenceId" th:value="${p.id}">
+            <input type="hidden" name="seanceId" th:value="${seance.id}">
+            <select class="rounded border-slate-300 text-sm" name="statut">
+              <option value="PRESENT">Présent</option><option value="ABSENT">Absent</option><option value="RETARD">Retard</option>
+            </select>
+            <button class="rounded bg-blue-700 px-3 py-1.5 text-white">Modifier</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail séance - ASMACS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+</head>
+<body class="bg-slate-50 text-slate-950">
+<main class="mx-auto max-w-7xl px-6 py-8">
+  <a class="text-sm font-semibold text-blue-700 hover:underline" href="/m02/liste">Retour aux séances</a>
+  <section class="mt-4 rounded-lg border bg-white p-6 shadow-sm">
+    <div class="flex flex-col justify-between gap-4 md:flex-row">
+      <div>
+        <p class="text-xs font-semibold uppercase text-blue-700" th:text="${seance.dateSeance}">Date</p>
+        <h1 class="text-3xl font-bold" th:text="${seance.matiereNom ?: 'Séance'}">Séance</h1>
+        <p class="mt-2 text-slate-600" th:text="${(seance.classeNom ?: '-') + ' • ' + (seance.enseignantNom ?: '-')}">Classe</p>
+      </div>
+      <div class="flex gap-2">
+        <form th:action="@{/m02/seance/{id}/demarrer(id=${seance.id})}" method="post">
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+          <button class="rounded bg-blue-700 px-4 py-2 font-semibold text-white">Démarrer</button>
+        </form>
+        <form th:action="@{/m02/seance/{id}/terminer(id=${seance.id})}" method="post">
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+          <button class="rounded border px-4 py-2 font-semibold hover:bg-slate-100">Terminer</button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-6 grid gap-4 md:grid-cols-5">
+      <div class="rounded border bg-slate-50 p-4"><p class="text-sm text-slate-500">Présents</p><p class="text-2xl font-bold text-emerald-700" th:text="${seance.nbPresents}">0</p></div>
+      <div class="rounded border bg-slate-50 p-4"><p class="text-sm text-slate-500">Absents</p><p class="text-2xl font-bold text-red-700" th:text="${seance.nbAbsents}">0</p></div>
+      <div class="rounded border bg-slate-50 p-4"><p class="text-sm text-slate-500">Retards</p><p class="text-2xl font-bold text-amber-700" th:text="${seance.nbRetards}">0</p></div>
+      <div class="rounded border bg-slate-50 p-4"><p class="text-sm text-slate-500">Fraudes</p><p class="text-2xl font-bold text-red-700" th:text="${seance.nbFraudes}">0</p></div>
+      <div class="rounded border bg-slate-50 p-4"><p class="text-sm text-slate-500">Taux</p><p class="text-2xl font-bold text-blue-700" th:text="${seance.tauxPresence + '%'}">0%</p></div>
+    </div>
+  </section>
+
+  <section class="mt-6 overflow-hidden rounded-lg border bg-white shadow-sm">
+    <table class="w-full text-left text-sm">
+      <thead class="bg-slate-100 text-xs uppercase text-slate-600">
+      <tr><th class="px-4 py-3">Élève</th><th class="px-4 py-3">Arrivée</th><th class="px-4 py-3">Méthode</th><th class="px-4 py-3">Statut</th><th class="px-4 py-3">Modifier</th></tr>
+      </thead>
+      <tbody class="divide-y">
+      <tr th:if="${#lists.isEmpty(presences)}"><td colspan="5" class="px-4 py-8 text-center text-slate-500">Aucune présence enregistrée.</td></tr>
+      <tr th:each="p : ${presences}">
+        <td class="px-4 py-3"><p class="font-semibold" th:text="${p.nomComplet}">Élève</p><p class="text-xs text-slate-500" th:text="${p.eleveMatricule}">Matricule</p></td>
+        <td class="px-4 py-3" th:text="${p.heureArrivee ?: '-'}">-</td>
+        <td class="px-4 py-3" th:text="${p.methodeValidation ?: '-'}">-</td>
+        <td class="px-4 py-3" th:text="${p.statut}">STATUT</td>
+        <td class="px-4 py-3">
+          <form class="flex gap-2" th:action="@{/m02/presence/{id}/modifier(id=${p.id})}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <input type="hidden" name="seanceId" th:value="${seance.id}">
+            <select class="rounded border-slate-300 text-sm" name="statut">
+              <option value="PRESENT">Présent</option><option value="ABSENT">Absent</option><option value="RETARD">Retard</option>
+            </select>
+            <button class="rounded bg-blue-700 px-3 py-1.5 text-white">OK</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

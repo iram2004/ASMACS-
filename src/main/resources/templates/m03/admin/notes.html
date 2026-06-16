@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+
+  <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:18px;">
+    <div>
+      <h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Examens &amp; notes</h1>
+      <p style="margin:5px 0 0;color:#6B7A71;font-size:14px;" th:text="'Relevé · ' + ${releve.classeNom} + ' · ' + ${releve.matiereNom} + ' · Séquence ' + ${releve.sequence}">Relevé</p>
+    </div>
+    <form method="get" th:action="@{/m03/admin/notes}" style="margin-left:auto;display:flex;gap:9px;align-items:center;">
+      <select name="classe" onchange="this.form.submit()" style="background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#3A4A42;font-family:inherit;">
+        <option th:each="c : ${classes}" th:value="${c.id}" th:text="${c.nom}" th:selected="${c.id == selClasse}"></option>
+      </select>
+      <select name="matiere" onchange="this.form.submit()" style="background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#3A4A42;font-family:inherit;">
+        <option th:each="m : ${matieres}" th:value="${m.id}" th:text="${m.nom}" th:selected="${m.id == selMatiere}"></option>
+      </select>
+      <select name="sequence" onchange="this.form.submit()" style="background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#3A4A42;font-family:inherit;">
+        <option th:each="s : ${#numbers.sequence(1,6)}" th:value="${s}" th:text="'Séquence ' + ${s}" th:selected="${s == releve.sequence}"></option>
+      </select>
+    </form>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.7fr 1fr;gap:16px;">
+    <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+      <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;padding:13px 18px;background:#FAF7F0;border-bottom:1px solid #ECE7DA;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:#9BA89F;font-weight:700;">
+        <span>Élève</span><span style="text-align:center;">Interro</span><span style="text-align:center;">Devoir</span><span style="text-align:center;">Compo</span><span style="text-align:center;">Moy/20</span><span style="text-align:center;">Rang</span><span>Appréciation</span>
+      </div>
+      <div th:each="g : ${releve.lignes}" style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;align-items:center;padding:11px 18px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+        <span style="display:flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;" th:text="${g.ini}">NA</span><b style="font-weight:600;font-size:12.5px;" th:text="${g.nom}">Nom</b></span>
+        <span class="mono" style="text-align:center;color:#6B7A71;" th:text="${g.interro}">—</span>
+        <span class="mono" style="text-align:center;color:#6B7A71;" th:text="${g.devoir}">—</span>
+        <span class="mono" style="text-align:center;color:#6B7A71;" th:text="${g.compo}">—</span>
+        <span class="mono" style="text-align:center;" th:style="${g.moyStyle}" th:text="${g.moy}">—</span>
+        <span class="mono" style="text-align:center;color:#6B7A71;" th:text="${g.rang} ?: '—'">—</span>
+        <span style="font-size:12px;color:#3A4A42;" th:text="${g.appreciation}">—</span>
+      </div>
+      <div style="padding:12px 18px;font-size:12.5px;color:#8D9A91;display:flex;justify-content:space-between;">
+        <span th:text="${releve.effectif} + ' élèves · saisie hors ligne synchronisée'">élèves</span>
+        <span style="color:#0F7B4F;font-weight:700;">✓ Anti-triche activé</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12px;color:#8D9A91;font-weight:600;">Moyenne classe</div><div style="font-size:25px;font-weight:800;color:#0F7B4F;margin-top:4px;"><span th:text="${releve.moyClasse}">12,4</span><span style="font-size:13px;color:#8D9A91;">/20</span></div></div>
+        <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12px;color:#8D9A91;font-weight:600;">Taux de réussite</div><div style="font-size:25px;font-weight:800;margin-top:4px;"><span th:text="${releve.tauxReussite}">71</span><span style="font-size:13px;color:#8D9A91;">%</span></div></div>
+      </div>
+      <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+        <div style="font-weight:700;font-size:14px;margin-bottom:14px;">Distribution des moyennes</div>
+        <div style="display:flex;align-items:flex-end;gap:9px;height:120px;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;"><div style="width:100%;border-radius:5px 5px 0 0;background:#FAD4DB;" th:style="'width:100%;border-radius:5px 5px 0 0;background:#FAD4DB;height:' + ${releve.distribution[0]} + '%;'"></div><span style="font-size:10px;color:#8D9A91;">0–8</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;"><div th:style="'width:100%;border-radius:5px 5px 0 0;background:#F6E0AE;height:' + ${releve.distribution[1]} + '%;'"></div><span style="font-size:10px;color:#8D9A91;">8–10</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;"><div th:style="'width:100%;border-radius:5px 5px 0 0;background:#9FCBB4;height:' + ${releve.distribution[2]} + '%;'"></div><span style="font-size:10px;color:#8D9A91;">10–14</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;"><div th:style="'width:100%;border-radius:5px 5px 0 0;background:#0F7B4F;height:' + ${releve.distribution[3]} + '%;'"></div><span style="font-size:10px;color:#8D9A91;">14–20</span></div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;border-radius:14px;padding:18px;box-shadow:0 14px 28px -18px rgba(15,123,79,.8);">
+        <b style="font-size:13.5px;">Module M03 · Pédagogie</b>
+        <p style="margin:8px 0 0;font-size:12.5px;line-height:1.5;color:#E7F3EC;">Relevé calculé en temps réel à partir des notes saisies par les enseignants. Moyennes pondérées par coefficient de matière.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

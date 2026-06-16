@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:20px;">
+              <div><h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Finance & paiements</h1><p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">Recouvrement scolarité · année 2025–2026</p></div>
+              <div style="margin-left:auto;display:flex;gap:9px;">
+                <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#3A4A42;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5V4.5"></path><path d="M8 8l4-4 4 4"></path><path d="M5 15.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5"></path></svg> Exporter</div>
+                <div style="display:flex;align-items:center;gap:8px;background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;">+ Émettre une quittance</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Encaissé</div><div style="font-size:23px;font-weight:800;color:#0F7B4F;margin-top:4px;" class="mono">312,4 M</div><div style="font-size:11.5px;color:#8D9A91;">FCFA · 78%</div></div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Reste à recouvrer</div><div style="font-size:23px;font-weight:800;margin-top:4px;" class="mono">87,6 M</div><div style="font-size:11.5px;color:#8D9A91;">FCFA · 22%</div></div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Via Mobile Money</div><div style="font-size:23px;font-weight:800;color:#B5870A;margin-top:4px;">64<span style="font-size:13px;color:#8D9A91;">%</span></div><div style="font-size:11.5px;color:#8D9A91;">MTN + Orange</div></div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Élèves en impayé</div><div style="font-size:23px;font-weight:800;color:#C8102E;margin-top:4px;">142</div><div style="font-size:11.5px;color:#8D9A91;">relances automatiques</div></div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px;"><div style="font-weight:700;font-size:15px;">Transactions récentes</div><span style="font-size:12.5px;color:#0F7B4F;font-weight:700;">Voir tout →</span></div>
+                <div style="display:grid;grid-template-columns:.7fr 1.8fr 1fr 1fr 1fr;gap:10px;padding:10px 20px;background:#FAF7F0;border-top:1px solid #ECE7DA;border-bottom:1px solid #ECE7DA;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:#9BA89F;font-weight:700;">
+                  <span>Date</span><span>Objet</span><span>Méthode</span><span style="text-align:right;">Montant</span><span style="text-align:right;">Statut</span>
+                </div>
+                
+                  <div style="display:grid;grid-template-columns:.7fr 1.8fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="color:#8D9A91;font-size:12px;">16 juin</span>
+                    <span><div style="font-weight:600;font-size:13px;">Scolarité · 2ᵉ tranche</div><div style="font-size:11.5px;color:#8D9A91;">Nanda Arnold — 3ᵉ A</div></span>
+                    <span><span style="background:#FBE9C7;color:#9A6A00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">MoMo</span></span>
+                    <span class="mono" style="text-align:right;font-weight:700;">60 000</span>
+                    <span style="text-align:right;"><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Encaissé</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:.7fr 1.8fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="color:#8D9A91;font-size:12px;">16 juin</span>
+                    <span><div style="font-weight:600;font-size:13px;">Frais d’inscription</div><div style="font-size:11.5px;color:#8D9A91;">Kom William — 2nde C</div></span>
+                    <span><span style="background:#FCE3D2;color:#B5470A;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Orange M.</span></span>
+                    <span class="mono" style="text-align:right;font-weight:700;">25 000</span>
+                    <span style="text-align:right;"><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Encaissé</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:.7fr 1.8fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="color:#8D9A91;font-size:12px;">15 juin</span>
+                    <span><div style="font-weight:600;font-size:13px;">Scolarité · 3ᵉ tranche</div><div style="font-size:11.5px;color:#8D9A91;">Kangue Dominique — Tle D</div></span>
+                    <span><span style="background:#FBE9C7;color:#9A6A00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">MoMo</span></span>
+                    <span class="mono" style="text-align:right;font-weight:700;">60 000</span>
+                    <span style="text-align:right;"><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Encaissé</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:.7fr 1.8fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="color:#8D9A91;font-size:12px;">15 juin</span>
+                    <span><div style="font-weight:600;font-size:13px;">Frais de transport</div><div style="font-size:11.5px;color:#8D9A91;">Ebongue Wilfried — 6ᵉ B</div></span>
+                    <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Espèces</span></span>
+                    <span class="mono" style="text-align:right;font-weight:700;">45 000</span>
+                    <span style="text-align:right;"><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Encaissé</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:.7fr 1.8fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="color:#8D9A91;font-size:12px;">14 juin</span>
+                    <span><div style="font-weight:600;font-size:13px;">Scolarité · 1ʳᵉ tranche</div><div style="font-size:11.5px;color:#8D9A91;">Epesse Yann — 2nde A</div></span>
+                    <span><span style="background:#E6F0F4;color:#2A7AA0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Virement</span></span>
+                    <span class="mono" style="text-align:right;font-weight:700;">70 000</span>
+                    <span style="text-align:right;"><span style="background:#FBF1D5;color:#B5870A;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">En attente</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:.7fr 1.8fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="color:#8D9A91;font-size:12px;">14 juin</span>
+                    <span><div style="font-weight:600;font-size:13px;">Cantine · juin</div><div style="font-size:11.5px;color:#8D9A91;">Nangue Mégane — 1ʳᵉ A</div></span>
+                    <span><span style="background:#FBE9C7;color:#9A6A00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">MoMo</span></span>
+                    <span class="mono" style="text-align:right;font-weight:700;">18 000</span>
+                    <span style="text-align:right;"><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Encaissé</span></span>
+                  </div>
+                
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:20px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                  <div style="font-weight:700;font-size:14px;margin-bottom:16px;">Répartition par méthode</div>
+                  <div style="display:flex;align-items:center;gap:18px;">
+                    <div style="width:118px;height:118px;border-radius:50%;background:conic-gradient(#E0A911 0 42%,#C8102E 42% 64%,#0F7B4F 64% 86%,#2A7AA0 86% 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;"><div style="font-size:17px;font-weight:800;">64%</div><div style="font-size:9.5px;color:#8D9A91;">MoMo+OM</div></div></div>
+                    <div style="flex:1;display:flex;flex-direction:column;gap:9px;">
+                      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;"><span style="width:9px;height:9px;border-radius:3px;background:#E0A911;"></span>MTN MoMo<b style="margin-left:auto;" class="mono">42%</b></div>
+                      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;"><span style="width:9px;height:9px;border-radius:3px;background:#C8102E;"></span>Orange Money<b style="margin-left:auto;" class="mono">22%</b></div>
+                      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;"><span style="width:9px;height:9px;border-radius:3px;background:#0F7B4F;"></span>Espèces<b style="margin-left:auto;" class="mono">22%</b></div>
+                      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;"><span style="width:9px;height:9px;border-radius:3px;background:#2A7AA0;"></span>Virement<b style="margin-left:auto;" class="mono">14%</b></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg,#1A1A2E,#0C1F16);color:#fff;border-radius:14px;padding:18px;box-shadow:0 14px 28px -18px rgba(0,0,0,.6);">
+                  <div style="font-size:12.5px;color:#A9D3BF;margin-bottom:4px;">Encaissé aujourd'hui · Mobile Money</div>
+                  <div class="mono" style="font-size:26px;font-weight:800;">1 240 000 <span style="font-size:14px;color:#9FB2A8;">FCFA</span></div>
+                  <div style="display:flex;gap:8px;margin-top:14px;"><span style="flex:1;background:rgba(224,169,17,.18);color:#FFD86B;text-align:center;font-size:12px;font-weight:700;padding:8px;border-radius:9px;">MTN · 18 paiements</span><span style="flex:1;background:rgba(200,16,46,.18);color:#FF9DAE;text-align:center;font-size:12px;font-weight:700;padding:8px;border-radius:9px;">Orange · 9</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

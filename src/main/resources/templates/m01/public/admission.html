@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASMACS - Portail d'Admission</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-400-normal.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-500-normal.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-600-normal.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-700-normal.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/jetbrains-mono@latest/latin-400-normal.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/jetbrains-mono@latest/latin-500-normal.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+        body { font-family: 'Geist', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid theme('colors.outline-variant');
+        }
+        .step-active {
+            border-color: theme('colors.primary');
+            background-color: theme('colors.primary');
+            color: theme('colors.on-primary');
+        }
+        .step-inactive {
+            border-color: theme('colors.outline-variant');
+            color: theme('colors.outline');
+        }
+        .step-completed {
+            border-color: theme('colors.primary');
+            background-color: theme('colors.surface-container-low');
+            color: theme('colors.primary');
+        }
+        .form-input {
+            border-bottom: 1px solid theme('colors.outline-variant');
+            transition: border-color 0.2s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-bottom: 2px solid theme('colors.primary');
+        }
+        .ghost-divider { border-bottom: 1px solid theme('colors.outline-variant'); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004d67",
+                        "secondary": "#006688",
+                        "on-primary-fixed": "#001452",
+                        "surface-variant": "#dae2fd",
+                        "on-secondary-fixed": "#001e2b",
+                        "tertiary": "#3737c5",
+                        "surface-container-low": "#f2f3ff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#737688",
+                        "on-surface-variant": "#434656",
+                        "surface-container-highest": "#dae2fd",
+                        "on-tertiary-fixed": "#07006c",
+                        "tertiary-fixed": "#e1e0ff",
+                        "secondary-container": "#00c1fd",
+                        "background": "#faf8ff",
+                        "inverse-surface": "#283044",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#e3e2ff",
+                        "surface-bright": "#faf8ff",
+                        "primary": "#003ec7",
+                        "surface": "#faf8ff",
+                        "primary-container": "#0052ff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#004b65",
+                        "surface-dim": "#d2d9f4",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "tertiary-container": "#5153de",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c3c5d9",
+                        "surface-container-high": "#e2e7ff",
+                        "primary-fixed": "#dde1ff",
+                        "inverse-primary": "#b7c4ff",
+                        "on-background": "#131b2e",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "surface-container": "#eaedff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#c2e8ff",
+                        "on-primary-container": "#dfe3ff",
+                        "surface-tint": "#004ced",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#75d1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "container-max": "1280px",
+                        "xl": "64px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-sm": ["Geist"],
+                        "label-caps": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "mono-data": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "body-sm": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-sm": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-lg": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-sm": ["18px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "mono-data": ["13px", { "lineHeight": "1.5", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-white/70 backdrop-blur-md border-b border-outline-variant/30 shadow-sm shadow-primary/5">
+<div class="flex items-center gap-lg">
+<div class="font-display-sm text-display-sm font-bold text-primary dark:text-primary-fixed-dim tracking-tight">ASMACS</div>
+<div class="hidden md:flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-lg text-body-lg py-1" href="/interfaces/fonctionnalit_s_asmacs_suite">Features</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-lg text-body-lg py-1" href="/interfaces/tarification_asmacs_suite">Pricing</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-lg text-body-lg" href="/interfaces/portail_d_admission_asmacs">Admissions</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-sm py-xs rounded-DEFAULT font-body-sm text-body-sm hover:opacity-90 transition-opacity flex items-center gap-xs scale-down-click: 0.98" onclick="location.href='/interfaces/connexion_s_curis_e_asmacs'" type="button">
+<span>Essai Gratuit</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow pt-24 pb-xl px-4 md:px-gutter max-w-container-max mx-auto w-full flex flex-col md:flex-row gap-gutter">
+<!-- Left Sidebar / Assistance -->
+<aside class="w-full md:w-[280px] flex-shrink-0 order-2 md:order-1 mt-md md:mt-0">
+<div class="glass-panel rounded-lg p-md sticky top-32">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Besoin d'aide ?</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Notre équipe d'admission est disponible pour vous accompagner dans ce processus.</p>
+<div class="space-y-sm">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">call</span>
+<div>
+<div class="font-label-caps text-label-caps text-outline mb-xs">TÉLÉPHONE</div>
+<div class="font-mono-data text-mono-data text-on-surface">+237 6XX XXX XXX</div>
+</div>
+</div>
+<div class="ghost-divider my-sm"></div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">mail</span>
+<div>
+<div class="font-label-caps text-label-caps text-outline mb-xs">EMAIL</div>
+<div class="font-mono-data text-mono-data text-on-surface">admissions@asmacs.edu</div>
+</div>
+</div>
+</div>
+<div class="mt-md p-sm bg-surface-container-low rounded-DEFAULT border border-primary-fixed">
+<div class="flex items-center gap-xs mb-xs">
+<span class="material-symbols-outlined text-primary text-[16px]">verified_user</span>
+<span class="font-label-caps text-label-caps text-primary">CONNEXION SÉCURISÉE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px] leading-tight">Toutes les données transmises sont chiffrées de bout en bout pour garantir la sécurité de vos informations.</p>
+</div>
+</div>
+</aside>
+<!-- Main Form Area -->
+<div class="flex-grow order-1 md:order-2">
+<div class="mb-lg">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm">Inscription Élève</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Veuillez remplir les informations ci-dessous pour procéder à l'inscription. Assurez-vous de l'exactitude des données.</p>
+</div>
+<!-- Step Indicator -->
+<div class="flex items-center justify-between mb-lg relative">
+<div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-[2px] bg-outline-variant z-0"></div>
+<div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/3 h-[2px] bg-primary z-0 transition-all duration-300"></div>
+<div class="relative z-10 flex flex-col items-center gap-xs bg-background px-sm">
+<div class="w-8 h-8 rounded-full border-2 step-active flex items-center justify-center font-label-caps text-label-caps">1</div>
+<span class="font-label-caps text-label-caps text-primary">INFORMATIONS</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-xs bg-background px-sm">
+<div class="w-8 h-8 rounded-full border-2 step-inactive bg-surface flex items-center justify-center font-label-caps text-label-caps">2</div>
+<span class="font-label-caps text-label-caps text-outline">DOCUMENTS</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-xs bg-background px-sm">
+<div class="w-8 h-8 rounded-full border-2 step-inactive bg-surface flex items-center justify-center font-label-caps text-label-caps">3</div>
+<span class="font-label-caps text-label-caps text-outline">PAIEMENT</span>
+</div>
+</div>
+<!-- Form Container -->
+<div class="glass-panel rounded-lg p-lg rounded-tr-none shadow-sm shadow-primary/5 hover:shadow-primary/10 transition-shadow">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Étape 1 : Informations Élève</h2>
+<form class="space-y-lg">
+<!-- Personal Info -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-xs" for="nom">NOM DE FAMILLE</label>
+<input class="form-input bg-transparent py-sm font-body-lg text-body-lg text-on-surface placeholder-outline focus:ring-0 border-0 border-b border-outline-variant" id="nom" placeholder="Saisir le nom" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-xs" for="prenom">PRÉNOMS</label>
+<input class="form-input bg-transparent py-sm font-body-lg text-body-lg text-on-surface placeholder-outline focus:ring-0 border-0 border-b border-outline-variant" id="prenom" placeholder="Saisir les prénoms" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-xs" for="date_naissance">DATE DE NAISSANCE</label>
+<input class="form-input bg-transparent py-sm font-body-lg text-body-lg text-on-surface placeholder-outline focus:ring-0 border-0 border-b border-outline-variant" id="date_naissance" type="date"/>
+</div>
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-xs" for="lieu_naissance">LIEU DE NAISSANCE</label>
+<input class="form-input bg-transparent py-sm font-body-lg text-body-lg text-on-surface placeholder-outline focus:ring-0 border-0 border-b border-outline-variant" id="lieu_naissance" placeholder="Ville, Pays" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-xs" for="genre">GENRE</label>
+<select class="form-input bg-transparent py-sm font-body-lg text-body-lg text-on-surface placeholder-outline focus:ring-0 border-0 border-b border-outline-variant" id="genre">
+<option disabled="" selected="" value="">Sélectionner le genre</option>
+<option value="m">Masculin</option>
+<option value="f">Féminin</option>
+</select>
+</div>
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-xs" for="nationalite">NATIONALITÉ</label>
+<input class="form-input bg-transparent py-sm font-body-lg text-body-lg text-on-surface placeholder-outline focus:ring-0 border-0 border-b border-outline-variant" id="nationalite" placeholder="Camerounaise" type="text" value="Camerounaise"/>
+</div>
+</div>
+<div class="ghost-divider my-md"></div>
+<!-- Academic Info -->
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Informations Académiques</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-xs" for="classe_demandee">CLASSE DEMANDÉE</label>
+<select class="form-input bg-transparent py-sm font-body-lg text-body-lg text-on-surface placeholder-outline focus:ring-0 border-0 border-b border-outline-variant" id="classe_demandee">
+<option disabled="" selected="" value="">Sélectionner la classe</option>
+<option value="6eme">6ème</option>
+<option value="5eme">5ème</option>
+<option value="4eme">4ème</option>
+<option value="3eme">3ème</option>
+</select>
+</div>
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-xs" for="etablissement_provenance">ÉTABLISSEMENT DE PROVENANCE</label>
+<input class="form-input bg-transparent py-sm font-body-lg text-body-lg text-on-surface placeholder-outline focus:ring-0 border-0 border-b border-outline-variant" id="etablissement_provenance" placeholder="Nom de l'école" type="text"/>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex justify-end gap-sm mt-lg pt-md ghost-divider border-t">
+<button class="px-md py-sm rounded-DEFAULT font-body-sm text-body-sm text-on-surface-variant border border-outline-variant hover:bg-surface-container-low transition-colors" onclick="location.href='/interfaces/connexion_s_curis_e_asmacs'" type="button">
+                            Enregistrer le brouillon
+                        </button>
+<button class="bg-primary text-on-primary px-md py-sm rounded-DEFAULT font-body-sm text-body-sm hover:opacity-90 transition-opacity flex items-center gap-xs" onclick="location.href='/interfaces/test_de_niveau_supervis_par_ia_asmacs'" type="button">
+<span>Étape Suivante</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface w-full py-xl border-t border-outline-variant flex flex-col items-center gap-md px-gutter text-center">
+<div class="font-headline-sm text-headline-sm font-black text-on-surface dark:text-inverse-on-surface">ASMACS</div>
+<div class="flex gap-md font-body-sm text-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors opacity-80 hover:opacity-100" href="/interfaces/contact_d_mo_asmacs_suite">Contact</a>
+<a class="hover:text-primary transition-colors opacity-80 hover:opacity-100" href="/interfaces/mentions_l_gales_confidentialit_admin_suite">Privacy</a>
+<a class="hover:text-primary transition-colors opacity-80 hover:opacity-100" href="/interfaces/mentions_l_gales_confidentialit_admin_suite">Terms</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface dark:text-inverse-on-surface">© 2024 ASMACS. 100% Cameroonian Excellence.</p>
+</footer>
+</body></html>

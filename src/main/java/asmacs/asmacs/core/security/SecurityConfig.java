@@ -49,6 +49,7 @@ public class SecurityConfig {
                                 "/js/**",
                                 "/images/**",
                                 "/uploads/**",
+                                "/maquette/**",
                                 "/webjars/**",
                                 "/favicon.ico"
                         ).permitAll()
@@ -78,12 +79,22 @@ public class SecurityConfig {
                                 "DIRECTEUR"
                         )
 
-                        .requestMatchers("/m04/**")
-                        .hasAnyRole(
-                                "ADMIN",
-                                "DIRECTEUR",
-                                "SECRETAIRE"
-                        )
+                        // M04 — Classes & emplois du temps
+                        .requestMatchers("/m04/admin/**")
+                        .hasAnyRole("ADMIN", "DIRECTEUR", "SECRETAIRE", "ENSEIGNANT")
+
+                        .requestMatchers("/m04/eleve/**")
+                        .hasAnyRole("ELEVE", "PARENT", "ADMIN", "DIRECTEUR", "ENSEIGNANT")
+
+                        // M03 — Pédagogie / Notes
+                        .requestMatchers("/m03/prof/**")
+                        .hasAnyRole("ENSEIGNANT", "ADMIN", "DIRECTEUR")
+
+                        .requestMatchers("/m03/admin/**")
+                        .hasAnyRole("ADMIN", "DIRECTEUR", "INSPECTEUR", "ENSEIGNANT")
+
+                        .requestMatchers("/m03/eleve/**")
+                        .hasAnyRole("ELEVE", "PARENT", "ADMIN", "DIRECTEUR", "ENSEIGNANT")
 
                         .anyRequest()
                         .authenticated()

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:900px;margin:0 auto;">
+
+  <div style="margin-bottom:18px;">
+    <h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Mon emploi du temps</h1>
+    <p style="margin:5px 0 0;color:#6B7A71;font-size:14px;" th:text="${edt.classeNom} + ' · semaine en cours'">Classe</p>
+  </div>
+
+  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);overflow:auto;">
+    <div style="display:grid;grid-template-columns:54px repeat(5,1fr);gap:7px;min-width:640px;">
+      <div></div>
+      <div th:each="j : ${edt.jours}" style="text-align:center;font-size:12px;font-weight:700;" th:text="${j.substring(0,3)}">Lun</div>
+
+      <th:block th:each="ligne : ${edt.lignes}">
+        <div class="mono" style="font-size:10px;color:#9BA89F;text-align:right;padding:6px 5px 0 0;" th:text="${ligne.creneau}">07–08</div>
+        <th:block th:each="cell : ${ligne.cellules}">
+          <div th:if="${cell.vide}" style="background:#F4F1E9;border:1px dashed #DAD3C2;color:#9BA89F;border-radius:8px;padding:8px;font-size:11px;font-weight:600;">Libre</div>
+          <div th:unless="${cell.vide}" th:style="'background:' + ${cell.bg} + ';color:' + ${cell.fg} + ';border-radius:8px;padding:8px;font-size:11px;font-weight:700;'" th:text="${cell.matiereNom}">Matière</div>
+        </th:block>
+      </th:block>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

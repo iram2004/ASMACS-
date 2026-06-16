@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions - ASMACS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-950">
+<main class="min-h-screen">
+  <header class="border-b bg-white">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wide text-blue-700">M01 Admissions</p>
+        <h1 class="text-2xl font-bold">Gestion des candidatures</h1>
+      </div>
+      <nav class="flex gap-2 text-sm">
+        <a class="rounded border px-3 py-2 hover:bg-slate-100" href="/dashboard">Dashboard</a>
+        <a class="rounded bg-blue-700 px-3 py-2 text-white" href="/m01/classement">Classement</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="mx-auto max-w-7xl px-6 py-6">
+    <div th:if="${succes}" class="mb-4 rounded border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-800" th:text="${succes}"></div>
+    <div th:if="${erreur}" class="mb-4 rounded border border-red-200 bg-red-50 px-4 py-3 text-red-800" th:text="${erreur}"></div>
+
+    <div class="grid gap-4 md:grid-cols-5">
+      <a class="rounded-lg border bg-white p-4 shadow-sm" href="/m01">
+        <p class="text-sm text-slate-500">Total</p>
+        <p class="mt-2 text-3xl font-bold" th:text="${nbTotal ?: 0}">0</p>
+      </a>
+      <a class="rounded-lg border bg-white p-4 shadow-sm" href="/m01?statut=EN_ATTENTE">
+        <p class="text-sm text-slate-500">En attente</p>
+        <p class="mt-2 text-3xl font-bold text-amber-600" th:text="${nbAttente ?: 0}">0</p>
+      </a>
+      <a class="rounded-lg border bg-white p-4 shadow-sm" href="/m01?statut=VALIDE">
+        <p class="text-sm text-slate-500">Validées</p>
+        <p class="mt-2 text-3xl font-bold text-emerald-700" th:text="${nbValides ?: 0}">0</p>
+      </a>
+      <a class="rounded-lg border bg-white p-4 shadow-sm" href="/m01?statut=REJETE">
+        <p class="text-sm text-slate-500">Rejetées</p>
+        <p class="mt-2 text-3xl font-bold text-red-700" th:text="${nbRejetes ?: 0}">0</p>
+      </a>
+      <a class="rounded-lg border bg-white p-4 shadow-sm" href="/m01?statut=PAIEMENT_ATTENTE">
+        <p class="text-sm text-slate-500">Paiement</p>
+        <p class="mt-2 text-3xl font-bold text-blue-700" th:text="${nbPaiement ?: 0}">0</p>
+      </a>
+    </div>
+
+    <form class="mt-6 flex flex-col gap-3 rounded-lg border bg-white p-4 shadow-sm md:flex-row" method="get" action="/m01">
+      <input class="flex-1 rounded border-slate-300" name="q" placeholder="Rechercher nom, téléphone, numéro..." th:value="${q}">
+      <select class="rounded border-slate-300" name="statut">
+        <option value="">Tous les statuts</option>
+        <option value="EN_ATTENTE" th:selected="${statutFiltre == 'EN_ATTENTE'}">En attente</option>
+        <option value="VALIDE" th:selected="${statutFiltre == 'VALIDE'}">Validée</option>
+        <option value="REJETE" th:selected="${statutFiltre == 'REJETE'}">Rejetée</option>
+        <option value="PAIEMENT_ATTENTE" th:selected="${statutFiltre == 'PAIEMENT_ATTENTE'}">Paiement attendu</option>
+        <option value="TEST_EFFECTUE" th:selected="${statutFiltre == 'TEST_EFFECTUE'}">Test effectué</option>
+      </select>
+      <button class="rounded bg-blue-700 px-5 py-2 font-semibold text-white">Filtrer</button>
+    </form>
+
+    <div class="mt-6 overflow-hidden rounded-lg border bg-white shadow-sm">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-slate-100 text-xs uppercase tracking-wide text-slate-600">
+        <tr>
+          <th class="px-4 py-3">Candidat</th>
+          <th class="px-4 py-3">Niveau</th>
+          <th class="px-4 py-3">Score</th>
+          <th class="px-4 py-3">Paiement</th>
+          <th class="px-4 py-3">Statut</th>
+          <th class="px-4 py-3 text-right">Action</th>
+        </tr>
+        </thead>
+        <tbody class="divide-y">
+        <tr th:if="${#lists.isEmpty(candidatures)}">
+          <td class="px-4 py-8 text-center text-slate-500" colspan="6">Aucune candidature trouvée.</td>
+        </tr>
+        <tr th:each="c : ${candidatures}" class="hover:bg-slate-50">
+          <td class="px-4 py-3">
+            <p class="font-semibold" th:text="${c.nomComplet}">Nom candidat</p>
+            <p class="text-xs text-slate-500" th:text="${c.numeroCandidature ?: c.email}">REF</p>
+          </td>
+          <td class="px-4 py-3" th:text="${c.niveauDemande ?: c.filiereDemandee ?: '-'}">Niveau</td>
+          <td class="px-4 py-3" th:text="${c.scoreTest != null ? c.scoreTest + '%' : '-'}">-</td>
+          <td class="px-4 py-3" th:text="${c.paiementStatut ?: '-'}">-</td>
+          <td class="px-4 py-3">
+            <span class="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold" th:text="${c.statut}">STATUT</span>
+          </td>
+          <td class="px-4 py-3 text-right">
+            <a class="rounded border px-3 py-1.5 font-medium hover:bg-slate-100" th:href="@{/m01/{id}(id=${c.id})}">Ouvrir</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</body>
+</html>

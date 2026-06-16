@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:20px;">
+              <div><h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Admission en ligne</h1><p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">86 candidatures · formulaire, paiement et test de positionnement par IA</p></div>
+              <div style="margin-left:auto;display:flex;gap:9px;"><div style="background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5V4.5"></path><path d="M8 8l4-4 4 4"></path><path d="M5 15.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5"></path></svg> Exporter la liste</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+              <div style="background:#F4F1E9;border:1px solid #E4DFD1;border-radius:14px;padding:14px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;font-weight:800;">Nouveau dossier</span><span style="background:#fff;border:1px solid #E4DFD1;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;">23</span></div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:11px;padding:12px;box-shadow:0 4px 12px -10px rgba(20,40,30,.3);"><div style="font-weight:700;font-size:13px;">Mbarga Sandrine</div><div style="font-size:11.5px;color:#8D9A91;margin-top:2px;">Vers 2nde C · 14 ans</div><div style="margin-top:8px;display:flex;gap:6px;"><span style="background:#FAE5E9;color:#C8102E;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;">Paiement en attente</span></div></div>
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:11px;padding:12px;box-shadow:0 4px 12px -10px rgba(20,40,30,.3);"><div style="font-weight:700;font-size:13px;">Ndoumbe Kevin</div><div style="font-size:11.5px;color:#8D9A91;margin-top:2px;">Vers 6ᵉ · 11 ans</div><div style="margin-top:8px;display:flex;gap:6px;"><span style="background:#FAE5E9;color:#C8102E;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;">Pièces manquantes</span></div></div>
+                </div>
+              </div>
+              <div style="background:#F4F1E9;border:1px solid #E4DFD1;border-radius:14px;padding:14px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;font-weight:800;">Dossier complet</span><span style="background:#fff;border:1px solid #E4DFD1;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;">31</span></div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:11px;padding:12px;box-shadow:0 4px 12px -10px rgba(20,40,30,.3);"><div style="font-weight:700;font-size:13px;">Tchoupo Bertrand</div><div style="font-size:11.5px;color:#8D9A91;margin-top:2px;">Vers 1ʳᵉ D · 16 ans</div><div style="margin-top:8px;display:flex;gap:6px;"><span style="background:#E7F1EB;color:#0F7B4F;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;">Payé · MoMo</span></div></div>
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:11px;padding:12px;box-shadow:0 4px 12px -10px rgba(20,40,30,.3);"><div style="font-weight:700;font-size:13px;">Eyoum Larissa</div><div style="font-size:11.5px;color:#8D9A91;margin-top:2px;">Vers 4ᵉ · 13 ans</div><div style="margin-top:8px;display:flex;gap:6px;"><span style="background:#E7F1EB;color:#0F7B4F;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;">Payé · Orange</span></div></div>
+                </div>
+              </div>
+              <div style="background:#F4F1E9;border:1px solid #E4DFD1;border-radius:14px;padding:14px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;font-weight:800;">Test IA passé</span><span style="background:#fff;border:1px solid #E4DFD1;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;">18</span></div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:11px;padding:12px;box-shadow:0 4px 12px -10px rgba(20,40,30,.3);"><div style="font-weight:700;font-size:13px;">Bilong Aristide</div><div style="font-size:11.5px;color:#8D9A91;margin-top:2px;">Vers 3ᵉ · score 78/100</div><div style="margin-top:8px;display:flex;gap:6px;"><span style="background:#FBF1D5;color:#B5870A;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;">À valider</span></div></div>
+                </div>
+              </div>
+              <div style="background:#F4F1E9;border:1px solid #E4DFD1;border-radius:14px;padding:14px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;font-weight:800;">Admis</span><span style="background:#0F7B4F;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;">14</span></div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:11px;padding:12px;box-shadow:0 4px 12px -10px rgba(20,40,30,.3);"><div style="font-weight:700;font-size:13px;">Fokou Brenda</div><div style="font-size:11.5px;color:#8D9A91;margin-top:2px;">Inscrite en 5ᵉ A</div><div style="margin-top:8px;display:flex;gap:6px;"><span style="background:#E7F1EB;color:#0F7B4F;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;">✓ Matricule créé</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

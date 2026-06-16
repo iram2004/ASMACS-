@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:20px;">
+              <div>
+                <h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Élèves & inscriptions</h1>
+                <p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">1 248 élèves · 32 classes · année 2025–2026</p>
+              </div>
+              <div style="margin-left:auto;display:flex;gap:9px;">
+                <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 13px;font-size:13px;font-weight:600;color:#3A4A42;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5V4.5"></path><path d="M8 8l4-4 4 4"></path><path d="M5 15.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5"></path></svg> Exporter</div>
+                <div style="display:flex;align-items:center;gap:8px;background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;box-shadow:0 6px 16px -8px rgba(15,123,79,.7);">+ Nouvel élève</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+              <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:10px 14px;flex:1;min-width:240px;color:#8D9A91;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"></path><path d="M20 20l-3.6-3.6"></path></svg><span style="font-size:13px;">Rechercher par nom ou matricule…</span></div>
+              <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;color:#3A4A42;">Classe : Toutes ▾</div>
+              <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;color:#3A4A42;">Statut ▾</div>
+              <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;color:#3A4A42;">Sous-système ▾</div>
+            </div>
+
+            <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+              <div style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;padding:13px 20px;background:#FAF7F0;border-bottom:1px solid #ECE7DA;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:#9BA89F;font-weight:700;">
+                <span>Matricule</span><span>Élève</span><span>Classe</span><span>Tuteur</span><span>Scolarité</span><span>Statut</span>
+              </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">25G01180</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">NA</span><b style="font-weight:600;">Nanda Arnold Iram</b></span>
+                  <span style="color:#3A4A42;">3ᵉ A</span>
+                  <span style="color:#6B7A71;">M. Nanda Paul</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#0F7B4F;width:100%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">100%</span></div></span>
+                  <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">Validé</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">23G00585</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">KN</span><b style="font-weight:600;">Keudjio Nawa Nely</b></span>
+                  <span style="color:#3A4A42;">Tle D</span>
+                  <span style="color:#6B7A71;">Mme Keudjio R.</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#0F7B4F;width:100%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">100%</span></div></span>
+                  <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">Validé</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">23G00094</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">DM</span><b style="font-weight:600;">Domeni Merveille</b></span>
+                  <span style="color:#3A4A42;">1ʳᵉ C</span>
+                  <span style="color:#6B7A71;">M. Domeni S.</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#E0A911;width:60%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">60%</span></div></span>
+                  <span><span style="background:#FBF1D5;color:#B5870A;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">À jour partiel</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">25G01193</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">KF</span><b style="font-weight:600;">Kom Fondjo William</b></span>
+                  <span style="color:#3A4A42;">2nde C</span>
+                  <span style="color:#6B7A71;">Mme Kom A.</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#C8102E;width:40%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">40%</span></div></span>
+                  <span><span style="background:#FAE5E9;color:#C8102E;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">En retard</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">25G01217</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">KD</span><b style="font-weight:600;">Kangue Dominique</b></span>
+                  <span style="color:#3A4A42;">Tle D</span>
+                  <span style="color:#6B7A71;">M. Kangue B.</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#0F7B4F;width:100%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">100%</span></div></span>
+                  <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">Validé</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">23G00633</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">NM</span><b style="font-weight:600;">Nangue Mégane Paola</b></span>
+                  <span style="color:#3A4A42;">1ʳᵉ A</span>
+                  <span style="color:#6B7A71;">Mme Nangue Y.</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#E0A911;width:80%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">80%</span></div></span>
+                  <span><span style="background:#FBF1D5;color:#B5870A;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">À jour partiel</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">23G00324</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">NC</span><b style="font-weight:600;">Ngambida Cédric</b></span>
+                  <span style="color:#3A4A42;">5ᵉ B</span>
+                  <span style="color:#6B7A71;">M. Ngambida</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#0F7B4F;width:100%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">100%</span></div></span>
+                  <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">Validé</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">25G01243</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">EW</span><b style="font-weight:600;">Ebongue Wilfried</b></span>
+                  <span style="color:#3A4A42;">6ᵉ B</span>
+                  <span style="color:#6B7A71;">Mme Ebongue</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#0F7B4F;width:100%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">100%</span></div></span>
+                  <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">Validé</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">23G00125</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">EB</span><b style="font-weight:600;">Epesse Bikeck Yann</b></span>
+                  <span style="color:#3A4A42;">2nde A</span>
+                  <span style="color:#6B7A71;">M. Epesse</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#C8102E;width:20%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">20%</span></div></span>
+                  <span><span style="background:#FAE5E9;color:#C8102E;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">Impayé</span></span>
+                </div>
+              
+                <div onClick="" style="display:grid;grid-template-columns:1fr 1.7fr 0.8fr 1.3fr 1.2fr 1fr;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #F3EFE4;font-size:13.5px;cursor:pointer;">
+                  <span class="mono" style="color:#6B7A71;font-size:12px;">23G00520</span>
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">BE</span><b style="font-weight:600;">Batje Eric Marcel</b></span>
+                  <span style="color:#3A4A42;">4ᵉ A</span>
+                  <span style="color:#6B7A71;">Mme Batje</span>
+                  <span><div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;border-radius:6px;background:#EEE9DC;overflow:hidden;"><div style="height:6px;border-radius:6px;background:#0F7B4F;width:100%;"></div></div><span class="mono" style="font-size:11px;color:#6B7A71;">100%</span></div></span>
+                  <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">Validé</span></span>
+                </div>
+              
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;font-size:13px;color:#8D9A91;">
+                <span>Affichage 1–10 sur 1 248</span>
+                <div style="display:flex;gap:6px;align-items:center;">
+                  <span style="width:30px;height:30px;border-radius:8px;border:1px solid #E4DFD1;display:flex;align-items:center;justify-content:center;color:#B3BEB6;">‹</span>
+                  <span style="width:30px;height:30px;border-radius:8px;background:#0F7B4F;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">1</span>
+                  <span style="width:30px;height:30px;border-radius:8px;border:1px solid #E4DFD1;display:flex;align-items:center;justify-content:center;color:#3A4A42;">2</span>
+                  <span style="width:30px;height:30px;border-radius:8px;border:1px solid #E4DFD1;display:flex;align-items:center;justify-content:center;color:#3A4A42;">3</span>
+                  <span style="width:30px;height:30px;border-radius:8px;border:1px solid #E4DFD1;display:flex;align-items:center;justify-content:center;color:#3A4A42;">›</span>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

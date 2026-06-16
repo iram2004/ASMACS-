@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="margin-bottom:20px;"><h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-.01em;">Bonjour, Mme Nkolo 👋</h1><p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">Lundi 16 juin · vous avez 3 cours aujourd'hui et 2 saisies en attente.</p></div>
+            <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:20px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                <div style="font-weight:700;font-size:15px;margin-bottom:16px;">Emploi du temps · aujourd'hui</div>
+                <div style="display:flex;gap:14px;align-items:stretch;padding:13px;border-radius:11px;background:#E7F1EB;margin-bottom:10px;"><div class="mono" style="font-size:12px;font-weight:700;color:#0B5C3B;width:54px;">07:00</div><div style="width:3px;border-radius:3px;background:#0F7B4F;"></div><div style="flex:1;"><div style="font-weight:700;font-size:13.5px;">Mathématiques · 3ᵉ A</div><div style="font-size:12px;color:#3A6B52;">Salle 12 · 38 élèves</div></div><span style="background:#0F7B4F;color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;align-self:center;">En cours</span></div>
+                <div style="display:flex;gap:14px;align-items:stretch;padding:13px;border-radius:11px;background:#FBFAF6;border:1px solid #ECE7DA;margin-bottom:10px;"><div class="mono" style="font-size:12px;font-weight:700;color:#6B7A71;width:54px;">10:00</div><div style="width:3px;border-radius:3px;background:#E0A911;"></div><div style="flex:1;"><div style="font-weight:700;font-size:13.5px;">Mathématiques · Tle D</div><div style="font-size:12px;color:#8D9A91;">Salle 8 · 29 élèves</div></div></div>
+                <div style="display:flex;gap:14px;align-items:stretch;padding:13px;border-radius:11px;background:#FBFAF6;border:1px solid #ECE7DA;"><div class="mono" style="font-size:12px;font-weight:700;color:#6B7A71;width:54px;">14:00</div><div style="width:3px;border-radius:3px;background:#C8102E;"></div><div style="flex:1;"><div style="font-weight:700;font-size:13.5px;">Mathématiques · 4ᵉ A</div><div style="font-size:12px;color:#8D9A91;">Salle 5 · 44 élèves</div></div></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                  <div style="font-weight:700;font-size:14px;margin-bottom:12px;">À faire</div>
+                  <div style="display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid #F3EFE4;"><span style="width:9px;height:9px;border-radius:50%;background:#C8102E;"></span><span style="flex:1;font-size:13px;">Saisir notes Compo · 4ᵉ A</span><span style="font-size:11px;color:#C8102E;font-weight:700;">Urgent</span></div>
+                  <div style="display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid #F3EFE4;"><span style="width:9px;height:9px;border-radius:50%;background:#E0A911;"></span><span style="flex:1;font-size:13px;">Remplir cahier de texte · 3ᵉ A</span></div>
+                  <div style="display:flex;align-items:center;gap:11px;padding:9px 0;"><span style="width:9px;height:9px;border-radius:50%;background:#0F7B4F;"></span><span style="flex:1;font-size:13px;">Conseil de classe Tle D · 17h</span></div>
+                </div>
+                <div style="background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;border-radius:14px;padding:18px;box-shadow:0 14px 28px -18px rgba(15,123,79,.8);">
+                  <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5l1.8 4.2 4.2 1.8-4.2 1.8L12 18.5l-1.8-4.2L6 12.5l4.2-1.8z"></path></svg></span><b style="font-size:13.5px;">EduBot · assistant prof</b></div>
+                  <p style="margin:0 0 12px;font-size:12.5px;line-height:1.5;color:#E7F3EC;">Générez un QCM de révision sur « les fonctions affines » pour la 3ᵉ A en un clic.</p>
+                  <span style="background:#E0A911;color:#3A2A00;font-weight:700;font-size:12px;padding:7px 12px;border-radius:8px;">Générer un QCM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

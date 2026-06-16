@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:20px;">
+              <div><h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Classes & emplois du temps</h1><p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">Emploi du temps · 3ᵉ A · semaine du 16 juin · généré sans conflit</p></div>
+              <div style="margin-left:auto;display:flex;gap:9px;">
+                <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#3A4A42;">3ᵉ A ▾</div>
+                <div style="display:flex;align-items:center;gap:8px;background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;">Génération auto ⟳</div>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);overflow:auto;">
+              <div style="display:grid;grid-template-columns:62px repeat(5,1fr);gap:8px;min-width:760px;">
+                <div></div>
+                <div style="text-align:center;font-size:12px;font-weight:700;color:#3A4A42;padding-bottom:6px;">Lundi</div>
+                <div style="text-align:center;font-size:12px;font-weight:700;color:#3A4A42;padding-bottom:6px;">Mardi</div>
+                <div style="text-align:center;font-size:12px;font-weight:700;color:#3A4A42;padding-bottom:6px;">Mercredi</div>
+                <div style="text-align:center;font-size:12px;font-weight:700;color:#3A4A42;padding-bottom:6px;">Jeudi</div>
+                <div style="text-align:center;font-size:12px;font-weight:700;color:#3A4A42;padding-bottom:6px;">Vendredi</div>
+
+                <div class="mono" style="font-size:10.5px;color:#9BA89F;text-align:right;padding-right:6px;padding-top:6px;">07–08</div>
+                <div style="background:#E7F1EB;color:#0B5C3B;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Maths<div style="font-weight:500;color:#3A6B52;">Mme Nkolo</div></div>
+                <div style="background:#FBF1D5;color:#8A6504;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Physique<div style="font-weight:500;color:#9A7A2A;">M. Fotso</div></div>
+                <div style="background:#FAE5E9;color:#9A0C22;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Anglais<div style="font-weight:500;color:#B5485A;">Mme Abena</div></div>
+                <div style="background:#E7F1EB;color:#0B5C3B;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Maths<div style="font-weight:500;color:#3A6B52;">Mme Nkolo</div></div>
+                <div style="background:#E6F0F4;color:#1E5A78;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">SVT<div style="font-weight:500;color:#3A7290;">M. Eyenga</div></div>
+
+                <div class="mono" style="font-size:10.5px;color:#9BA89F;text-align:right;padding-right:6px;padding-top:6px;">08–10</div>
+                <div style="background:#EDEAF7;color:#3F329A;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Hist-Géo<div style="font-weight:500;color:#6155A8;">Mme Manga</div></div>
+                <div style="background:#E7F1EB;color:#0B5C3B;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Maths<div style="font-weight:500;color:#3A6B52;">Mme Nkolo</div></div>
+                <div style="background:#E6F0F4;color:#1E5A78;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">SVT<div style="font-weight:500;color:#3A7290;">M. Eyenga</div></div>
+                <div style="background:#FAE5E9;color:#9A0C22;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Français<div style="font-weight:500;color:#B5485A;">M. Bekolo</div></div>
+                <div style="background:#FBF1D5;color:#8A6504;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Physique<div style="font-weight:500;color:#9A7A2A;">M. Fotso</div></div>
+
+                <div class="mono" style="font-size:10.5px;color:#9BA89F;text-align:right;padding-right:6px;padding-top:6px;">10–10</div>
+                <div style="grid-column:span 5;background:#F4F1E9;border:1px dashed #DAD3C2;border-radius:9px;padding:6px;font-size:11px;color:#9BA89F;text-align:center;font-weight:600;">Récréation</div>
+
+                <div class="mono" style="font-size:10.5px;color:#9BA89F;text-align:right;padding-right:6px;padding-top:6px;">10–12</div>
+                <div style="background:#FAE5E9;color:#9A0C22;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Anglais<div style="font-weight:500;color:#B5485A;">Mme Abena</div></div>
+                <div style="background:#EDEAF7;color:#3F329A;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Hist-Géo<div style="font-weight:500;color:#6155A8;">Mme Manga</div></div>
+                <div style="background:#E7F1EB;color:#0B5C3B;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Maths<div style="font-weight:500;color:#3A6B52;">Mme Nkolo</div></div>
+                <div style="background:#FBF1D5;color:#8A6504;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Physique<div style="font-weight:500;color:#9A7A2A;">M. Fotso</div></div>
+                <div style="background:#F4F1E9;border:1px dashed #DAD3C2;color:#9BA89F;border-radius:9px;padding:9px;font-size:11px;font-weight:600;">Libre</div>
+
+                <div class="mono" style="font-size:10.5px;color:#9BA89F;text-align:right;padding-right:6px;padding-top:6px;">14–16</div>
+                <div style="background:#E6F0F4;color:#1E5A78;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">EPS<div style="font-weight:500;color:#3A7290;">M. Onana</div></div>
+                <div style="background:#FAE5E9;color:#9A0C22;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Français<div style="font-weight:500;color:#B5485A;">M. Bekolo</div></div>
+                <div style="background:#F4F1E9;border:1px dashed #DAD3C2;color:#9BA89F;border-radius:9px;padding:9px;font-size:11px;font-weight:600;">Libre</div>
+                <div style="background:#EDEAF7;color:#3F329A;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Hist-Géo<div style="font-weight:500;color:#6155A8;">Mme Manga</div></div>
+                <div style="background:#E7F1EB;color:#0B5C3B;border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;">Maths<div style="font-weight:500;color:#3A6B52;">Mme Nkolo</div></div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

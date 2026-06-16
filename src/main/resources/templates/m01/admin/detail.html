@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail candidature - ASMACS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+</head>
+<body class="bg-slate-50 text-slate-950">
+<main class="mx-auto max-w-6xl px-6 py-8">
+  <a class="text-sm font-semibold text-blue-700 hover:underline" href="/m01">Retour aux candidatures</a>
+  <div class="mt-4 rounded-lg border bg-white p-6 shadow-sm">
+    <div class="flex flex-col justify-between gap-4 md:flex-row">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wide text-blue-700" th:text="${candidature.numeroCandidature}">REF</p>
+        <h1 class="mt-1 text-3xl font-bold" th:text="${candidature.nomComplet}">Nom candidat</h1>
+        <p class="mt-2 text-slate-600" th:text="${candidature.email}">email</p>
+      </div>
+      <span class="h-fit rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold" th:text="${candidature.statut}">STATUT</span>
+    </div>
+
+    <div th:if="${succes}" class="mt-4 rounded border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-800" th:text="${succes}"></div>
+    <div th:if="${erreur}" class="mt-4 rounded border border-red-200 bg-red-50 px-4 py-3 text-red-800" th:text="${erreur}"></div>
+
+    <dl class="mt-6 grid gap-4 md:grid-cols-3">
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Téléphone</dt><dd class="font-semibold" th:text="${candidature.telephone ?: '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Niveau demandé</dt><dd class="font-semibold" th:text="${candidature.niveauDemande ?: '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Score test</dt><dd class="font-semibold" th:text="${candidature.scoreTest != null ? candidature.scoreTest + '%' : '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Parent</dt><dd class="font-semibold" th:text="${candidature.nomParent ?: '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Paiement</dt><dd class="font-semibold" th:text="${candidature.paiementStatut ?: '-'}">-</dd></div>
+      <div class="rounded border bg-slate-50 p-4"><dt class="text-sm text-slate-500">Classe affectée</dt><dd class="font-semibold" th:text="${candidature.classeAffecteeNom ?: '-'}">-</dd></div>
+    </dl>
+  </div>
+
+  <section class="mt-6 grid gap-4 lg:grid-cols-3">
+    <form class="rounded-lg border bg-white p-4 shadow-sm" th:action="@{/m01/{id}/valider(id=${candidature.id})}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <h2 class="font-bold">Valider</h2>
+      <select class="mt-3 w-full rounded border-slate-300" name="classeId">
+        <option value="">Sans affectation immédiate</option>
+        <option th:each="classe : ${classes}" th:value="${classe.id}" th:text="${classe.nom}">Classe</option>
+      </select>
+      <button class="mt-3 w-full rounded bg-emerald-700 px-4 py-2 font-semibold text-white">Valider la candidature</button>
+    </form>
+    <form class="rounded-lg border bg-white p-4 shadow-sm" th:action="@{/m01/{id}/rejeter(id=${candidature.id})}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <h2 class="font-bold">Rejeter</h2>
+      <textarea class="mt-3 w-full rounded border-slate-300" name="motif" rows="3" placeholder="Motif du rejet" required></textarea>
+      <button class="mt-3 w-full rounded bg-red-700 px-4 py-2 font-semibold text-white">Rejeter</button>
+    </form>
+    <form class="rounded-lg border bg-white p-4 shadow-sm" th:action="@{/m01/{id}/confirmer-paiement(id=${candidature.id})}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <h2 class="font-bold">Paiement</h2>
+      <p class="mt-3 text-sm text-slate-600">Confirmer manuellement le paiement du dossier.</p>
+      <button class="mt-8 w-full rounded bg-blue-700 px-4 py-2 font-semibold text-white">Confirmer paiement</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>

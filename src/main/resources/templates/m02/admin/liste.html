@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Séances - ASMACS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+</head>
+<body class="bg-slate-50 text-slate-950">
+<main class="mx-auto max-w-7xl px-6 py-8">
+  <div class="flex items-center justify-between">
+    <div><p class="text-xs font-semibold uppercase text-blue-700">M02 Présences</p><h1 class="text-3xl font-bold">Liste des séances</h1></div>
+    <a class="rounded border px-3 py-2 hover:bg-slate-100" href="/m02">Dashboard</a>
+  </div>
+
+  <form class="mt-6 grid gap-3 rounded-lg border bg-white p-4 shadow-sm md:grid-cols-5" method="get" action="/m02/liste">
+    <input class="rounded border-slate-300" type="date" name="date" th:value="${date}">
+    <select class="rounded border-slate-300" name="classeId">
+      <option value="">Toutes les classes</option>
+      <option th:each="classe : ${classes}" th:value="${classe.id}" th:selected="${classeId == classe.id}" th:text="${classe.nom}">Classe</option>
+    </select>
+    <select class="rounded border-slate-300" name="enseignantId">
+      <option value="">Tous les enseignants</option>
+      <option th:each="ens : ${enseignants}" th:value="${ens.id}" th:selected="${enseignantId == ens.id}" th:text="${ens.nom + ' ' + ens.prenom}">Enseignant</option>
+    </select>
+    <select class="rounded border-slate-300" name="statut">
+      <option value="">Tous les statuts</option>
+      <option value="PLANIFIEE" th:selected="${statut == 'PLANIFIEE'}">Planifiée</option>
+      <option value="EN_COURS" th:selected="${statut == 'EN_COURS'}">En cours</option>
+      <option value="TERMINEE" th:selected="${statut == 'TERMINEE'}">Terminée</option>
+    </select>
+    <button class="rounded bg-blue-700 px-4 py-2 font-semibold text-white">Filtrer</button>
+  </form>
+
+  <section class="mt-6 rounded-lg border bg-white shadow-sm">
+    <table class="w-full text-left text-sm">
+      <thead class="bg-slate-100 text-xs uppercase text-slate-600">
+      <tr><th class="px-4 py-3">Date</th><th class="px-4 py-3">Classe</th><th class="px-4 py-3">Matière</th><th class="px-4 py-3">Présence</th><th class="px-4 py-3">Statut</th><th class="px-4 py-3 text-right">Action</th></tr>
+      </thead>
+      <tbody class="divide-y">
+      <tr th:if="${#lists.isEmpty(seances)}"><td colspan="6" class="px-4 py-8 text-center text-slate-500">Aucune séance trouvée.</td></tr>
+      <tr th:each="s : ${seances}" class="hover:bg-slate-50">
+        <td class="px-4 py-3" th:text="${s.dateSeance}">Date</td>
+        <td class="px-4 py-3" th:text="${s.classeNom ?: '-'}">Classe</td>
+        <td class="px-4 py-3" th:text="${s.matiereNom ?: '-'}">Matière</td>
+        <td class="px-4 py-3" th:text="${s.nbPresents + '/' + s.nbTotal + ' (' + s.tauxPresence + '%)'}">0/0</td>
+        <td class="px-4 py-3"><span class="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold" th:text="${s.statut}">STATUT</span></td>
+        <td class="px-4 py-3 text-right"><a class="rounded border px-3 py-1.5 hover:bg-slate-100" th:href="@{/m02/seance/{id}(id=${s.id})}">Détail</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

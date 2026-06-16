@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:18px;">
+              <div><h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Examens & notes</h1><p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">Relevé · 3ᵉ A · Mathématiques · Séquence 4</p></div>
+              <div style="margin-left:auto;display:flex;gap:9px;">
+                <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#3A4A42;">3ᵉ A ▾</div>
+                <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#3A4A42;">Mathématiques ▾</div>
+                <div style="display:flex;align-items:center;gap:8px;background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5h6v2.6H9z"></path><path d="M15 5.5h3.5V20H5.5V5.5H9"></path><path d="M8.5 11.5h7"></path><path d="M8.5 15h7"></path></svg> Générer les bulletins</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1.7fr 1fr;gap:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;padding:13px 18px;background:#FAF7F0;border-bottom:1px solid #ECE7DA;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:#9BA89F;font-weight:700;">
+                  <span>Élève</span><span style="text-align:center;">Interro</span><span style="text-align:center;">Devoir</span><span style="text-align:center;">Compo</span><span style="text-align:center;">Moy/20</span><span style="text-align:center;">Rang</span><span>Appréciation</span>
+                </div>
+                
+                  <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;align-items:center;padding:11px 18px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">NA</span><b style="font-weight:600;font-size:12.5px;">Nanda Arnold Iram</b></span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">16</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">15</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">14,5</span>
+                    <span class="mono" style="text-align:center;color:#0F7B4F;font-weight:800;">15,0</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">2</span>
+                    <span style="font-size:12px;color:#3A4A42;">Très bien</span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;align-items:center;padding:11px 18px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">KN</span><b style="font-weight:600;font-size:12.5px;">Keudjio Nawa Nely</b></span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">14</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">13,5</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">15</span>
+                    <span class="mono" style="text-align:center;color:#0F7B4F;font-weight:800;">14,2</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">5</span>
+                    <span style="font-size:12px;color:#3A4A42;">Bien</span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;align-items:center;padding:11px 18px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">DM</span><b style="font-weight:600;font-size:12.5px;">Domeni Merveille</b></span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">11</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">12</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">10,5</span>
+                    <span class="mono" style="text-align:center;color:#B5870A;font-weight:800;">11,1</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">18</span>
+                    <span style="font-size:12px;color:#3A4A42;">Assez bien</span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;align-items:center;padding:11px 18px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">KF</span><b style="font-weight:600;font-size:12.5px;">Kom Fondjo William</b></span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">8</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">9,5</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">7</span>
+                    <span class="mono" style="text-align:center;color:#C8102E;font-weight:800;">8,1</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">31</span>
+                    <span style="font-size:12px;color:#3A4A42;">Insuffisant</span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;align-items:center;padding:11px 18px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">KD</span><b style="font-weight:600;font-size:12.5px;">Kangue Dominique</b></span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">17</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">16</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">18</span>
+                    <span class="mono" style="text-align:center;color:#0F7B4F;font-weight:800;">17,3</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">1</span>
+                    <span style="font-size:12px;color:#3A4A42;">Excellent</span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;align-items:center;padding:11px 18px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">NC</span><b style="font-weight:600;font-size:12.5px;">Ngambida Cédric</b></span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">12,5</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">11</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">13</span>
+                    <span class="mono" style="text-align:center;color:#B5870A;font-weight:800;">12,2</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">14</span>
+                    <span style="font-size:12px;color:#3A4A42;">Assez bien</span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.8fr .7fr .7fr .7fr .8fr .6fr 1.1fr;gap:8px;align-items:center;padding:11px 18px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">EB</span><b style="font-weight:600;font-size:12.5px;">Epesse Bikeck Yann</b></span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">9</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">7,5</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">10</span>
+                    <span class="mono" style="text-align:center;color:#C8102E;font-weight:800;">8,9</span>
+                    <span class="mono" style="text-align:center;color:#6B7A71;">29</span>
+                    <span style="font-size:12px;color:#3A4A42;">Doit progresser</span>
+                  </div>
+                
+                <div style="padding:12px 18px;font-size:12.5px;color:#8D9A91;display:flex;justify-content:space-between;"><span>38 élèves · saisie hors ligne synchronisée</span><span style="color:#0F7B4F;font-weight:700;">✓ Anti-triche activé</span></div>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12px;color:#8D9A91;font-weight:600;">Moyenne classe</div><div style="font-size:25px;font-weight:800;color:#0F7B4F;margin-top:4px;">12,4<span style="font-size:13px;color:#8D9A91;">/20</span></div></div>
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12px;color:#8D9A91;font-weight:600;">Taux de réussite</div><div style="font-size:25px;font-weight:800;margin-top:4px;">71<span style="font-size:13px;color:#8D9A91;">%</span></div></div>
+                </div>
+                <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                  <div style="font-weight:700;font-size:14px;margin-bottom:14px;">Distribution des moyennes</div>
+                  <div style="display:flex;align-items:flex-end;gap:9px;height:120px;">
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;"><div style="width:100%;border-radius:5px 5px 0 0;background:#FAD4DB;height:22%;"></div><span style="font-size:10px;color:#8D9A91;">0–8</span></div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;"><div style="width:100%;border-radius:5px 5px 0 0;background:#F6E0AE;height:46%;"></div><span style="font-size:10px;color:#8D9A91;">8–10</span></div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;"><div style="width:100%;border-radius:5px 5px 0 0;background:#9FCBB4;height:78%;"></div><span style="font-size:10px;color:#8D9A91;">10–14</span></div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;"><div style="width:100%;border-radius:5px 5px 0 0;background:#0F7B4F;height:100%;"></div><span style="font-size:10px;color:#8D9A91;">14–20</span></div>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;border-radius:14px;padding:18px;box-shadow:0 14px 28px -18px rgba(15,123,79,.8);">
+                  <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5l1.8 4.2 4.2 1.8-4.2 1.8L12 18.5l-1.8-4.2L6 12.5l4.2-1.8z"></path></svg></span><b style="font-size:13.5px;">EduBot · synthèse de classe</b></div>
+                  <p style="margin:0;font-size:12.5px;line-height:1.5;color:#E7F3EC;">Niveau hétérogène. 2 élèves en difficulté sévère (Kom, Epesse) — QCM de remédiation générés automatiquement.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

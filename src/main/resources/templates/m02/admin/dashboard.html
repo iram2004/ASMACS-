@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Présence anti-fraude - ASMACS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-100">
+<main class="min-h-screen">
+  <header class="border-b border-slate-800 bg-slate-900">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wide text-cyan-300">M02 Présence 4.0</p>
+        <h1 class="text-2xl font-bold">Console anti-fraude</h1>
+      </div>
+      <nav class="flex gap-2 text-sm">
+        <a class="rounded border border-slate-700 px-3 py-2 hover:bg-slate-800" href="/m02/liste">Séances</a>
+        <a class="rounded border border-slate-700 px-3 py-2 hover:bg-slate-800" href="/m02/fraudes">Fraudes</a>
+        <a class="rounded bg-cyan-500 px-3 py-2 font-semibold text-slate-950" href="/m02/rapports">Rapports</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="mx-auto max-w-7xl px-6 py-6">
+    <div th:if="${succes}" class="mb-4 rounded border border-emerald-400/30 bg-emerald-500/10 px-4 py-3 text-emerald-200" th:text="${succes}"></div>
+    <div th:if="${erreur}" class="mb-4 rounded border border-red-400/30 bg-red-500/10 px-4 py-3 text-red-200" th:text="${erreur}"></div>
+
+    <div class="grid gap-4 md:grid-cols-4">
+      <div class="rounded-lg border border-slate-800 bg-slate-900 p-4">
+        <p class="text-sm text-slate-400">Présents aujourd'hui</p>
+        <p class="mt-2 text-4xl font-bold text-emerald-300" th:text="${nbPresents ?: 0}">0</p>
+      </div>
+      <div class="rounded-lg border border-slate-800 bg-slate-900 p-4">
+        <p class="text-sm text-slate-400">Absents aujourd'hui</p>
+        <p class="mt-2 text-4xl font-bold text-amber-300" th:text="${nbAbsents ?: 0}">0</p>
+      </div>
+      <div class="rounded-lg border border-slate-800 bg-slate-900 p-4">
+        <p class="text-sm text-slate-400">Alertes fraude</p>
+        <p class="mt-2 text-4xl font-bold text-red-300" th:text="${nbFraudes ?: 0}">0</p>
+      </div>
+      <div class="rounded-lg border border-slate-800 bg-slate-900 p-4">
+        <p class="text-sm text-slate-400">Séances en cours</p>
+        <p class="mt-2 text-4xl font-bold text-cyan-300" th:text="${nbSeancesEnCours ?: 0}">0</p>
+      </div>
+    </div>
+
+    <div class="mt-6 grid gap-6 lg:grid-cols-3">
+      <section class="lg:col-span-2 rounded-lg border border-slate-800 bg-slate-900">
+        <div class="border-b border-slate-800 px-4 py-3">
+          <h2 class="font-bold">Séances aujourd'hui</h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-800/70 text-xs uppercase text-slate-400">
+            <tr><th class="px-4 py-3">Heure</th><th class="px-4 py-3">Classe</th><th class="px-4 py-3">Matière</th><th class="px-4 py-3">Taux</th><th class="px-4 py-3 text-right">Action</th></tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+            <tr th:if="${#lists.isEmpty(seancesAujourdhui)}"><td colspan="5" class="px-4 py-8 text-center text-slate-400">Aucune séance aujourd'hui.</td></tr>
+            <tr th:each="s : ${seancesAujourdhui}" class="hover:bg-slate-800/50">
+              <td class="px-4 py-3" th:text="${s.heureDebut ?: '-'}">08:00</td>
+              <td class="px-4 py-3" th:text="${s.classeNom ?: '-'}">Classe</td>
+              <td class="px-4 py-3" th:text="${s.matiereNom ?: '-'}">Matière</td>
+              <td class="px-4 py-3" th:text="${s.tauxPresence + '%'}">0%</td>
+              <td class="px-4 py-3 text-right"><a class="rounded border border-slate-700 px-3 py-1.5 hover:bg-slate-800" th:href="@{/m02/seance/{id}(id=${s.id})}">Ouvrir</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="rounded-lg border border-red-500/30 bg-red-950/30">
+        <div class="border-b border-red-500/30 px-4 py-3">
+          <h2 class="font-bold text-red-200">Alertes nouvelles</h2>
+        </div>
+        <div class="divide-y divide-red-500/20">
+          <article th:if="${#lists.isEmpty(alertes)}" class="p-4 text-sm text-red-100/70">Aucune alerte nouvelle.</article>
+          <article th:each="a : ${alertes}" class="p-4">
+            <p class="text-sm font-bold text-red-200" th:text="${a.typeAlerte}">TYPE</p>
+            <p class="mt-1 text-sm text-red-100/80" th:text="${a.description}">Description</p>
+            <p class="mt-2 text-xs text-red-100/60" th:text="${a.dateAlerte}">Date</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+</body>
+</html>

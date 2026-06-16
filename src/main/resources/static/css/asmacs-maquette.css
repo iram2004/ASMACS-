@@ -1,0 +1,59 @@
+/* ============================================================
+   ASMACS — Système de design (maquette)
+   Palette Cameroun : vert / or / rouge — appliquée à tout le projet.
+   Issu de la conception Claude Design « ASMACS.dc.html ».
+   ============================================================ */
+:root {
+  --asmacs-green:      #0F7B4F;
+  --asmacs-green-d:    #0B5C3B;
+  --asmacs-green-dd:   #0C2B1E;
+  --asmacs-sidebar:    #10271C;
+  --asmacs-topbar:     #0C1F16;
+  --asmacs-gold:       #E0A911;
+  --asmacs-gold-d:     #B5870A;
+  --asmacs-red:        #C8102E;
+  --asmacs-bg:         #E7E3D7;
+  --asmacs-canvas:     #F4F1E9;
+  --asmacs-paper:      #FBFAF6;
+  --asmacs-ink:        #15241C;
+  --asmacs-muted:      #6B7A71;
+  --asmacs-line:       #E4DFD1;
+  --asmacs-card-line:  #ECE7DA;
+  --asmacs-font:       'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --asmacs-mono:       'Spline Sans Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body.asmacs-body {
+  font-family: var(--asmacs-font);
+  background: var(--asmacs-bg);
+  color: var(--asmacs-ink);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.mono { font-family: var(--asmacs-mono); }
+
+::selection { background: var(--asmacs-green); color: #fff; }
+
+.asmacs-scroll::-webkit-scrollbar { width: 9px; height: 9px; }
+.asmacs-scroll::-webkit-scrollbar-thumb { background: rgba(20,40,30,.18); border-radius: 8px; }
+.asmacs-scroll::-webkit-scrollbar-track { background: transparent; }
+.nav-dark::-webkit-scrollbar { width: 8px; }
+.nav-dark::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 8px; }
+
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(200,16,46,.45); }
+  70%  { box-shadow: 0 0 0 7px rgba(200,16,46,0); }
+  100% { box-shadow: 0 0 0 0 rgba(200,16,46,0); }
+}
+@keyframes scanMove { 0% { top: 6%; } 100% { top: 90%; } }
+
+/* Survol des cartes module / lignes de tableau (remplace style-hover du prototype) */
+.dc-hover { transition: .18s; }
+.dc-hover:hover {
+  border-color: var(--asmacs-green) !important;
+  box-shadow: 0 16px 30px -18px rgba(15,123,79,.4) !important;
+  transform: translateY(-2px);
+}
+.dc-navlink:hover { background: rgba(224,169,17,.10) !important; color: #fff !important; }
