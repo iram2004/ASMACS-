@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <a onClick="" style="font-size:13.5px;color:#0F7B4F;font-weight:700;cursor:pointer;">← Retour à la liste des élèves</a>
+            <div style="background:#fff;border:1px solid #ECE7DA;border-radius:16px;padding:24px;margin-top:14px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);display:flex;align-items:center;gap:20px;">
+              <div style="width:74px;height:74px;border-radius:18px;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;flex-shrink:0;">NA</div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:10px;"><h1 style="margin:0;font-size:23px;font-weight:800;">Nanda Arnold Iram</h1><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">Scolarité à jour</span></div>
+                <div style="display:flex;gap:18px;margin-top:8px;font-size:13px;color:#6B7A71;">
+                  <span class="mono">25G01180</span><span>Classe de 3ᵉ A</span><span>Sous-système francophone</span><span>Inscrit le 02 sept. 2025</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:9px;">
+                <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#3A4A42;">Imprimer fiche</div>
+                <div style="background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 16px;font-size:13px;font-weight:700;">Modifier</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:6px;margin:18px 0;border-bottom:1px solid #E4DFD1;">
+              <span style="padding:11px 16px;font-size:13.5px;font-weight:700;color:#0F7B4F;border-bottom:2px solid #0F7B4F;margin-bottom:-1px;">Profil</span>
+              <span style="padding:11px 16px;font-size:13.5px;font-weight:600;color:#8D9A91;">Notes & bulletins</span>
+              <span style="padding:11px 16px;font-size:13.5px;font-weight:600;color:#8D9A91;">Présence</span>
+              <span style="padding:11px 16px;font-size:13.5px;font-weight:600;color:#8D9A91;">Finance</span>
+              <span style="padding:11px 16px;font-size:13.5px;font-weight:600;color:#8D9A91;">Documents</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:22px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                <div style="font-weight:700;font-size:15px;margin-bottom:16px;">Informations personnelles</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;">
+                  <div><div style="font-size:11.5px;color:#8D9A91;font-weight:600;margin-bottom:3px;">Date de naissance</div><div style="font-size:14px;font-weight:600;">14 mars 2010 · Douala</div></div>
+                  <div><div style="font-size:11.5px;color:#8D9A91;font-weight:600;margin-bottom:3px;">Sexe</div><div style="font-size:14px;font-weight:600;">Masculin</div></div>
+                  <div><div style="font-size:11.5px;color:#8D9A91;font-weight:600;margin-bottom:3px;">Tuteur principal</div><div style="font-size:14px;font-weight:600;">M. Nanda Paul</div></div>
+                  <div><div style="font-size:11.5px;color:#8D9A91;font-weight:600;margin-bottom:3px;">Contact tuteur</div><div style="font-size:14px;font-weight:600;" class="mono">+237 6 99 12 34 56</div></div>
+                  <div style="grid-column:span 2;"><div style="font-size:11.5px;color:#8D9A91;font-weight:600;margin-bottom:3px;">Adresse</div><div style="font-size:14px;font-weight:600;">Quartier Bonapriso, Douala — Littoral</div></div>
+                </div>
+                <div style="height:1px;background:#EEE9DC;margin:20px 0;"></div>
+                <div style="font-weight:700;font-size:15px;margin-bottom:14px;">Parcours scolaire</div>
+                <div style="display:flex;flex-direction:column;gap:0;">
+                  <div style="display:flex;gap:13px;"><div style="display:flex;flex-direction:column;align-items:center;"><span style="width:11px;height:11px;border-radius:50%;background:#0F7B4F;"></span><span style="flex:1;width:2px;background:#E4DFD1;"></span></div><div style="padding-bottom:16px;"><div style="font-size:13.5px;font-weight:700;">3ᵉ A · 2025–2026</div><div style="font-size:12.5px;color:#8D9A91;">En cours · moyenne 14,2/20</div></div></div>
+                  <div style="display:flex;gap:13px;"><div style="display:flex;flex-direction:column;align-items:center;"><span style="width:11px;height:11px;border-radius:50%;background:#C7D3CB;"></span><span style="flex:1;width:2px;background:#E4DFD1;"></span></div><div style="padding-bottom:16px;"><div style="font-size:13.5px;font-weight:700;">4ᵉ A · 2024–2025</div><div style="font-size:12.5px;color:#8D9A91;">Admis · moyenne 13,6/20</div></div></div>
+                  <div style="display:flex;gap:13px;"><div style="display:flex;flex-direction:column;align-items:center;"><span style="width:11px;height:11px;border-radius:50%;background:#C7D3CB;"></span></div><div><div style="font-size:13.5px;font-weight:700;">5ᵉ B · 2023–2024</div><div style="font-size:12.5px;color:#8D9A91;">Admis · moyenne 12,9/20</div></div></div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12px;color:#8D9A91;font-weight:600;">Moyenne générale</div><div style="font-size:26px;font-weight:800;color:#0F7B4F;margin-top:5px;">14,2<span style="font-size:14px;color:#8D9A91;font-weight:600;">/20</span></div><div style="font-size:11.5px;color:#8D9A91;">Rang 6ᵉ / 38</div></div>
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12px;color:#8D9A91;font-weight:600;">Présence</div><div style="font-size:26px;font-weight:800;margin-top:5px;">97<span style="font-size:14px;color:#8D9A91;font-weight:600;">%</span></div><div style="font-size:11.5px;color:#8D9A91;">2 absences justifiées</div></div>
+                </div>
+                <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                  <div style="font-weight:700;font-size:14px;margin-bottom:12px;">Situation financière</div>
+                  <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:10px;"><span class="mono" style="font-size:22px;font-weight:800;">180 000</span><span style="font-size:13px;color:#8D9A91;">/ 180 000 FCFA</span></div>
+                  <div style="height:7px;border-radius:7px;background:#EEE9DC;overflow:hidden;margin-bottom:10px;"><div style="height:7px;width:100%;background:#0F7B4F;border-radius:7px;"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12.5px;"><span style="color:#0F7B4F;font-weight:700;">Soldé · 3 tranches</span><span style="color:#8D9A91;">Dernier : MoMo · 12 jan.</span></div>
+                </div>
+                <div style="background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;border-radius:14px;padding:18px;box-shadow:0 14px 28px -18px rgba(15,123,79,.8);">
+                  <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;"><span style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5l1.8 4.2 4.2 1.8-4.2 1.8L12 18.5l-1.8-4.2L6 12.5l4.2-1.8z"></path></svg></span><b style="font-size:13.5px;">Analyse EduBot CM</b></div>
+                  <p style="margin:0;font-size:12.5px;line-height:1.5;color:#E7F3EC;">Élève régulier, en progression constante. Aucun risque détecté. Léger fléchissement en Physique — proposer des exercices de renforcement.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

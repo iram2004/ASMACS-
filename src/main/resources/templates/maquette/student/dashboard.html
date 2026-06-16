@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1160px;margin:0 auto;">
+            <div style="margin-bottom:18px;"><h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-.01em;">Salut Arnold 👋</h1><p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">Lundi 16 juin · 3 cours aujourd'hui · 1 devoir à rendre.</p></div>
+            <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:20px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                <div style="font-weight:700;font-size:15px;margin-bottom:16px;">Mes cours aujourd'hui</div>
+                <div style="display:flex;gap:14px;align-items:center;padding:12px;border-radius:11px;background:#E7F1EB;margin-bottom:9px;"><div class="mono" style="font-size:12px;font-weight:700;color:#0B5C3B;width:50px;">07:00</div><div style="flex:1;"><div style="font-weight:700;font-size:13.5px;">Mathématiques</div><div style="font-size:12px;color:#3A6B52;">Mme Nkolo · Salle 12</div></div><span style="background:#0F7B4F;color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;">En cours</span></div>
+                <div style="display:flex;gap:14px;align-items:center;padding:12px;border-radius:11px;background:#FBFAF6;border:1px solid #ECE7DA;margin-bottom:9px;"><div class="mono" style="font-size:12px;font-weight:700;color:#6B7A71;width:50px;">08:00</div><div style="flex:1;"><div style="font-weight:700;font-size:13.5px;">Physique-Chimie</div><div style="font-size:12px;color:#8D9A91;">M. Fotso · Salle 8</div></div></div>
+                <div style="display:flex;gap:14px;align-items:center;padding:12px;border-radius:11px;background:#FBFAF6;border:1px solid #ECE7DA;"><div class="mono" style="font-size:12px;font-weight:700;color:#6B7A71;width:50px;">10:00</div><div style="flex:1;"><div style="font-weight:700;font-size:13.5px;">Anglais</div><div style="font-size:12px;color:#8D9A91;">Mme Abena · Salle 3</div></div></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:17px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12px;color:#8D9A91;font-weight:600;">Ma moyenne</div><div style="font-size:24px;font-weight:800;color:#0F7B4F;margin-top:4px;">14,2</div></div>
+                  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:17px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12px;color:#8D9A91;font-weight:600;">Mon rang</div><div style="font-size:24px;font-weight:800;margin-top:4px;">6ᵉ<span style="font-size:13px;color:#8D9A91;">/38</span></div></div>
+                </div>
+                <div style="background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;border-radius:14px;padding:18px;box-shadow:0 14px 28px -18px rgba(15,123,79,.8);"><div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5l11 7-11 7z"></path></svg></span><b style="font-size:13.5px;">Reprendre mon cours</b></div><p style="margin:0 0 12px;font-size:12.5px;color:#E7F3EC;">Physique — Les forces · leçon 4/8</p><span style="background:#E0A911;color:#3A2A00;font-weight:700;font-size:12px;padding:7px 12px;border-radius:8px;">Continuer ▸</span></div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

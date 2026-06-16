@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:20px;">
+              <div>
+                <h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Présence 4.0 · Anti-fraude</h1>
+                <p style="margin:5px 0 0;color:#6B7A71;font-size:14px;display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#C8102E;animation:pulseRing 1.6s infinite;"></span>Pointage en direct · 07:49 · Lundi 16 juin 2026</p>
+              </div>
+              <div style="margin-left:auto;display:flex;gap:9px;">
+                <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#3A4A42;">Toutes les classes ▾</div>
+                <div style="display:flex;align-items:center;gap:8px;background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5V4.5"></path><path d="M8 8l4-4 4 4"></path><path d="M5 15.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5"></path></svg> Rapport du jour</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Présents</div><div style="font-size:26px;font-weight:800;color:#0F7B4F;margin-top:4px;">1 058</div><div style="font-size:11.5px;color:#8D9A91;">84,8% de l'effectif</div></div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Retards</div><div style="font-size:26px;font-weight:800;color:#B5870A;margin-top:4px;">90</div><div style="font-size:11.5px;color:#8D9A91;">7,2% · notifiés</div></div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Absents</div><div style="font-size:26px;font-weight:800;color:#C8102E;margin-top:4px;">100</div><div style="font-size:11.5px;color:#8D9A91;">SMS parents envoyés</div></div>
+              <div style="background:linear-gradient(135deg,#C8102E,#8E0B20);color:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 14px 28px -18px rgba(200,16,46,.7);"><div style="font-size:12.5px;color:#FFD2DA;font-weight:600;display:flex;align-items:center;gap:6px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg> Fraudes bloquées</div><div style="font-size:26px;font-weight:800;margin-top:4px;">14</div><div style="font-size:11.5px;color:#FFD2DA;">aujourd'hui</div></div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:20px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                  <div style="font-weight:700;font-size:15px;">Flux de pointage en direct</div>
+                  <span style="font-size:12px;color:#0F7B4F;font-weight:700;display:flex;align-items:center;gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#0F7B4F;"></span>En direct</span>
+                </div>
+                <div style="font-size:12.5px;color:#8D9A91;margin-bottom:10px;">Chaque entrée est vérifiée par 4 couches : QR, NFC, reconnaissance faciale et géofencing.</div>
+                
+                  <div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="font-size:12px;color:#9BA89F;width:42px;">07:42</span>
+                    <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">NA</span>
+                    <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Nanda Arnold</div><div style="font-size:11.5px;color:#8D9A91;">3ᵉ A</div></div>
+                    <span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">QR</span>
+                    <span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Validé</span>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="font-size:12px;color:#9BA89F;width:42px;">07:43</span>
+                    <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">KN</span>
+                    <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Keudjio Nely</div><div style="font-size:11.5px;color:#8D9A91;">Tle D</div></div>
+                    <span style="background:#FBF1D5;color:#B5870A;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Face ID</span>
+                    <span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Validé</span>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="font-size:12px;color:#9BA89F;width:42px;">07:44</span>
+                    <span style="width:30px;height:30px;border-radius:50%;background:#C8102E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">??</span>
+                    <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Inconnu — photo non concordante</div><div style="font-size:11.5px;color:#8D9A91;">5ᵉ B</div></div>
+                    <span style="background:#FBF1D5;color:#B5870A;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Face ID</span>
+                    <span style="background:#FAE5E9;color:#C8102E;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Fraude bloquée</span>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="font-size:12px;color:#9BA89F;width:42px;">07:45</span>
+                    <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">NC</span>
+                    <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Ngambida Cédric</div><div style="font-size:11.5px;color:#8D9A91;">5ᵉ B</div></div>
+                    <span style="background:#EDEAF7;color:#5B4BC4;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">NFC</span>
+                    <span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Validé</span>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="font-size:12px;color:#9BA89F;width:42px;">07:46</span>
+                    <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">KW</span>
+                    <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Kom William</div><div style="font-size:11.5px;color:#8D9A91;">2nde C</div></div>
+                    <span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">QR</span>
+                    <span style="background:#FBF1D5;color:#B5870A;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Retard</span>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="font-size:12px;color:#9BA89F;width:42px;">07:47</span>
+                    <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">BE</span>
+                    <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Batje Eric</div><div style="font-size:11.5px;color:#8D9A91;">4ᵉ A</div></div>
+                    <span style="background:#E6F0F4;color:#2A7AA0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Géo</span>
+                    <span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Validé</span>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="font-size:12px;color:#9BA89F;width:42px;">07:48</span>
+                    <span style="width:30px;height:30px;border-radius:50%;background:#C8102E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">??</span>
+                    <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Badge déjà scanné — doublon refusé</div><div style="font-size:11.5px;color:#8D9A91;">3ᵉ A</div></div>
+                    <span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">QR</span>
+                    <span style="background:#FAE5E9;color:#C8102E;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Fraude bloquée</span>
+                  </div>
+                
+                  <div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="font-size:12px;color:#9BA89F;width:42px;">07:49</span>
+                    <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">DM</span>
+                    <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Domeni Merveille</div><div style="font-size:11.5px;color:#8D9A91;">1ʳᵉ C</div></div>
+                    <span style="background:#FBF1D5;color:#B5870A;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Face ID</span>
+                    <span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;">Validé</span>
+                  </div>
+                
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="background:#0C1F16;border-radius:16px;padding:20px;color:#fff;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;"><div style="font-weight:700;font-size:14px;">Borne de scan</div><span style="font-size:11px;color:#7E9488;">Portail principal · 3ᵉ A</span></div>
+                  <div style="position:relative;width:170px;height:170px;margin:0 auto;border-radius:18px;background:linear-gradient(135deg,rgba(19,147,94,.18),rgba(224,169,17,.12));border:1.5px dashed #2C463A;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                    <span style="color:#0F7B4F;"><svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9V6.5A1.5 1.5 0 0 1 6.5 5H9"></path><path d="M15 5h2.5A1.5 1.5 0 0 1 19 6.5V9"></path><path d="M19 15v2.5a1.5 1.5 0 0 1-1.5 1.5H15"></path><path d="M9 19H6.5A1.5 1.5 0 0 1 5 17.5V15"></path><path d="M4 12h16"></path></svg></span>
+                    <div style="position:absolute;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,#E0A911,transparent);animation:scanMove 2s ease-in-out infinite;"></div>
+                  </div>
+                  <div style="margin-top:14px;background:#0F7B4F;border-radius:10px;padding:11px 13px;display:flex;align-items:center;gap:10px;">
+                    <span style="width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;">DM</span>
+                    <div style="flex:1;"><div style="font-size:13px;font-weight:700;">✓ Domeni Merveille</div><div style="font-size:11px;color:#BBE3CC;">Face ID validé · 07:49</div></div>
+                  </div>
+                  <div style="margin-top:9px;font-size:11.5px;color:#7E9488;text-align:center;">28 / 32 pointés · mode hors ligne actif</div>
+                </div>
+                <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+                  <div style="font-weight:700;font-size:14px;margin-bottom:12px;">Méthodes anti-fraude actives</div>
+                  <div style="display:flex;flex-direction:column;gap:10px;">
+                    <div style="display:flex;align-items:center;gap:10px;"><span style="width:34px;height:34px;border-radius:9px;background:#E7F1EB;color:#0F7B4F;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;">QR</span><span style="flex:1;font-size:13px;font-weight:600;">QR Code</span><span style="width:38px;height:22px;border-radius:20px;background:#0F7B4F;position:relative;"><span style="position:absolute;right:2px;top:2px;width:18px;height:18px;border-radius:50%;background:#fff;"></span></span></div>
+                    <div style="display:flex;align-items:center;gap:10px;"><span style="width:34px;height:34px;border-radius:9px;background:#EDEAF7;color:#5B4BC4;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;">NFC</span><span style="flex:1;font-size:13px;font-weight:600;">Carte NFC</span><span style="width:38px;height:22px;border-radius:20px;background:#0F7B4F;position:relative;"><span style="position:absolute;right:2px;top:2px;width:18px;height:18px;border-radius:50%;background:#fff;"></span></span></div>
+                    <div style="display:flex;align-items:center;gap:10px;"><span style="width:34px;height:34px;border-radius:9px;background:#FBF1D5;color:#B5870A;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span><span style="flex:1;font-size:13px;font-weight:600;">Reconnaissance faciale</span><span style="width:38px;height:22px;border-radius:20px;background:#0F7B4F;position:relative;"><span style="position:absolute;right:2px;top:2px;width:18px;height:18px;border-radius:50%;background:#fff;"></span></span></div>
+                    <div style="display:flex;align-items:center;gap:10px;"><span style="width:34px;height:34px;border-radius:9px;background:#E6F0F4;color:#2A7AA0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;">GPS</span><span style="flex:1;font-size:13px;font-weight:600;">Géofencing</span><span style="width:38px;height:22px;border-radius:20px;background:#0F7B4F;position:relative;"><span style="position:absolute;right:2px;top:2px;width:18px;height:18px;border-radius:50%;background:#fff;"></span></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

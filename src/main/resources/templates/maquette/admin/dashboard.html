@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:22px;">
+              <div>
+                <h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-.01em;">Bonjour, M. Etoa 👋</h1>
+                <p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">Lundi 16 juin 2026 · Voici l'activité de votre établissement aujourd'hui.</p>
+              </div>
+              <div style="margin-left:auto;display:flex;gap:9px;">
+                <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 13px;font-size:13px;font-weight:600;color:#3A4A42;">Année 2025–2026 <span style="color:#8D9A91;">▾</span></div>
+                <div style="display:flex;align-items:center;gap:8px;background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 15px;font-size:13px;font-weight:600;box-shadow:0 6px 16px -8px rgba(15,123,79,.7);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5V4.5"></path><path d="M8 8l4-4 4 4"></path><path d="M5 15.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5"></path></svg> Exporter</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:17px 18px;box-shadow:0 8px 24px -18px rgba(20,40,30,.25);">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <span style="font-size:12.5px;color:#6B7A71;font-weight:600;">Élèves inscrits</span>
+                  <span style="width:30px;height:30px;border-radius:8px;background:#E7F1EB;color:#0F7B4F;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3.4 3.4 0 1 0 0-6.8A3.4 3.4 0 0 0 9 11Z"></path><path d="M3 20a6 6 0 0 1 12 0"></path><path d="M16 4.6a3 3 0 0 1 0 5.8"></path><path d="M18 14.2a5.5 5.5 0 0 1 3 5"></path></svg></span>
+                </div>
+                <div style="font-size:28px;font-weight:800;margin:9px 0 3px;letter-spacing:-.02em;">1 248</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12px;"><span style="color:#0F7B4F;font-weight:700;">▲ 86</span><span style="color:#8D9A91;">cette rentrée</span></div>
+              </div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:17px 18px;box-shadow:0 8px 24px -18px rgba(20,40,30,.25);">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <span style="font-size:12.5px;color:#6B7A71;font-weight:600;">Taux de présence</span>
+                  <span style="width:30px;height:30px;border-radius:8px;background:#FBF1D5;color:#B5870A;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+                </div>
+                <div style="font-size:28px;font-weight:800;margin:9px 0 3px;letter-spacing:-.02em;">94,2 %</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12px;"><span style="color:#0F7B4F;font-weight:700;">▲ 1,4 pt</span><span style="color:#8D9A91;">vs hier</span></div>
+              </div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:17px 18px;box-shadow:0 8px 24px -18px rgba(20,40,30,.25);">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <span style="font-size:12.5px;color:#6B7A71;font-weight:600;">Recouvrement</span>
+                  <span style="width:30px;height:30px;border-radius:8px;background:#E7F1EB;color:#0F7B4F;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6H17a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M16 12.2h3.5"></path><path d="M3 9.5h12"></path></svg></span>
+                </div>
+                <div style="font-size:28px;font-weight:800;margin:9px 0 3px;letter-spacing:-.02em;">78 %</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12px;"><span class="mono" style="color:#3A4A42;font-weight:600;">312,4 M</span><span style="color:#8D9A91;">/ 400 M FCFA</span></div>
+              </div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:17px 18px;box-shadow:0 8px 24px -18px rgba(20,40,30,.25);">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <span style="font-size:12.5px;color:#6B7A71;font-weight:600;">Fraudes bloquées</span>
+                  <span style="width:30px;height:30px;border-radius:8px;background:#FAE5E9;color:#C8102E;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+                </div>
+                <div style="font-size:28px;font-weight:800;margin:9px 0 3px;letter-spacing:-.02em;">14</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12px;"><span style="color:#C8102E;font-weight:700;">●</span><span style="color:#8D9A91;">tentatives ce mois</span></div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1.7fr 1fr;gap:16px;margin-bottom:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:20px;box-shadow:0 8px 24px -18px rgba(20,40,30,.25);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                  <div>
+                    <div style="font-weight:700;font-size:15px;">Recouvrement des frais de scolarité</div>
+                    <div style="font-size:12.5px;color:#8D9A91;">Encaissé par mois — objectif mensuel en pointillé</div>
+                  </div>
+                  <div style="display:flex;gap:14px;font-size:11.5px;color:#6B7A71;">
+                    <span style="display:flex;align-items:center;gap:5px;"><span style="width:9px;height:9px;border-radius:3px;background:#0F7B4F;"></span>Encaissé</span>
+                    <span style="display:flex;align-items:center;gap:5px;"><span style="width:12px;height:0;border-top:2px dashed #E0A911;"></span>Objectif</span>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-end;gap:14px;height:180px;padding-top:10px;border-bottom:1px solid #EEE9DC;">
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:60.0%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">38</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:54.3%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:64.3%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">55</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:78.6%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:71.4%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">61</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:87.1%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:57.1%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">34</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:48.6%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:74.3%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">58</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:82.9%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:68.6%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">47</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:67.1%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:71.4%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">52</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:74.3%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:65.7%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">41</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:58.6%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:68.6%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">49</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:70.0%;"></div>
+                    </div>
+                  
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;position:relative;">
+                      <div style="position:absolute;left:15%;right:15%;bottom:62.9%;height:0;border-top:2px dashed #E0A911;"></div>
+                      <div style="font-size:10.5px;color:#3A4A42;font-weight:700;">31</div>
+                      <div style="width:60%;max-width:30px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#13935E,#0F7B4F);height:44.3%;"></div>
+                    </div>
+                  
+                </div>
+                <div style="display:flex;gap:14px;margin-top:8px;">
+                  <div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Sep</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Oct</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Nov</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Déc</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Jan</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Fév</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Mar</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Avr</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Mai</div><div style="flex:1;text-align:center;font-size:11px;color:#8D9A91;font-weight:600;">Juin</div>
+                </div>
+              </div>
+
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:20px;box-shadow:0 8px 24px -18px rgba(20,40,30,.25);">
+                <div style="font-weight:700;font-size:15px;margin-bottom:3px;">Présence du jour</div>
+                <div style="font-size:12.5px;color:#8D9A91;margin-bottom:16px;">1 248 élèves attendus</div>
+                <div style="display:flex;align-items:center;gap:18px;">
+                  <div style="width:128px;height:128px;border-radius:50%;background:conic-gradient(#0F7B4F 0 84.8%,#E0A911 84.8% 92%,#C8102E 92% 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <div style="width:88px;height:88px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                      <div style="font-size:22px;font-weight:800;color:#0F7B4F;line-height:1;">94,2%</div>
+                      <div style="font-size:10.5px;color:#8D9A91;">présents</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:11px;flex:1;">
+                    <div style="display:flex;align-items:center;gap:8px;"><span style="width:9px;height:9px;border-radius:3px;background:#0F7B4F;"></span><span style="font-size:12.5px;color:#3A4A42;flex:1;">Présents</span><b class="mono" style="font-size:13px;">1 058</b></div>
+                    <div style="display:flex;align-items:center;gap:8px;"><span style="width:9px;height:9px;border-radius:3px;background:#E0A911;"></span><span style="font-size:12.5px;color:#3A4A42;flex:1;">Retards</span><b class="mono" style="font-size:13px;">90</b></div>
+                    <div style="display:flex;align-items:center;gap:8px;"><span style="width:9px;height:9px;border-radius:3px;background:#C8102E;"></span><span style="font-size:12.5px;color:#3A4A42;flex:1;">Absents</span><b class="mono" style="font-size:13px;">100</b></div>
+                  </div>
+                </div>
+                <div style="margin-top:16px;padding-top:14px;border-top:1px solid #EEE9DC;display:flex;align-items:center;gap:8px;font-size:12px;color:#6B7A71;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg> Pointage anti-fraude actif · <b style="color:#0F7B4F;">QR + NFC + Face ID</b>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:20px;box-shadow:0 8px 24px -18px rgba(20,40,30,.25);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+                  <div style="font-weight:700;font-size:15px;">Dernières inscriptions</div>
+                  <a onClick="" style="font-size:12.5px;color:#0F7B4F;font-weight:700;cursor:pointer;">Voir tout →</a>
+                </div>
+                <div style="display:grid;grid-template-columns:1.1fr 1.6fr 1fr 1fr;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:#9BA89F;font-weight:700;padding:0 4px 9px;border-bottom:1px solid #EEE9DC;">
+                  <span>Matricule</span><span>Nom de l'élève</span><span>Classe</span><span>Statut</span>
+                </div>
+                
+                  <div style="display:grid;grid-template-columns:1.1fr 1.6fr 1fr 1fr;align-items:center;font-size:13px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="color:#6B7A71;font-size:12px;">25G01180</span>
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">NA</span><b style="font-weight:600;">Nanda Arnold</b></span>
+                    <span style="color:#3A4A42;">3ᵉ A</span>
+                    <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Validé</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.1fr 1.6fr 1fr 1fr;align-items:center;font-size:13px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="color:#6B7A71;font-size:12px;">25G01193</span>
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">KW</span><b style="font-weight:600;">Kom William</b></span>
+                    <span style="color:#3A4A42;">2nde C</span>
+                    <span><span style="background:#FBF1D5;color:#B5870A;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">En attente</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.1fr 1.6fr 1fr 1fr;align-items:center;font-size:13px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="color:#6B7A71;font-size:12px;">25G01217</span>
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">KD</span><b style="font-weight:600;">Kangue Dominique</b></span>
+                    <span style="color:#3A4A42;">Tle D</span>
+                    <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Validé</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.1fr 1.6fr 1fr 1fr;align-items:center;font-size:13px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="color:#6B7A71;font-size:12px;">25G01243</span>
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">EW</span><b style="font-weight:600;">Ebongue Wilfried</b></span>
+                    <span style="color:#3A4A42;">6ᵉ B</span>
+                    <span><span style="background:#E7F1EB;color:#0F7B4F;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Validé</span></span>
+                  </div>
+                
+                  <div style="display:grid;grid-template-columns:1.1fr 1.6fr 1fr 1fr;align-items:center;font-size:13px;padding:11px 4px;border-bottom:1px solid #F3EFE4;">
+                    <span class="mono" style="color:#6B7A71;font-size:12px;">25G01250</span>
+                    <span style="display:flex;align-items:center;gap:9px;"><span style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;">NM</span><b style="font-weight:600;">Nangue Mégane</b></span>
+                    <span style="color:#3A4A42;">1ʳᵉ A</span>
+                    <span><span style="background:#FAE5E9;color:#C8102E;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Pièces manquantes</span></span>
+                  </div>
+                
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="border-radius:14px;padding:18px;background:linear-gradient(135deg,#0F7B4F 0%,#0B5C3B 60%,#0C2B1E 100%);color:#fff;position:relative;overflow:hidden;box-shadow:0 14px 30px -18px rgba(15,123,79,.8);">
+                  <div style="position:absolute;right:-18px;top:-18px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(224,169,17,.4),transparent 70%);"></div>
+                  <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px;">
+                    <span style="width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5l1.8 4.2 4.2 1.8-4.2 1.8L12 18.5l-1.8-4.2L6 12.5l4.2-1.8z"></path></svg></span>
+                    <div><div style="font-weight:800;font-size:14px;">EduBot CM</div><div style="font-size:10.5px;color:#A9D3BF;">Assistant IA · prédiction</div></div>
+                  </div>
+                  <p style="margin:0 0 12px;font-size:13px;line-height:1.5;color:#E7F3EC;"><b style="color:#FFD86B;">3 élèves</b> présentent un risque de décrochage élevé (absences + chute des notes). Une intervention est recommandée cette semaine.</p>
+                  <div style="display:flex;gap:8px;"><span style="background:#E0A911;color:#3A2A00;font-weight:700;font-size:12px;padding:7px 12px;border-radius:8px;">Voir les profils</span><span style="background:rgba(255,255,255,.12);color:#fff;font-weight:600;font-size:12px;padding:7px 12px;border-radius:8px;">Générer un plan</span></div>
+                </div>
+
+                <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -18px rgba(20,40,30,.25);flex:1;">
+                  <div style="font-weight:700;font-size:14px;margin-bottom:12px;">Alertes récentes</div>
+                  
+                    <div style="display:flex;gap:11px;padding:9px 0;border-bottom:1px solid #F3EFE4;">
+                      <span style="width:9px;height:9px;border-radius:50%;background:#C8102E;margin-top:4px;flex-shrink:0;"></span>
+                      <div style="flex:1;"><div style="font-size:12.5px;font-weight:600;color:#2A3A32;line-height:1.3;">Tentative de pointage frauduleux bloquée — 5ᵉ B</div><div style="font-size:11.5px;color:#8D9A91;">Il y a 12 min</div></div>
+                    </div>
+                  
+                    <div style="display:flex;gap:11px;padding:9px 0;border-bottom:1px solid #F3EFE4;">
+                      <span style="width:9px;height:9px;border-radius:50%;background:#0F7B4F;margin-top:4px;flex-shrink:0;"></span>
+                      <div style="flex:1;"><div style="font-size:12.5px;font-weight:600;color:#2A3A32;line-height:1.3;">Paiement Mobile Money reçu — 150 000 FCFA</div><div style="font-size:11.5px;color:#8D9A91;">Il y a 31 min</div></div>
+                    </div>
+                  
+                    <div style="display:flex;gap:11px;padding:9px 0;border-bottom:1px solid #F3EFE4;">
+                      <span style="width:9px;height:9px;border-radius:50%;background:#E0A911;margin-top:4px;flex-shrink:0;"></span>
+                      <div style="flex:1;"><div style="font-size:12.5px;font-weight:600;color:#2A3A32;line-height:1.3;">Conseil de classe Tle D programmé demain</div><div style="font-size:11.5px;color:#8D9A91;">Il y a 1 h</div></div>
+                    </div>
+                  
+                    <div style="display:flex;gap:11px;padding:9px 0;border-bottom:1px solid #F3EFE4;">
+                      <span style="width:9px;height:9px;border-radius:50%;background:#0F7B4F;margin-top:4px;flex-shrink:0;"></span>
+                      <div style="flex:1;"><div style="font-size:12.5px;font-weight:600;color:#2A3A32;line-height:1.3;">Nouveau dossier d’admission à valider</div><div style="font-size:11.5px;color:#8D9A91;">Il y a 2 h</div></div>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+</body>
+</html>

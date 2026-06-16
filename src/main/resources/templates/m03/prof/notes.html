@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+
+  <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:18px;">
+    <div>
+      <h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Saisie des notes</h1>
+      <p style="margin:5px 0 0;color:#6B7A71;font-size:14px;" th:text="${releve.classeNom} + ' · ' + ${releve.matiereNom} + ' · Séquence ' + ${releve.sequence} + ' · saisie hors ligne'">Classe</p>
+    </div>
+    <form method="get" th:action="@{/m03/prof/notes}" style="margin-left:auto;display:flex;gap:9px;align-items:center;">
+      <select name="classe" onchange="this.form.submit()" style="background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#3A4A42;font-family:inherit;">
+        <option th:each="c : ${classes}" th:value="${c.id}" th:text="${c.nom}" th:selected="${c.id == selClasse}"></option>
+      </select>
+      <select name="matiere" onchange="this.form.submit()" style="background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#3A4A42;font-family:inherit;">
+        <option th:each="m : ${matieres}" th:value="${m.id}" th:text="${m.nom}" th:selected="${m.id == selMatiere}"></option>
+      </select>
+      <select name="sequence" onchange="this.form.submit()" style="background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#3A4A42;font-family:inherit;">
+        <option th:each="s : ${#numbers.sequence(1,6)}" th:value="${s}" th:text="'Séquence ' + ${s}" th:selected="${s == releve.sequence}"></option>
+      </select>
+    </form>
+  </div>
+
+  <form method="post" th:action="@{/m03/prof/notes}">
+    <input type="hidden" name="classe" th:value="${selClasse}"/>
+    <input type="hidden" name="matiere" th:value="${selMatiere}"/>
+    <input type="hidden" name="sequence" th:value="${releve.sequence}"/>
+
+    <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
+      <button type="submit" style="background:#0F7B4F;color:#fff;border:none;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 16px -8px rgba(15,123,79,.7);">✓ Valider &amp; synchroniser</button>
+    </div>
+
+    <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:10px;padding:13px 20px;background:#FAF7F0;border-bottom:1px solid #ECE7DA;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:#9BA89F;font-weight:700;">
+        <span>Élève</span><span style="text-align:center;">Interro</span><span style="text-align:center;">Devoir</span><span style="text-align:center;">Compo</span><span style="text-align:center;">Moy/20</span>
+      </div>
+      <div th:each="g : ${releve.lignes}" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:10px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+        <span style="display:flex;align-items:center;gap:10px;"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;" th:text="${g.ini}">NA</span><b style="font-weight:600;font-size:13px;" th:text="${g.nom}">Nom</b></span>
+        <input class="mono" type="text" th:name="'note_' + ${g.eleveId} + '_INTERRO'" th:value="${g.interro == '—' ? '' : g.interro}" style="margin:0 auto;width:54px;text-align:center;background:#F4F1E9;border:1px solid #E4DFD1;border-radius:8px;padding:7px 0;font-family:inherit;outline:none;"/>
+        <input class="mono" type="text" th:name="'note_' + ${g.eleveId} + '_DEVOIR'" th:value="${g.devoir == '—' ? '' : g.devoir}" style="margin:0 auto;width:54px;text-align:center;background:#F4F1E9;border:1px solid #E4DFD1;border-radius:8px;padding:7px 0;font-family:inherit;outline:none;"/>
+        <input class="mono" type="text" th:name="'note_' + ${g.eleveId} + '_COMPO'" th:value="${g.compo == '—' ? '' : g.compo}" style="margin:0 auto;width:54px;text-align:center;background:#F4F1E9;border:1px solid #E4DFD1;border-radius:8px;padding:7px 0;font-family:inherit;outline:none;"/>
+        <span class="mono" style="text-align:center;" th:style="${g.moyStyle}" th:text="${g.moy}">—</span>
+      </div>
+      <div style="padding:12px 20px;font-size:12.5px;color:#8D9A91;">Saisissez les notes sur 20 (séparateur décimal « , »). La moyenne est recalculée à l'enregistrement.</div>
+    </div>
+  </form>
+</div>
+</section>
+</body>
+</html>

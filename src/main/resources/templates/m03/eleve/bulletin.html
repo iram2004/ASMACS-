@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:900px;margin:0 auto;">
+
+  <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:18px;">
+    <div>
+      <h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Mon bulletin</h1>
+      <p style="margin:5px 0 0;color:#6B7A71;font-size:14px;"
+         th:text="${bulletin.eleveNom} + ' · ' + ${bulletin.classeNom} + ' · Séquence ' + ${bulletin.sequence} + ' · moyenne ' + ${bulletin.moyGenerale} + '/20 · rang ' + (${bulletin.rang} ?: '—') + '/' + ${bulletin.effectif}">Bulletin</p>
+    </div>
+    <form method="get" th:action="@{/m03/eleve/bulletin}" style="margin-left:auto;">
+      <select name="sequence" onchange="this.form.submit()" style="background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#3A4A42;font-family:inherit;">
+        <option th:each="s : ${#numbers.sequence(1,6)}" th:value="${s}" th:text="'Séquence ' + ${s}" th:selected="${s == bulletin.sequence}"></option>
+      </select>
+    </form>
+  </div>
+
+  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+    <div style="display:grid;grid-template-columns:1.6fr .7fr .6fr 1.4fr;gap:10px;padding:13px 20px;background:#FAF7F0;border-bottom:1px solid #ECE7DA;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:#9BA89F;font-weight:700;">
+      <span>Matière</span><span style="text-align:center;">Moy</span><span style="text-align:center;">Coef</span><span>Appréciation</span>
+    </div>
+    <div th:each="b : ${bulletin.lignes}" style="display:grid;grid-template-columns:1.6fr .7fr .6fr 1.4fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+      <span><div style="font-weight:600;" th:text="${b.matiereNom}">Matière</div><div style="font-size:11px;color:#8D9A91;" th:text="${b.prof}">—</div></span>
+      <span class="mono" style="text-align:center;" th:style="${b.moyStyle}" th:text="${b.moy}">—</span>
+      <span class="mono" style="text-align:center;color:#6B7A71;" th:text="${b.coef}">1</span>
+      <span style="font-size:12px;color:#3A4A42;" th:text="${b.appreciation}">—</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:#E7F1EB;">
+      <span style="font-weight:700;font-size:14px;color:#0B5C3B;">Moyenne générale</span>
+      <span class="mono" style="font-size:20px;font-weight:800;color:#0F7B4F;" th:text="${bulletin.moyGenerale} + ' / 20'">14,20 / 20</span>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

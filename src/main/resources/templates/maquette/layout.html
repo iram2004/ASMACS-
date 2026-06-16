@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr" th:fragment="page(content)">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title th:text="'ASMACS · ' + ${crumbTitle}">ASMACS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" th:href="@{/css/asmacs-maquette.css}" href="/css/asmacs-maquette.css"/>
+</head>
+<body class="asmacs-body">
+
+  <div th:replace="~{maquette/layout :: topbar(${role})}"></div>
+
+  <div style="display:flex;min-height:calc(100vh - 46px);">
+
+    <aside style="width:250px;flex-shrink:0;background:#10271C;display:flex;flex-direction:column;position:sticky;top:46px;height:calc(100vh - 46px);">
+      <div style="padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,.07);">
+        <div style="font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#5E7468;font-weight:700;margin-bottom:5px;" th:text="${roleLabel}">Administration</div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0;" th:text="${schoolInit}">LC</div>
+          <div style="min-width:0;">
+            <div style="color:#EAF2EE;font-weight:700;font-size:13px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" th:text="${schoolName}">CB La Conformité</div>
+            <div style="color:#7D9387;font-size:11px;" th:text="${schoolSub}">Douala · 1 248 élèves</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav-dark" style="flex:1;overflow:auto;padding:6px 0 10px;">
+        <th:block th:each="g : ${navGroups}">
+          <div style="padding:13px 22px 5px;font-size:10px;text-transform:uppercase;letter-spacing:.11em;color:#566B5F;font-weight:700;" th:text="${g.label}">Groupe</div>
+          <a th:each="it : ${g.items}" class="dc-navlink" th:href="@{${it.url}}"
+             th:with="actv=${it.key == active}"
+             th:style="'display:flex;align-items:center;gap:11px;padding:9px 13px 9px 16px;margin:1px 11px;border-radius:9px;cursor:pointer;font-size:13.5px;text-decoration:none;position:relative;transition:background .15s,color .15s;' + (${actv} ? 'background:rgba(224,169,17,.14);color:#FFFFFF;font-weight:600;' : 'background:transparent;color:#A9BBB1;font-weight:500;')">
+            <span th:style="'position:absolute;left:-11px;top:50%;transform:translateY(-50%);width:3px;height:19px;border-radius:0 3px 3px 0;background:' + (${actv} ? '#E0A911' : 'transparent') + ';'"></span>
+            <span th:style="'display:flex;color:' + (${actv} ? '#E0A911' : '#7E9488') + ';'" th:utext="${it.icon}"></span>
+            <span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" th:text="${it.label}">Lien</span>
+            <span th:if="${it.badge}" style="background:#C8102E;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;" th:text="${it.badge}">0</span>
+          </a>
+        </th:block>
+      </nav>
+
+      <div style="padding:12px;border-top:1px solid rgba(255,255,255,.07);">
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.04);">
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#E0A911,#C8102E);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0;" th:text="${userInit}">EB</div>
+          <div style="min-width:0;flex:1;">
+            <div style="color:#EAF2EE;font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" th:text="${userName}">M. Etoa</div>
+            <div style="color:#7D9387;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" th:text="${userRole}">Proviseur</div>
+          </div>
+          <a th:href="@{/maquette/public/home}" style="color:#7D9387;display:flex;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.5H6.5A1.5 1.5 0 0 0 5 6v12a1.5 1.5 0 0 0 1.5 1.5H14"></path><path d="M17 8.5l3.5 3.5L17 15.5"></path><path d="M9.5 12h11"></path></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;background:#F4F1E9;">
+      <header style="height:62px;flex-shrink:0;background:rgba(244,241,233,.85);backdrop-filter:blur(8px);border-bottom:1px solid #E4DFD1;display:flex;align-items:center;gap:16px;padding:0 30px;position:sticky;top:46px;z-index:30;">
+        <div>
+          <div style="font-size:11px;color:#8D9A91;font-weight:600;" th:text="${crumbSection}">Pilotage</div>
+          <div style="font-size:16px;font-weight:700;color:#15241C;line-height:1.1;" th:text="${crumbTitle}">Tableau de bord</div>
+        </div>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:12px;">
+          <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:8px 12px;width:240px;color:#8D9A91;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"></path><path d="M20 20l-3.6-3.6"></path></svg>
+            <span style="font-size:13px;">Rechercher un élève, une classe…</span>
+          </div>
+          <div style="position:relative;width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid #E4DFD1;display:flex;align-items:center;justify-content:center;color:#51635A;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 9.5a5.8 5.8 0 0 1 11.6 0c0 4.8 2 5.8 2 5.8H4.2s2-1 2-5.8"></path><path d="M10 19.2a2 2 0 0 0 4 0"></path></svg>
+            <span style="position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:#C8102E;border:1.5px solid #fff;"></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;padding:4px 6px 4px 4px;border-radius:30px;background:#fff;border:1px solid #E4DFD1;">
+            <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#E0A911);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;" th:text="${userInit}">EB</div>
+            <span style="font-size:13px;font-weight:600;color:#2A3A32;padding-right:4px;" th:text="${userName}">M. Etoa</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="asmacs-scroll" style="flex:1;overflow:auto;padding:26px 30px 60px;">
+        <th:block th:replace="${content}"></th:block>
+      </main>
+    </div>
+  </div>
+
+  <!-- ===================== Barre de rôle globale (topbar 46px) ===================== -->
+  <div th:fragment="topbar(activeRole)"
+       style="height:46px;background:#0C1F16;display:flex;align-items:center;gap:16px;padding:0 18px;position:sticky;top:0;z-index:60;">
+    <div style="display:flex;align-items:center;gap:9px;">
+      <div style="width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#0F7B4F 30%,#E0A911 100%);box-shadow:0 0 0 1px rgba(255,255,255,.12) inset;"></div>
+      <span style="font-weight:800;letter-spacing:.04em;color:#fff;font-size:14.5px;">ASMACS</span>
+      <span style="font-size:10px;color:#8AA093;border:1px solid #294035;padding:2px 7px;border-radius:20px;letter-spacing:.1em;text-transform:uppercase;">Maquette</span>
+    </div>
+    <div style="display:flex;gap:3px;margin-left:6px;">
+      <a th:each="t : ${roleTabs}" th:href="@{${t.href}}" th:text="${t.label}"
+         th:style="'font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:8px;cursor:pointer;text-decoration:none;transition:.15s;' + (${t.key == activeRole} ? 'background:rgba(224,169,17,.18);color:#FFE6A3;' : 'color:#8AA093;')">Rôle</a>
+    </div>
+    <div style="margin-left:auto;font-size:11.5px;color:#7D9387;display:flex;align-items:center;gap:7px;">
+      <span style="width:7px;height:7px;border-radius:50%;background:#0F7B4F;box-shadow:0 0 0 3px rgba(15,123,79,.25);"></span>
+      Prototype interactif · Français
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ASMACS · Inscription</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" th:href="@{/css/asmacs-maquette.css}" href="/css/asmacs-maquette.css"/>
+</head>
+<body class="asmacs-body">
+<div th:replace="~{maquette/layout :: topbar('public')}"></div>
+<div style="min-height:calc(100vh - 46px);background:#FBFAF6;padding:44px 28px;">
+      <div style="max-width:720px;margin:0 auto;">
+        <a onClick="" style="font-size:13.5px;color:#0F7B4F;font-weight:700;cursor:pointer;">← Retour à l'accueil</a>
+        <h1 style="font-size:30px;font-weight:800;margin:16px 0 6px;letter-spacing:-.02em;">Inscrire mon établissement</h1>
+        <p style="color:#6B7A71;font-size:15px;margin:0 0 26px;">3 étapes · environ 4 minutes. Un conseiller ASMACS vous recontacte sous 48 h.</p>
+        <div style="display:flex;gap:8px;margin-bottom:26px;">
+          <div style="flex:1;"><div style="height:5px;border-radius:5px;background:#0F7B4F;"></div><div style="font-size:12px;font-weight:700;color:#0F7B4F;margin-top:7px;">1 · Établissement</div></div>
+          <div style="flex:1;"><div style="height:5px;border-radius:5px;background:#0F7B4F;"></div><div style="font-size:12px;font-weight:700;color:#0F7B4F;margin-top:7px;">2 · Responsable</div></div>
+          <div style="flex:1;"><div style="height:5px;border-radius:5px;background:#E4DFD1;"></div><div style="font-size:12px;font-weight:600;color:#8D9A91;margin-top:7px;">3 · Formule</div></div>
+        </div>
+        <div style="background:#fff;border:1px solid #ECE7DA;border-radius:16px;padding:28px;box-shadow:0 12px 30px -22px rgba(20,40,30,.3);">
+          <div style="font-weight:700;font-size:15px;margin-bottom:18px;">Informations de l'établissement</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div style="grid-column:span 2;"><div style="font-size:12.5px;font-weight:700;color:#3A4A42;margin-bottom:7px;">Nom de l'établissement</div><div style="background:#FBFAF6;border:1px solid #E0DBCD;border-radius:10px;padding:12px 14px;font-size:14px;">Collège Bilingue La Conformité</div></div>
+            <div><div style="font-size:12.5px;font-weight:700;color:#3A4A42;margin-bottom:7px;">Type</div><div style="background:#FBFAF6;border:1px solid #E0DBCD;border-radius:10px;padding:12px 14px;font-size:14px;color:#6B7A71;">Privé · Secondaire ▾</div></div>
+            <div><div style="font-size:12.5px;font-weight:700;color:#3A4A42;margin-bottom:7px;">Sous-système</div><div style="background:#FBFAF6;border:1px solid #E0DBCD;border-radius:10px;padding:12px 14px;font-size:14px;color:#6B7A71;">Bilingue ▾</div></div>
+            <div><div style="font-size:12.5px;font-weight:700;color:#3A4A42;margin-bottom:7px;">Ville</div><div style="background:#FBFAF6;border:1px solid #E0DBCD;border-radius:10px;padding:12px 14px;font-size:14px;">Douala</div></div>
+            <div><div style="font-size:12.5px;font-weight:700;color:#3A4A42;margin-bottom:7px;">Effectif élèves</div><div style="background:#FBFAF6;border:1px solid #E0DBCD;border-radius:10px;padding:12px 14px;font-size:14px;">1 248</div></div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:24px;">
+            <a onClick="" style="font-size:14px;font-weight:700;color:#15241C;background:#fff;border:1px solid #E0DBCD;padding:13px 22px;border-radius:11px;cursor:pointer;">Annuler</a>
+            <a onClick="" style="margin-left:auto;font-size:14px;font-weight:700;color:#fff;background:#0F7B4F;padding:13px 26px;border-radius:11px;cursor:pointer;box-shadow:0 12px 24px -12px rgba(15,123,79,.85);">Continuer →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

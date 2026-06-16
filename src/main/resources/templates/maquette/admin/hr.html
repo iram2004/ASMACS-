@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+            <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:20px;">
+              <div><h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">RH & paie</h1><p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">Paie de juin 2026 · 86 employés · calcul CNPS / IRPP automatique</p></div>
+              <div style="margin-left:auto;display:flex;gap:9px;">
+                <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;color:#3A4A42;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.5V4.5"></path><path d="M8 8l4-4 4 4"></path><path d="M5 15.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5"></path></svg> Bulletins de paie</div>
+                <div style="display:flex;align-items:center;gap:8px;background:#0F7B4F;color:#fff;border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;">Lancer la paie ▸</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Masse salariale</div><div class="mono" style="font-size:22px;font-weight:800;margin-top:4px;">28,4 M</div><div style="font-size:11.5px;color:#8D9A91;">FCFA brut / mois</div></div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Cotisations CNPS</div><div class="mono" style="font-size:22px;font-weight:800;color:#B5870A;margin-top:4px;">2,3 M</div><div style="font-size:11.5px;color:#8D9A91;">part employeur</div></div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">IRPP retenu</div><div class="mono" style="font-size:22px;font-weight:800;color:#C8102E;margin-top:4px;">1,9 M</div><div style="font-size:11.5px;color:#8D9A91;">reversé au Trésor</div></div>
+              <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);"><div style="font-size:12.5px;color:#6B7A71;font-weight:600;">Net à payer</div><div class="mono" style="font-size:22px;font-weight:800;color:#0F7B4F;margin-top:4px;">24,2 M</div><div style="font-size:11.5px;color:#8D9A91;">virements en attente</div></div>
+            </div>
+            <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);">
+              <div style="display:grid;grid-template-columns:1.8fr 1fr .8fr 1fr 1fr;gap:10px;padding:13px 20px;background:#FAF7F0;border-bottom:1px solid #ECE7DA;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:#9BA89F;font-weight:700;">
+                <span>Employé</span><span>Poste</span><span style="text-align:center;">Heures</span><span style="text-align:right;">Net (FCFA)</span><span style="text-align:right;">Versement</span>
+              </div>
+              
+                <div style="display:grid;grid-template-columns:1.8fr 1fr .8fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">MN</span><b style="font-weight:600;">Mme Nkolo Aline</b></span>
+                  <span style="color:#6B7A71;font-size:12.5px;">Enseignante · Maths</span>
+                  <span class="mono" style="text-align:center;color:#6B7A71;">72</span>
+                  <span class="mono" style="text-align:right;font-weight:700;">468 000</span>
+                  <span style="text-align:right;"><span style="background:#FBE9C7;color:#9A6A00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;">MoMo</span></span>
+                </div>
+              
+                <div style="display:grid;grid-template-columns:1.8fr 1fr .8fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">MF</span><b style="font-weight:600;">M. Fotso Jean</b></span>
+                  <span style="color:#6B7A71;font-size:12.5px;">Enseignant · Physique</span>
+                  <span class="mono" style="text-align:center;color:#6B7A71;">64</span>
+                  <span class="mono" style="text-align:right;font-weight:700;">416 000</span>
+                  <span style="text-align:right;"><span style="background:#FCE3D2;color:#B5470A;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;">Orange M.</span></span>
+                </div>
+              
+                <div style="display:grid;grid-template-columns:1.8fr 1fr .8fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">MA</span><b style="font-weight:600;">Mme Abena Claire</b></span>
+                  <span style="color:#6B7A71;font-size:12.5px;">Enseignante · Anglais</span>
+                  <span class="mono" style="text-align:center;color:#6B7A71;">80</span>
+                  <span class="mono" style="text-align:right;font-weight:700;">520 000</span>
+                  <span style="text-align:right;"><span style="background:#FBE9C7;color:#9A6A00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;">MoMo</span></span>
+                </div>
+              
+                <div style="display:grid;grid-template-columns:1.8fr 1fr .8fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">MM</span><b style="font-weight:600;">M. Mballa Désiré</b></span>
+                  <span style="color:#6B7A71;font-size:12.5px;">Surveillant général</span>
+                  <span class="mono" style="text-align:center;color:#6B7A71;">—</span>
+                  <span class="mono" style="text-align:right;font-weight:700;">280 000</span>
+                  <span style="text-align:right;"><span style="background:#E6F0F4;color:#2A7AA0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;">Virement</span></span>
+                </div>
+              
+                <div style="display:grid;grid-template-columns:1.8fr 1fr .8fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">MT</span><b style="font-weight:600;">Mme Tchinda Rose</b></span>
+                  <span style="color:#6B7A71;font-size:12.5px;">Comptable</span>
+                  <span class="mono" style="text-align:center;color:#6B7A71;">—</span>
+                  <span class="mono" style="text-align:right;font-weight:700;">350 000</span>
+                  <span style="text-align:right;"><span style="background:#E6F0F4;color:#2A7AA0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;">Virement</span></span>
+                </div>
+              
+                <div style="display:grid;grid-template-columns:1.8fr 1fr .8fr 1fr 1fr;gap:10px;align-items:center;padding:12px 20px;border-bottom:1px solid #F3EFE4;font-size:13px;">
+                  <span style="display:flex;align-items:center;gap:10px;"><span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0F7B4F,#0B5C3B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">MO</span><b style="font-weight:600;">M. Onana Paul</b></span>
+                  <span style="color:#6B7A71;font-size:12.5px;">Enseignant · EPS</span>
+                  <span class="mono" style="text-align:center;color:#6B7A71;">48</span>
+                  <span class="mono" style="text-align:right;font-weight:700;">312 000</span>
+                  <span style="text-align:right;"><span style="background:#FBE9C7;color:#9A6A00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;">MoMo</span></span>
+                </div>
+              
+            </div>
+          </div>
+</section>
+</body>
+</html>

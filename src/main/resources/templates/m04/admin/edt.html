@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{maquette/layout :: page(~{::section})}">
+<body>
+<section th:fragment="section">
+<div style="max-width:1240px;margin:0 auto;">
+
+  <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:20px;">
+    <div>
+      <h1 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;">Classes &amp; emplois du temps</h1>
+      <p style="margin:5px 0 0;color:#6B7A71;font-size:14px;">
+        <span th:text="'Emploi du temps · ' + ${edt.classeNom} + ' · ' + ${edt.nbSeances} + ' séances'">EDT</span>
+        <span th:if="${edt.nbConflits == 0}" style="color:#0F7B4F;font-weight:700;"> · généré sans conflit</span>
+        <span th:if="${edt.nbConflits > 0}" style="color:#C8102E;font-weight:700;" th:text="' · ' + ${edt.nbConflits} + ' conflit(s)'"></span>
+      </p>
+    </div>
+    <form method="get" th:action="@{/m04/admin/edt}" style="margin-left:auto;display:flex;gap:9px;align-items:center;">
+      <select name="classe" onchange="this.form.submit()" style="background:#fff;border:1px solid #E4DFD1;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;color:#3A4A42;font-family:inherit;">
+        <option th:each="c : ${classes}" th:value="${c.id}" th:text="${c.nom}" th:selected="${c.id == selClasse}"></option>
+      </select>
+    </form>
+  </div>
+
+  <div style="background:#fff;border:1px solid #ECE7DA;border-radius:14px;padding:18px;box-shadow:0 8px 24px -20px rgba(20,40,30,.3);overflow:auto;">
+    <div style="display:grid;grid-template-columns:62px repeat(5,1fr);gap:8px;min-width:760px;">
+      <div></div>
+      <div th:each="j : ${edt.jours}" style="text-align:center;font-size:12px;font-weight:700;color:#3A4A42;padding-bottom:6px;" th:text="${j}">Jour</div>
+
+      <th:block th:each="ligne : ${edt.lignes}">
+        <div class="mono" style="font-size:10.5px;color:#9BA89F;text-align:right;padding-right:6px;padding-top:6px;" th:text="${ligne.creneau}">07–08</div>
+        <th:block th:each="cell : ${ligne.cellules}">
+          <div th:if="${cell.vide}" style="background:#F4F1E9;border:1px dashed #DAD3C2;color:#9BA89F;border-radius:9px;padding:9px;font-size:11px;font-weight:600;">Libre</div>
+          <div th:unless="${cell.vide}" th:style="'background:' + ${cell.bg} + ';color:' + ${cell.fg} + ';border-radius:9px;padding:9px;font-size:11.5px;font-weight:700;'">
+            <span th:text="${cell.matiereNom}">Matière</span>
+            <div style="font-weight:500;opacity:.85;" th:text="${cell.prof}">Prof</div>
+          </div>
+        </th:block>
+      </th:block>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>
